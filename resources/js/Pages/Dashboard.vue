@@ -1,4 +1,5 @@
 <script setup>
+import MainContent from '@/Components/MainContent/MainContent.vue';
 import { Head } from '@inertiajs/vue3';
 import NavBar from '../Components/Navigation/NavBar.vue';
 </script>
@@ -13,8 +14,8 @@ import NavBar from '../Components/Navigation/NavBar.vue';
             </div>
         </div>
         <div class="col-span-10 xl:block">
-            <div class="flex-1 overflow-hidden w-full h-full bg-red-500">
-                Main content
+            <div class="flex-1 overflow-hidden w-full h-full">
+                <MainContent />
             </div>
         </div>
     </div>
