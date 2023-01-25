@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('study_stats', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->unique();
-            $table->integer('time_studied');
-            $table->integer('completed_tasks');
+            $table->foreignId('project_id')->constrained();
+            $table->string('name');
+            $table->string('description');
+            $table->boolean('completed')->default(false);
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('study_stats');
+        Schema::dropIfExists('tasks');
     }
 };
