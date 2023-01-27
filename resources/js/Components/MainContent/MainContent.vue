@@ -2,6 +2,7 @@
 import HelloBar from './HelloBar.vue';
 import CurrentProjects from './CurrentProjects.vue';
 import Statistics from './Statistics.vue';
+import Tasks from './Tasks.vue'
 </script>
 
 <template>
@@ -10,8 +11,8 @@ import Statistics from './Statistics.vue';
     <div><CurrentProjects /></div>
 
     <div class="grid grid-cols-12 grid-rows-2 gap-10 h-full">
-      <div class="row-span-2 col-span-12 md:col-span-6 bg-red-500">
-        Projects
+      <div class="row-span-2 col-span-12 md:col-span-6">
+        <Tasks />
       </div>
       <div class="row-span-1 col-span-12 md:col-span-6" >
         <Statistics />
