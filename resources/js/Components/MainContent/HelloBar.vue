@@ -17,7 +17,7 @@
       </div>
 
       <a href="#" class="bg-indigo-500 py-2 px-4 text-gray-300 rounded-lg
-      hover:bg-gray-300 hover:text-indigo-500">Voeg een taak toe</a>
+      hover:bg-gray-300 hover:text-indigo-500">Voeg een project toe</a>
     </div>
   </div>
 </template>

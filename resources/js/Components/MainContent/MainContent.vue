@@ -3,6 +3,7 @@ import HelloBar from './HelloBar.vue';
 import CurrentProjects from './CurrentProjects.vue';
 import Statistics from './Statistics.vue';
 import Tasks from './Tasks.vue'
+import Friends from './Friends.vue'
 </script>
 
 <template>
@@ -17,8 +18,8 @@ import Tasks from './Tasks.vue'
       <div class="row-span-1 col-span-12 md:col-span-6" >
         <Statistics />
       </div>
-      <div class="row-span-1 col-span-12 md:col-span-6 bg-red-500">
-        Calendar
+      <div class="row-span-1 col-span-12 md:col-span-6">
+        <Friends />
       </div>
     </div>
   </div>

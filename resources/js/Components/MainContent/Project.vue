@@ -22,7 +22,7 @@
 
     <div class="space-y-2">
       <p class="text-white">
-        {{ taskperproject.length }} taken
+        {{ taskperproject.length }} taken | {{ completedTasksperproject.length }} voltooid
       </p>
 
       <div class="relative h-2 bg-black bg-opacity-20 rounded-xl">

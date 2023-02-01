@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Friends;
+use App\Models\User;
 use App\Models\Projects;
 use App\Models\Study_stats;
 use App\Models\Tasks;
@@ -22,11 +24,14 @@ class DashboardController extends Controller
         $projects = Projects::where('user_id', $client)->get();
         $projects_id = Projects::where('user_id', $client)->pluck('id')->toArray();
         $tasks = Tasks::whereIn('project_id', $projects_id)->with('project')->get();
-
+        $friends = Friends::where('user_1', $client)->orWhere('user_2', $client)->with('user')->get();
+        $users = User::all();
         return Inertia::render('Dashboard', [
             'projects' => $projects,
             'study_stats' => $study_stats,
-            'tasks' => $tasks
+            'tasks' => $tasks,
+            'friends' => $friends,
+            'users' => $users
         ]);
 
     }
