@@ -27,7 +27,6 @@
       </span>
       te
     </a>
-
   </div>
 
   <div class="col-span-12 hidden lg:block pt-5 space-y-5">

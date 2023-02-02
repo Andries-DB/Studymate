@@ -24,7 +24,7 @@ class DashboardController extends Controller
         $projects = Projects::where('user_id', $client)->get();
         $projects_id = Projects::where('user_id', $client)->pluck('id')->toArray();
         $tasks = Tasks::whereIn('project_id', $projects_id)->with('project')->get();
-        $friends = Friends::where('user_1', $client)->orWhere('user_2', $client)->with('user')->get();
+        $friends = Friends::where('user_1', $client)->orWhere('user_2', $client)->with('user')->limit(3)->get();
         $users = User::all();
         return Inertia::render('Dashboard', [
             'projects' => $projects,
