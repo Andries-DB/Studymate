@@ -37,13 +37,17 @@ class DashboardController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
+     * Add a new Project
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createProject(Request $request)
     {
-        //
+        $project = new Projects();
+        $project->name = $request->name;
+        $project->user_id = auth()->user()->id;
+        $project->save();
+        return redirect()->route('dashboard');
     }
 
     /**

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Projects\Form\ProjectFormController;
 use App\Http\Controllers\StudyRoomController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -26,11 +27,12 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-
+/** Dashboard Routes */
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/dashboard', [DashboardController::class, 'createProject'])->middleware(['auth', 'verified'])->name('addProject');
 Route::get('/studeerkamers', [StudyRoomController::class, 'index'])->middleware(['auth', 'verified'])->name('studeerkamers');
-Route::get('/berichten', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('berichten');
 Route::get('/instellingen', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('instellingen');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
