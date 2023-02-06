@@ -28,9 +28,26 @@ Route::get('/', function () {
     ]);
 });
 /** Dashboard Routes */
+//Show Dashboard with projects, tasks and stats & friends
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::post('/dashboard', [DashboardController::class, 'createProject'])->middleware(['auth', 'verified'])->name('addProject');
+
+//Make a new project
+Route::post('newProject', [DashboardController::class, 'createProject'])->middleware(['auth', 'verified'])->name('addProject');
+
+//Edit a project
+Route::get('/dashboard/edit/{id}', [DashboardController::class, 'ProjectDetail'])->middleware(['auth', 'verified'])->name('projectDetail');
+Route::post('editProject', [DashboardController::class, 'editProject'])->middleware(['auth', 'verified'])->name('editProject');
+
+//Delete a project
+Route::post('deleteProject', [DashboardController::class, 'deleteProject'])->middleware(['auth', 'verified'])->name('deleteProject');
+
+//Complete a task
+Route::post('updateTask', [DashboardController::class, 'updateTask'])->middleware(['auth', 'verified'])->name('updateTask');
+
+/** StudyRoom Routes */
 Route::get('/studeerkamers', [StudyRoomController::class, 'index'])->middleware(['auth', 'verified'])->name('studeerkamers');
+
+/** Settings Routes */
 Route::get('/instellingen', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('instellingen');
 
 

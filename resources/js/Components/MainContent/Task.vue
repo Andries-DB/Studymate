@@ -17,12 +17,25 @@
       </p>
     </div>
 
-    <button class="flex justify-center items-center w-7 h-7 border rounded-full border-indigo-500">
-      <mdicon
-        name="check"
-        v-if="task.completed"
-        class="w-7 text-sm text-white bg-black rounded-full"
-        />
-    </button>
+    <form method="post" :action="route('updateTask')">
+      <input type="hidden" name="_token" :value="csrf">
+      <input type="hidden" name="id" :value="task.id" />
+      <button type="submit" class="flex justify-center items-center w-7 h-7 border rounded-full border-indigo-500">
+        <mdicon
+          name="check"
+          v-if="task.completed"
+          class="w-7 text-sm text-white bg-black rounded-full"
+          />
+      </button>
+    </form>
   </div>
 </template>
+
+<script>
+  export default {
+    // Get the CSRF token
+    data: () => ({
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+    }),
+  }
+</script>

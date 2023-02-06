@@ -51,58 +51,58 @@ class DashboardController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
+     * Update a Task
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function updateTask(Request $request)
     {
-        //
+        $task = Tasks::find($request->id);
+        $task->completed = true;
+        $task->save();
+        return redirect()->route('dashboard');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
+     * Delete a Project
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function deleteProject(Request $request)
     {
-        //
+        $project = Projects::find($request->id);
+        $project->delete();
+        return redirect()->route('dashboard');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
+     * Edit a project
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function editProject(Request $request)
     {
-        //
+        $project = Projects::find($request->id);
+        $project->name = $request->name;
+        $project->save();
+        return redirect()->route('dashboard');
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function projectDetail(Request $r)
+    {
+        $project = Projects::find($r->id);
+        $tasks = Tasks::where('project_id', $r->id)->get();
+        return Inertia::render('EditForm/EditProject', [
+            'project' => $project,
+            'tasks' => $tasks
+        ]);
+    }
+
+
 }

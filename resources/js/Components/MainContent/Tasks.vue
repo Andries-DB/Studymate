@@ -22,10 +22,21 @@
 
     <div class="flex flex-col space-y-4">
       <Task
-        v-for="(task, index) in $page.props.tasks"
+        v-for="(task, index) in getTasks()"
         :key="index"
         :task="task"
       />
     </div>
   </div>
 </template>
+
+<script>
+  export default {
+    methods: {
+      // Get non completed tasks
+      getTasks() {
+        return this.$page.props.tasks.filter((task) => !task.completed);
+      },
+    },
+  };
+</script>
