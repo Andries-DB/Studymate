@@ -31,12 +31,17 @@ Route::get('/', function () {
 //Show Dashboard with projects, tasks and stats & friends
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-//Make a new project
+/** Add a new Project */
 Route::post('newProject', [DashboardController::class, 'createProject'])->middleware(['auth', 'verified'])->name('addProject');
 
-//Edit a project
+/** Project Detail */
 Route::get('/dashboard/edit/{id}', [DashboardController::class, 'ProjectDetail'])->middleware(['auth', 'verified'])->name('projectDetail');
+// Edit name of project
 Route::post('editProject', [DashboardController::class, 'editProject'])->middleware(['auth', 'verified'])->name('editProject');
+// Add new task to specific project
+Route::post('addTasktoProject', [DashboardController::class, 'createTaskToProject'])->middleware(['auth', 'verified'])->name('addTasktoProject');
+// Delete a task from a project
+Route::post('deleteTask', [DashboardController::class, 'deleteTask'])->middleware(['auth', 'verified'])->name('deleteTask');
 
 //Delete a project
 Route::post('deleteProject', [DashboardController::class, 'deleteProject'])->middleware(['auth', 'verified'])->name('deleteProject');

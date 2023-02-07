@@ -36,6 +36,8 @@ class DashboardController extends Controller
 
     }
 
+    /** Projects */
+
     /**
      * Add a new Project
      * @param  \Illuminate\Http\Request  $request
@@ -51,15 +53,15 @@ class DashboardController extends Controller
     }
 
     /**
-     * Update a Task
+     * Edit a project
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function updateTask(Request $request)
+    public function editProject(Request $request)
     {
-        $task = Tasks::find($request->id);
-        $task->completed = true;
-        $task->save();
+        $project = Projects::find($request->id);
+        $project->name = $request->name;
+        $project->save();
         return redirect()->route('dashboard');
     }
 
@@ -72,19 +74,6 @@ class DashboardController extends Controller
     {
         $project = Projects::find($request->id);
         $project->delete();
-        return redirect()->route('dashboard');
-    }
-
-    /**
-     * Edit a project
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function editProject(Request $request)
-    {
-        $project = Projects::find($request->id);
-        $project->name = $request->name;
-        $project->save();
         return redirect()->route('dashboard');
     }
 
@@ -104,5 +93,47 @@ class DashboardController extends Controller
         ]);
     }
 
+    /** Tasks */
+
+    /**
+     * Update a Task
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updateTask(Request $request)
+    {
+        $task = Tasks::find($request->id);
+        $task->completed = !$task->completed;
+        $task->save();
+        return redirect()->back();
+    }
+
+    /**
+     * Add a new Task to a specific project
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function createTaskToProject(Request $r)
+    {
+        $task = new Tasks();
+        $task->name = $r->name;
+        $task->description = $r->description;
+        $task->project_id = $r->id;
+        $task->completed = false;
+        $task->save();
+        return redirect()->route('projectDetail', ['id' => $r->id]);
+    }
+
+    /**
+     * Delete a Task
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteTask(Request $request) {
+        $task = Tasks::find($request->id);
+        $task->delete();
+        return redirect()->back();
+    }
 
 }
