@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\StudyRooms;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -14,17 +15,31 @@ class StudyRoomController extends Controller
      */
     public function index()
     {
-      return Inertia::render('Studeerkamers');
+      $studyrooms = StudyRooms::all();
+      return Inertia::render('Studeerkamers', [
+        'studyrooms' => $studyrooms
+      ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new StudyRoom.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createStudyRoom (Request $r)
     {
-        //
+      $studyroom = new StudyRooms();
+      $studyroom->name = $r->name;
+      $studyroom->description = $r->description;
+      $imagepath = $r->file('image')->storeAs(
+        'studyroomImages',
+        $studyroom->name . '.' . $r->file('image')->getClientOriginalExtension() ,
+        'public');
+
+      $studyroom->image = $imagepath;
+      $studyroom->time_studied = 0;
+      $studyroom->save();
+      return redirect()->back();
     }
 
     /**
