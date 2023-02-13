@@ -36,6 +36,8 @@ Route::post('newProject', [DashboardController::class, 'createProject'])->middle
 Route::get('/dashboard/edit/{id}', [DashboardController::class, 'ProjectDetail'])->middleware(['auth', 'verified'])->name('projectDetail');
 // Edit name of project
 Route::post('editProject', [DashboardController::class, 'editProject'])->middleware(['auth', 'verified'])->name('editProject');
+// Add new task in dashboard
+Route::post('newTask', [DashboardController::class, 'createTask'])->middleware(['auth', 'verified'])->name('addTask');
 // Add new task to specific project
 Route::post('addTasktoProject', [DashboardController::class, 'createTaskToProject'])->middleware(['auth', 'verified'])->name('addTasktoProject');
 // Delete a task from a project

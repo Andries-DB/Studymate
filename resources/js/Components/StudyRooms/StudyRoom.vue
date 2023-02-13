@@ -7,10 +7,21 @@
 </script>
 
 <template>
-  <div class="rounded-xl text-white p-4 flex justify-between flex-col gap-7 bg-indigo-500">
-      <div class="flex justify-between items-center">
+  <div
+    class="bg rounded-xl text-white p-4 flex justify-between flex-col gap-7 bg-indigo-500 "
+    :style="{'background-image':'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(storage/' + studyroom.image + ')' }"
+    >
+    <div class="flex justify-between items-center">
         <h3 class="font-bold text-3xl">{{ studyroom.name }}</h3>
       </div>
       <p>{{ studyroom.description }}</p>
-    </div>
+  </div>
+
 </template>
+
+<style>
+  .bg {
+    background-size: cover;
+    background-position: center;
+  }
+</style>

@@ -15,8 +15,7 @@ import Overview from '@/Components/StudyRooms/Overview.vue';
         </div>
         <div class="col-span-10 xl:block">
             <div class="flex-1 overflow-hidden w-full h-full">
-              <div class="flex flex-col gap-10 p-7 bg-red-500">
-                <h3 class="text-3xl">Populairste studeerkamers</h3>
+              <div class="flex flex-col gap-10 p-7">
                 <div class="">
                   <Overview />
                 </div>

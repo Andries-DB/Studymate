@@ -7,7 +7,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 <template>
   <!-- New Project Form -->
-  <div id='form' class="w-full h-full bg-black bg-opacity-70 absolute top-0 left-0 z-30 flex justify-center items-center hidden">
+  <div id='projectform' class="w-full h-full bg-black bg-opacity-70 absolute top-0 left-0 z-30 flex justify-center items-center hidden">
     <div class="w-96 h-72 bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
       <div class="close" @click="hideForm()">+</div>
       <h1 class="mb-5">Maak een nieuw project aan!</h1>
@@ -65,11 +65,11 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
       },
       // Show the Add project form
       showForm() {
-      document.getElementById('form').classList.remove('hidden');
+      document.getElementById('projectform').classList.remove('hidden');
       },
       // Hide the Add project form
       hideForm() {
-        document.getElementById('form').classList.add('hidden');
+        document.getElementById('projectform').classList.add('hidden');
       },
     },
     // Get the CSRF token

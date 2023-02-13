@@ -37,6 +37,7 @@ class StudyRoomController extends Controller
         'public');
 
       $studyroom->image = $imagepath;
+      $studyroom->private = true;
       $studyroom->time_studied = 0;
       $studyroom->save();
       return redirect()->back();

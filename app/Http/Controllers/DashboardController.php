@@ -96,6 +96,21 @@ class DashboardController extends Controller
     /** Tasks */
 
     /**
+     * Add a new task in dashboard
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function createTask(Request $request) {
+        $task = new Tasks();
+        $task->name = $request->name;
+        $task->description = $request->description;
+        $task->project_id = $request->project;
+        $task->completed = false;
+        $task->save();
+        return redirect()->route('dashboard');
+    }
+
+    /**
      * Update a Task
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
