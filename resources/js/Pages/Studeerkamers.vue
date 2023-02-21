@@ -25,7 +25,7 @@ import Invites from '@/Components/StudyRooms/Invites.vue';
                   <div class="row-span-2 col-span-12 md:col-span-6 ">
                     <PublicStudyRooms />
                   </div>
-                  <div class="row-span-1 col-span-12 md:col-span-6 bg-red-200" >
+                  <div class="row-span-1 col-span-12 md:col-span-6" >
                     <MyStudyRooms />
                   </div>
                   <div class="row-span-1 col-span-12 md:col-span-6 bg-red-200">

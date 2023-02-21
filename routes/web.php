@@ -50,6 +50,7 @@ Route::post('updateTask', [DashboardController::class, 'updateTask'])->middlewar
 /** StudyRoom Routes */
 Route::get('/studeerkamers', [StudyRoomController::class, 'index'])->middleware(['auth', 'verified'])->name('studeerkamers');
 Route::post('newStudyRoom', [StudyRoomController::class, 'createStudyRoom'])->middleware(['auth', 'verified'])->name('addStudyRoom');
+Route::get('/studeerkamers/edit/{id}', [StudyRoomController::class, 'StudyRoomDetail'])->middleware(['auth', 'verified'])->name('studyroomDetail');
 
 /** Settings Routes */
 Route::get('/instellingen', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('instellingen');

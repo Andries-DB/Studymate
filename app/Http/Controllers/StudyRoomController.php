@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\StudyRooms;
+use App\Models\StudyRooms_invitations;
 use App\Models\StudyRooms_Owner;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -48,59 +49,14 @@ class StudyRoomController extends Controller
       return redirect()->back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function StudyRoomDetail(Request $r)
     {
-        //
-    }
+      $studyroom = StudyRooms::where('id', $r->id)->first();
+      $studyroomInvitations = StudyRooms_invitations::where('study_room_id', $r->id)->with('user')->get();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+      return Inertia::render('EditForm/EditStudyRoom', [
+        'studyroom' => $studyroom,
+        'studyroomInvitations' => $studyroomInvitations,
+      ]);
     }
 }

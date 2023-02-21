@@ -50,14 +50,6 @@ const props = defineProps({
 
 <script>
   export default {
-    props: {
-      project: {
-        type: Object
-      },
-      tasks: {
-        type: Array
-      },
-    },
     data: () => ({
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
