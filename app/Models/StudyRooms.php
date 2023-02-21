@@ -13,4 +13,14 @@ class StudyRooms extends Model
     {
         return $this->hasMany(StudyRoomsUsers::class);
     }
+
+    public function StudyRooms_Owner()
+    {
+        return $this->hasMany(StudyRooms_Owner::class);
+    }
+
+    public function StudyRooms_invitations()
+    {
+        return $this->hasMany(StudyRooms_invitations::class);
+    }
 }

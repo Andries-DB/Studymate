@@ -9,6 +9,7 @@ use App\Models\Study_stats;
 use App\Models\Tasks;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Termwind\Components\Dd;
 
 class DashboardController extends Controller
 {
@@ -20,10 +21,10 @@ class DashboardController extends Controller
     public function index()
     {
         $client = auth()->user()->id;
+
         $study_stats = Study_stats::where('user_id', $client)->get();
         $projects = Projects::where('user_id', $client)->get();
-        $projects_id = Projects::where('user_id', $client)->pluck('id')->toArray();
-        $tasks = Tasks::whereIn('project_id', $projects_id)->with('project')->get();
+        $tasks = Tasks::whereIn('project_id', $projects->pluck('id'))->with('project')->get();
         $friends = Friends::where('user_1', $client)->orWhere('user_2', $client)->with('user')->limit(3)->get();
         $users = User::all();
         return Inertia::render('Dashboard', [
@@ -45,18 +46,13 @@ class DashboardController extends Controller
      */
     public function createProject(Request $request)
     {
-        $project = new Projects();
-        $project->name = $request->name;
-        $project->user_id = auth()->user()->id;
-        $project->save();
+        Projects::create([
+            'name' => $request->name,
+            'user_id' => auth()->user()->id
+        ]);
         return redirect()->route('dashboard');
     }
 
-    /**
-     * Edit a project
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function editProject(Request $request)
     {
         $project = Projects::find($request->id);
@@ -65,24 +61,13 @@ class DashboardController extends Controller
         return redirect()->route('dashboard');
     }
 
-    /**
-     * Delete a Project
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function deleteProject(Request $request)
+     public function deleteProject(Request $request)
     {
         $project = Projects::find($request->id);
         $project->delete();
         return redirect()->route('dashboard');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     * @param  \Illuminate\Http\Request  $request
-     */
     public function projectDetail(Request $r)
     {
         $project = Projects::find($r->id);
@@ -101,13 +86,13 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function createTask(Request $request) {
-        $task = new Tasks();
-        $task->name = $request->name;
-        $task->description = $request->description;
-        $task->project_id = $request->project;
-        $task->completed = false;
-        $task->save();
-        return redirect()->route('dashboard');
+      Tasks::create([
+        'name' => $request->name,
+        'description' => $request->description,
+        'project_id' => $request->project,
+        'completed' => false
+    ]);
+      return redirect()->back();
     }
 
     /**
@@ -129,15 +114,15 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function createTaskToProject(Request $r)
+    public function createTaskToProject(Request $request)
     {
         $task = new Tasks();
-        $task->name = $r->name;
-        $task->description = $r->description;
-        $task->project_id = $r->id;
+        $task->name = $request->name;
+        $task->description = $request->description;
+        $task->project_id = $request->id;
         $task->completed = false;
         $task->save();
-        return redirect()->route('projectDetail', ['id' => $r->id]);
+        return redirect()->route('projectDetail', ['id' => $request->id]);
     }
 
     /**
@@ -146,8 +131,7 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function deleteTask(Request $request) {
-        $task = Tasks::find($request->id);
-        $task->delete();
+        Tasks::find($request->id)->delete();
         return redirect()->back();
     }
 

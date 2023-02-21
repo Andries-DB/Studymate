@@ -3,29 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\StudyRooms;
+use App\Models\StudyRooms_Owner;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Termwind\Components\Dd;
 
 class StudyRoomController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-      $studyrooms = StudyRooms::all();
+      $client = auth()->user()->id;
+
+      $Popularstudyrooms = StudyRooms::limit(5)->get();
+      $Publicstudyrooms = StudyRooms::where('private', false)->get();
+      $Mystudyrooms = StudyRooms_Owner::where('user_id', $client)->with('Studyroom')->get();
+
       return Inertia::render('Studeerkamers', [
-        'studyrooms' => $studyrooms
+        'popularStudyrooms' => $Popularstudyrooms,
+        'publicStudyrooms' => $Publicstudyrooms,
+        'myStudyrooms' => $Mystudyrooms,
       ]);
     }
 
-    /**
-     * Show the form for creating a new StudyRoom.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function createStudyRoom (Request $r)
     {
       $studyroom = new StudyRooms();
@@ -40,6 +39,12 @@ class StudyRoomController extends Controller
       $studyroom->private = true;
       $studyroom->time_studied = 0;
       $studyroom->save();
+
+      $studyroomOwner = new StudyRooms_Owner();
+      $studyroomOwner->user_id = auth()->user()->id;
+      $studyroomOwner->study_room_id = $studyroom->id;
+      $studyroomOwner->save();
+
       return redirect()->back();
     }
 

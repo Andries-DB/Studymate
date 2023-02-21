@@ -2,6 +2,9 @@
 import { Head } from '@inertiajs/vue3';
 import NavBar from '../Components/Navigation/Navbar.vue';
 import Overview from '@/Components/StudyRooms/Overview.vue';
+import PublicStudyRooms from '@/Components/StudyRooms/PublicStudyRooms.vue';
+import MyStudyRooms from '@/Components/StudyRooms/MyStudyRooms.vue';
+import Invites from '@/Components/StudyRooms/Invites.vue';
 
 </script>
 
@@ -16,19 +19,17 @@ import Overview from '@/Components/StudyRooms/Overview.vue';
         <div class="col-span-10 xl:block">
             <div class="flex-1 overflow-hidden w-full h-full">
               <div class="flex flex-col gap-10 p-7">
-                <div class="">
-                  <Overview />
-                </div>
+                <div><Overview /></div>
 
                 <div class="grid grid-cols-12 grid-rows-2 gap-10 h-full">
-                  <div class="row-span-2 col-span-12 md:col-span-6 bg-red-500">
-                    Main studeerkamers
+                  <div class="row-span-2 col-span-12 md:col-span-6 ">
+                    <PublicStudyRooms />
                   </div>
-                  <div class="row-span-1 col-span-12 md:col-span-6 bg-red-500" >
-                    Jouw studeerkamers
+                  <div class="row-span-1 col-span-12 md:col-span-6 bg-red-200" >
+                    <MyStudyRooms />
                   </div>
-                  <div class="row-span-1 col-span-12 md:col-span-6 bg-red-500">
-                    Uitnodigingen
+                  <div class="row-span-1 col-span-12 md:col-span-6 bg-red-200">
+                    <Invites />
                   </div>
                 </div>
               </div>

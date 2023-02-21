@@ -1,11 +1,11 @@
 <script setup>
-import StudyRoom from '@/Components/StudyRooms/StudyRoom.vue';
+import StudyRoom from '@/Components/StudyRooms/Detail/StudyRoom.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 const props = defineProps({
-  studyrooms: {
+  popularStudyrooms: {
     type: Array,
   },
 });
@@ -49,23 +49,19 @@ const props = defineProps({
     </div>
   </div>
 
-  <div class="flex justify-between p-3">
+  <div class="flex justify-between py-3">
     <h3 class="text-3xl">Populairste studeerkamers</h3>
     <button v-on:click="showForm()" id="addProject" class="bg-indigo-500 py-2 px-4 text-gray-300 rounded-lg hover:bg-gray-300 hover:text-indigo-500"> + Maak een nieuwe studeerkamer</button>
   </div>
-
-  <div class="flex flex-col md:flex-row items-center md:items-stretch gap-6" v-for="studyroom in $page.props.studyrooms">
-    <StudyRoom :studyroom="studyroom" />
+  <div class="flex flex-row gap-3">
+    <div v-for="studyroom in $page.props.popularStudyrooms">
+      <StudyRoom :studyroom="studyroom" />
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    studyrooms: {
-      type: Array,
-    },
-  },
   methods: {
     showForm() {
     document.getElementById('studyroomForm').classList.remove('hidden');

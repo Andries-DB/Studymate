@@ -61,4 +61,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Projects::class);
     }
+
+    public function StudyRooms()
+    {
+        return $this->hasMany(StudyRooms::class);
+    }
+
+    public function StudyRooms_Owner()
+    {
+        return $this->hasMany(StudyRooms_Owner::class);
+    }
 }
