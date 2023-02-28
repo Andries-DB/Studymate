@@ -3,29 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Models\StudyRooms;
+use App\Models\User;
 use App\Models\StudyRooms_invitations;
 use App\Models\StudyRooms_Owner;
+use App\Models\StudyRoomsUser;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Termwind\Components\Dd;
 
 class StudyRoomController extends Controller
 {
+    // Get all studyrooms (public, private, shared, owned, invites)
     public function index()
     {
       $client = auth()->user()->id;
 
-      $Popularstudyrooms = StudyRooms::limit(5)->get();
+      $SharedStudyRoom = StudyRoomsUser::where('user_id', $client)->with('Studyroom')->get();
       $Publicstudyrooms = StudyRooms::where('private', false)->get();
       $Mystudyrooms = StudyRooms_Owner::where('user_id', $client)->with('Studyroom')->get();
 
+      $invites = StudyRooms_invitations::where('user_id', $client)->with('Studyroom')->get();
+
       return Inertia::render('Studeerkamers', [
-        'popularStudyrooms' => $Popularstudyrooms,
+        'sharedStudyRoom' => $SharedStudyRoom,
         'publicStudyrooms' => $Publicstudyrooms,
         'myStudyrooms' => $Mystudyrooms,
+        'invites' => $invites
       ]);
     }
 
+    // Add a new studyroom
     public function createStudyRoom (Request $r)
     {
       $studyroom = new StudyRooms();
@@ -49,14 +55,61 @@ class StudyRoomController extends Controller
       return redirect()->back();
     }
 
+    // Get details of specific studyroom
     public function StudyRoomDetail(Request $r)
     {
+      // Get the studyroom
       $studyroom = StudyRooms::where('id', $r->id)->first();
+      // Get the users that are invited
       $studyroomInvitations = StudyRooms_invitations::where('study_room_id', $r->id)->with('user')->get();
 
+      // Get the users that aren't invited yet and that aren't the owner
+      $users = User::whereNotIn('id', function($query) use ($r) {
+        $query->select('user_id')->from('study_rooms_invitations')->where('study_room_id', $r->id);
+      })->whereNotIn('id', function($query) use ($r) {
+        $query->select('user_id')->from('study_rooms__owners')->where('study_room_id', $r->id);
+      })->get();
+
+      // Get the users that are in the studyroom
+      $studyroomUsers = StudyRoomsUser::where('study_room_id', $r->id)->with('user')->get();
+
+
       return Inertia::render('EditForm/EditStudyRoom', [
+        'studyroomUsers' => $studyroomUsers,
+        'users' => $users,
         'studyroom' => $studyroom,
         'studyroomInvitations' => $studyroomInvitations,
       ]);
     }
+
+    // Send an invitation to a user for a studyroom
+    public function AddUserToStudyRoom(Request $r)
+    {
+      $studyroom = New StudyRooms_invitations();
+      $studyroom->user_id = $r->user;
+      $studyroom->study_room_id = $r->studyroom;
+      $studyroom->save();
+
+      return redirect()->back();
+    }
+
+    // Delete an invitation from a studyroom
+    public function DeleteInviteFromStudyRoom(Request $r)
+    {
+      $studyroom = StudyRooms_invitations::where('id', $r->id)->first();
+      $studyroom->delete();
+
+      return redirect()->back();
+    }
+
+    // Delete a user from a studyroom
+    public function DeleteUserFromStudyRoom(Request $r)
+    {
+      $studyroom = StudyRoomsUser::where('id', $r->id)->first();
+      $studyroom->delete();
+
+      return redirect()->back();
+    }
 }
+
+

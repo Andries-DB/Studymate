@@ -9,7 +9,7 @@ class StudyRoomsUser extends Model
 {
     use HasFactory;
 
-    public function StudyRooms()
+    public function StudyRoom()
     {
         return $this->belongsTo(StudyRooms::class);
     }

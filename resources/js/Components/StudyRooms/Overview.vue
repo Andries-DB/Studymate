@@ -5,7 +5,7 @@ import TextInput from '@/Components/TextInput.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 const props = defineProps({
-  popularStudyrooms: {
+  sharedStudyRoom: {
     type: Array,
   },
 });
@@ -50,12 +50,12 @@ const props = defineProps({
   </div>
 
   <div class="flex justify-between py-3">
-    <h3 class="text-3xl">Populairste studeerkamers</h3>
+    <h3 class="text-3xl">Gedeelde studeerkamers</h3>
     <button v-on:click="showForm()" id="addProject" class="bg-indigo-500 py-2 px-4 text-gray-300 rounded-lg hover:bg-gray-300 hover:text-indigo-500"> + Maak een nieuwe studeerkamer</button>
   </div>
   <div class="flex flex-row gap-3">
-    <div v-for="studyroom in $page.props.popularStudyrooms">
-      <StudyRoom :studyroom="studyroom" />
+    <div v-for="shared in $page.props.sharedStudyRoom">
+      <StudyRoom :studyroom="shared.studyroom" />
     </div>
   </div>
 </template>

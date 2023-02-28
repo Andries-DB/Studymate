@@ -40,9 +40,18 @@ Route::post('deleteProject', [DashboardController::class, 'deleteProject'])->mid
 Route::post('updateTask', [DashboardController::class, 'updateTask'])->middleware(['auth', 'verified'])->name('updateTask');
 
 /** StudyRoom Routes */
+// Get all studyrooms (public, private, shared, owned)
 Route::get('/studeerkamers', [StudyRoomController::class, 'index'])->middleware(['auth', 'verified'])->name('studeerkamers');
+// Add a new studyroom
 Route::post('newStudyRoom', [StudyRoomController::class, 'createStudyRoom'])->middleware(['auth', 'verified'])->name('addStudyRoom');
+// Get details of specific studyroom
 Route::get('/studeerkamers/edit/{id}', [StudyRoomController::class, 'StudyRoomDetail'])->middleware(['auth', 'verified'])->name('studyroomDetail');
+// Send an invitation to a user for a studyroom
+Route::post('/addInvite', [StudyRoomController::class, 'AddUserToStudyRoom'])->middleware(['auth', 'verified'])->name('addUserToStudyRoom');
+// Delete an invitation from a studyroom
+Route::post('/deleteInvite', [StudyRoomController::class, 'DeleteInviteFromStudyRoom'])->middleware(['auth', 'verified'])->name('deleteInviteFromStudyRoom');
+// Delete a user from a studyroom
+Route::post('/deleteStudyRoomuser', [StudyRoomController::class, 'DeleteUserFromStudyRoom'])->middleware(['auth', 'verified'])->name('deleteUserFromStudyRoom');
 
 /** Settings Routes */
 Route::get('/instellingen', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('instellingen');

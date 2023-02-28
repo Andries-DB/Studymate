@@ -96,12 +96,12 @@
       <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
         <div class="hidden sm:mb-8 sm:flex sm:justify-center">
           <div class="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-            Hoe samen leren de productiviteit bevordert. <a target="_blank" href="https://studybetter.nl/productief-samen-studeren-met-een-medestudent/" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true"></span>Read more <span aria-hidden="true">&rarr;</span></a>
+            Hoe samen leren de productiviteit bevordert. <a target="_blank" href="https://studybetter.nl/productief-samen-studeren-met-een-medestudent/" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true"></span>Lees meer <span aria-hidden="true">&rarr;</span></a>
           </div>
         </div>
         <div class="text-center">
           <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Studymate bevordert de productiviteit</h1>
-          <p class="mt-6 text-lg leading-8 text-gray-600">Ontdek alle studeerkamers en begin te studeren! Maak nieuwe vrieden en studeer samen online!</p>
+          <p class="mt-6 text-lg leading-8 text-gray-600">Ontdek alle studeerkamers en begin te studeren! Maak nieuwe vrienden en studeer samen online!</p>
           <div class="mt-10 flex items-center justify-center gap-x-6">
             <a class="bg-indigo-500 py-2 px-4 text-white rounded-lg hover:bg-gray-300 hover:text-indigo-500" :href="route('register')">Maak een account aan</a>
             <a :href="route('login')" class="text-sm font-semibold leading-6 text-gray-900">Heb je al een account? <span aria-hidden="true">→</span></a>

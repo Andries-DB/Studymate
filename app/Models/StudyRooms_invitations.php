@@ -9,7 +9,7 @@ class StudyRooms_invitations extends Model
 {
     use HasFactory;
 
-    public function studyroom()
+    public function StudyRoom()
     {
         return $this->belongsTo(StudyRooms::class);
     }

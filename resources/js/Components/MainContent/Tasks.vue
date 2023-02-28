@@ -26,7 +26,7 @@
         <input type="hidden" name="_token" :value="csrf">
         <InputLabel for="project" value="Project"/>
         <select name="project" id="project" class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-          <option value="" disabled selected>Selecteer een project</option>
+          <option value="" disabled selected>-- Selecteer een project --</option>
           <option v-for="project in $page.props.projects" :value="project.id">{{ project.name }}</option>
         </select>
         <InputLabel for="name" value="Name" />
