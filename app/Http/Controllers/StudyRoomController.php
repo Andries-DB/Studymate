@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\StudyRoom__user_active;
 use App\Models\StudyRooms;
 use App\Models\User;
 use App\Models\StudyRooms_invitations;
@@ -51,6 +52,11 @@ class StudyRoomController extends Controller
       $studyroomOwner->user_id = auth()->user()->id;
       $studyroomOwner->study_room_id = $studyroom->id;
       $studyroomOwner->save();
+
+      $studyroomUser = new StudyRoomsUser();
+      $studyroomUser->user_id = auth()->user()->id;
+      $studyroomUser->study_room_id = $studyroom->id;
+      $studyroomUser->save();
 
       return redirect()->back();
     }
@@ -110,6 +116,41 @@ class StudyRoomController extends Controller
 
       return redirect()->back();
     }
+
+    // Accept an invitation to a studyroom
+    public function AcceptInvite(Request $r)
+    {
+      $studyroom = StudyRooms_invitations::where('id', $r->invite_id)->first();
+      $studyroom->delete();
+
+      $studyroomUser = new StudyRoomsUser();
+      $studyroomUser->user_id = auth()->user()->id;
+      $studyroomUser->study_room_id = $r->studyroom_id;
+      $studyroomUser->save();
+
+      return redirect()->back();
+    }
+
+    // Decline an invitation to a studyroom
+    public function DeclineInvite(Request $r)
+    {
+      $studyroom = StudyRooms_invitations::where('id', $r->invite_id)->first();
+      $studyroom->delete();
+
+      return redirect()->back();
+    }
+
+    public function Study(Request $r) {
+      $studyroomInformation = StudyRooms::where('id', $r->id)->first();
+      $activeUsers = StudyRoom__user_active::where('study_room_id', $r->id)->with('user')->get();
+
+      return Inertia::render('StudyDetail', [
+        'studyroomInformation' => $studyroomInformation,
+        'activeUsers' => $activeUsers
+      ]);
+
+    }
 }
+
 
 

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -70,5 +69,15 @@ class User extends Authenticatable
     public function StudyRooms_Owner()
     {
         return $this->hasMany(StudyRooms_Owner::class);
+    }
+
+    public function StudyRooms_invitations()
+    {
+        return $this->hasMany(StudyRooms_invitations::class);
+    }
+
+    public function StudyRoom__user_active()
+    {
+        return $this->hasMany(StudyRoom__user_active::class);
     }
 }

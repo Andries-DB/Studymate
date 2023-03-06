@@ -23,4 +23,9 @@ class StudyRooms extends Model
     {
         return $this->hasMany(StudyRooms_invitations::class);
     }
+
+    public function StudyRoom__user_active()
+    {
+        return $this->hasMany(StudyRoom__user_active::class);
+    }
 }
