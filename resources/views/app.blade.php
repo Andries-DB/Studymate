@@ -7,7 +7,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title inertia>{{ config('app.name', 'Laravel') }}</title>
+        <title inertia>{{ config('app.name', 'StudyMate') }}</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -22,5 +22,7 @@
     </head>
     <body class="font-sans antialiased">
         @inertia
+
+        <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
     </body>
 </html>
