@@ -20,7 +20,9 @@
         "vue": "^3.2.41"
     },
     "dependencies": {
+        "laravel-echo": "^1.15.0",
         "moment": "^2.29.4",
+        "pusher-js": "^8.0.1",
         "vue-media-recorder": "^0.1.25",
         "watch": "^1.0.2"
     }

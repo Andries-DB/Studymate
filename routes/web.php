@@ -71,4 +71,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::group(['middleware' => ['auth']], function () {
+  //Route::get('/studeerkamers/{id}', 'App\Http\Controllers\AgoraVideoController@index');
+  Route::post('/agora/token', 'App\Http\Controllers\AgoraVideoController@token');
+  Route::post('/agora/call-user', 'App\Http\Controllers\AgoraVideoController@callUser');
+});
+
 require __DIR__.'/auth.php';

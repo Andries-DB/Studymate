@@ -16,6 +16,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
         <!-- Scripts -->
+        <script src="https://cdn.agora.io/sdk/release/AgoraRTCSDK-3.3.1.js"></script>
         @routes
         @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead

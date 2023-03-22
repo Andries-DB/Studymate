@@ -146,7 +146,8 @@ class StudyRoomController extends Controller
 
       return Inertia::render('StudyDetail', [
         'studyroomInformation' => $studyroomInformation,
-        'activeUsers' => $activeUsers
+        'activeUsers' => $activeUsers,
+
       ]);
 
     }
