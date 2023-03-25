@@ -141,11 +141,15 @@ class StudyRoomController extends Controller
     }
 
     public function Study(Request $r) {
+      $client = auth()->user();
       $studyroomInformation = StudyRooms::where('id', $r->id)->first();
+      $owner = StudyRooms_Owner::where('study_room_id', $r->id)->with('user')->first();
       $activeUsers = StudyRoom__user_active::where('study_room_id', $r->id)->with('user')->get();
 
       return Inertia::render('StudyDetail', [
         'studyroomInformation' => $studyroomInformation,
+        'client' => $client,
+        'owner' => $owner,
         'activeUsers' => $activeUsers,
 
       ]);
