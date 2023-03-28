@@ -38,7 +38,7 @@ import NavBar from '../Components/Navigation/Navbar.vue';
                     </div>
                   </div>
                   <div class="row-span-5 col-span-12 md:col-span-9" >
-                    <div id="videos">
+                    <div id="videos" class="flex gap-5 ">
                       <!-- Here come the other users cameras -->
                     </div>
                   </div>
@@ -48,9 +48,16 @@ import NavBar from '../Components/Navigation/Navbar.vue';
         </div>
     </div>
     <div class="w-full h-20 bg-gray-300 fixed bottom-0 flex justify-center gap-5 items-center">
+      <form :action="joinstream()">
+        <input type="hidden" name="username" :value="$page.props.client.username">
+        <input type="hidden" name="token" :value="this.uid">
+
+
+      </form>
       <button id="join-btn" class="join-btn text-indigo-500 border-solid border px-5 py-3 rounded-full hover:text-white hover:bg-indigo-500 border-indigo-500"  @click="joinstream()">
         Join de kamer
       </button>
+
       <button id="leave-btn" class="leave-btn text-indigo-500 border-solid border px-5 py-3 rounded-full hover:text-white hover:bg-indigo-500 border-indigo-500 hidden" @click="leaveStream()">
         Verlaat de kamer
       </button>
@@ -146,8 +153,8 @@ export default {
         // Create a new div for playing the remote stream if it doesn't exist, also add the possibility to expand the videoframe
         player = `
           <div id="user-container-${user.uid}" class="video__container">
-            <p class="user-name">${user.uid}</p>
             <div id="user-${user.uid}" class="video-player"></div>
+            <p class="user-name text-xl font-bold flex justify-center mt-2">${user.uid}</p>
           </div>
         `;
 
