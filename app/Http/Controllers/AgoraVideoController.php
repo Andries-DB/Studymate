@@ -38,14 +38,4 @@ class AgoraVideoController extends Controller
 
         return $token;
     }
-
-    public function callUser(Request $request)
-    {
-
-        $data['userToCall'] = $request->user_to_call;
-        $data['channelName'] = $request->channel_name;
-        $data['from'] = Auth::id();
-
-        broadcast(new MakeAgoraCall($data))->toOthers();
-    }
 }

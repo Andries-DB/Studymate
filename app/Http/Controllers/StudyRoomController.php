@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\StudyRoom__user_active;
 use App\Models\StudyRooms;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use App\Models\StudyRooms_invitations;
 use App\Models\StudyRooms_Owner;
 use App\Models\StudyRoomsUser;

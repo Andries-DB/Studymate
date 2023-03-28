@@ -38,7 +38,7 @@ import NavBar from '../Components/Navigation/Navbar.vue';
                     </div>
                   </div>
                   <div class="row-span-5 col-span-12 md:col-span-9" >
-                    <div id="videos" class="flex gap-5 ">
+                    <div id="videos" class="flex gap-5">
                       <!-- Here come the other users cameras -->
                     </div>
                   </div>
@@ -48,12 +48,6 @@ import NavBar from '../Components/Navigation/Navbar.vue';
         </div>
     </div>
     <div class="w-full h-20 bg-gray-300 fixed bottom-0 flex justify-center gap-5 items-center">
-      <form :action="joinstream()">
-        <input type="hidden" name="username" :value="$page.props.client.username">
-        <input type="hidden" name="token" :value="this.uid">
-
-
-      </form>
       <button id="join-btn" class="join-btn text-indigo-500 border-solid border px-5 py-3 rounded-full hover:text-white hover:bg-indigo-500 border-indigo-500"  @click="joinstream()">
         Join de kamer
       </button>
@@ -76,7 +70,6 @@ import NavBar from '../Components/Navigation/Navbar.vue';
 // These are the Agora RTC variables
 const APP_ID = import.meta.env.VITE_AGORA_APP_ID;
 const channel = window.location.pathname.split("/").pop();
-let uid;
 let client;
 let token;
 let localTracks = [];
@@ -109,7 +102,9 @@ export default {
 
     // Creating the client & listening for events
     async joinRoomInit(token, channel) {
+      const uid = this.client.username
       client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
+
       await client.join(APP_ID, channel, token, uid);
 
       client.on("user-published", this.handleUserPublished);
@@ -120,15 +115,7 @@ export default {
 
     // You joining the room
     async joinStream(uid, user) {
-      localTracks = await AgoraRTC.createMicrophoneAndCameraTracks({}, {encoderConfig: {
-        width: 640,
-        height: 480,
-        bitrate: 500,
-        frameRate: 15,
-        minBitrate: 100,
-        maxBitrate: 1000,
-        degradationPrefer: "maintain-framerate",
-      }});
+      localTracks = await AgoraRTC.createMicrophoneAndCameraTracks();
 
       let player = `
         <div id="user-container-${uid}" class="video__container your-container">
