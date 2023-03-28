@@ -35,6 +35,7 @@ class StudyRoomController extends Controller
     // Add a new studyroom
     public function createStudyRoom (Request $r)
     {
+      // Make new studyroom
       $studyroom = new StudyRooms();
       $studyroom->name = $r->name;
       $studyroom->description = $r->description;
@@ -48,11 +49,13 @@ class StudyRoomController extends Controller
       $studyroom->time_studied = 0;
       $studyroom->save();
 
+      // Make the user that created the studyroom the owner
       $studyroomOwner = new StudyRooms_Owner();
       $studyroomOwner->user_id = auth()->user()->id;
       $studyroomOwner->study_room_id = $studyroom->id;
       $studyroomOwner->save();
 
+      // Add the user that created the studyroom to the studyroom
       $studyroomUser = new StudyRoomsUser();
       $studyroomUser->user_id = auth()->user()->id;
       $studyroomUser->study_room_id = $studyroom->id;

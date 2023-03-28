@@ -118,10 +118,12 @@
         document.getElementById('noinfo').classList.add('hidden');
         const divInfo = document.getElementById('info');
         divInfo.classList.remove('hidden');
+        const SelectedUserUsername = user.username;
         const SelectedUserName = user.first_name + ' ' + user.last_name;
         const SelectedUserEmail = user.email;
         divInfo.innerHTML = `
-          <div class="w-1/2 mt-2">
+          <div class="w-full mt-2">
+            <h3 class="text-2xl font-bold">${SelectedUserUsername}</h3>
             <h3 class="text-2xl border-b-2 border-black">${SelectedUserName}</h3>
             <p class="text-sm mt-2">${SelectedUserEmail}</p>
           </div>
