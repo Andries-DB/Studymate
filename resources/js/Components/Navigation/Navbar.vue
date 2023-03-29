@@ -45,8 +45,30 @@
       <NavBarMenu />
     </div>
 
+    <div class="absolute bottom-24 left-24">
+      <!-- Logout form -->
+      <form method="POST" :action="route('logout')">
+        <input type="hidden" name="_token" :value="csrf">
+        <button type="submit" class="flex flex-row items-center gap-2 bg-indigo-500 py-2 px-4 text-gray-300 rounded-lg
+      hover:bg-gray-300 hover:text-indigo-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H3" />
+          </svg>
+          <span>Logout</span>
+        </button>
+      </form>
+    </div>
   </div>
 </template>
+
+<script>
+  export default {
+    data: () => ({
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+    }),
+  }
+
+</script>
 
 <style scoped>
   .sidenav {
