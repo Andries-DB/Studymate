@@ -1,11 +1,3 @@
-<script setup>
-  const props = defineProps({
-    room: {
-      type: Object,
-    },
-  });
-</script>
-
 <template>
   <div
     class="bg rounded-xl text-white p-4 flex justify-between flex-row gap-7 bg-indigo-500"
@@ -36,3 +28,17 @@
     </div>
   </div>
 </template>
+
+<script>
+  export default {
+    props: {
+      room: {
+        type: Object,
+      },
+    },
+    data: () => ({
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+    }),
+  }
+
+</script>

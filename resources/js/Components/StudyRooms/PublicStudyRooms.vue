@@ -1,13 +1,3 @@
-<script setup>
-import PublicStudyRoom from './Detail/PublicStudyRoom.vue';
-
-const props = defineProps({
-  publicStudyrooms: {
-    type: Array,
-  },
-});
-</script>
-
 <template>
   <h3 class="text-3xl">Openbare Studeerkamers</h3>
   <div class="flex flex-col space-y-4 pt-5">
@@ -17,3 +7,18 @@ const props = defineProps({
     />
   </div>
 </template>
+
+<script>
+  import PublicStudyRoom from './Detail/PublicStudyRoom.vue';
+
+  export default {
+    components: {
+      PublicStudyRoom,
+    },
+    props: {
+      publicStudyrooms: {
+        type: Array,
+      },
+    },
+  }
+</script>

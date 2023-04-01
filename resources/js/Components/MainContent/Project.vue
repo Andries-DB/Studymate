@@ -1,14 +1,3 @@
-<script setup>
-  const props = defineProps({
-    project: {
-        type: Object
-    },
-    tasks: {
-        type: Array
-    },
-  });
-</script>
-
 <template>
   <div class="rounded-xl text-white p-4 flex justify-between flex-col gap-7 bg-indigo-500">
     <div class="flex justify-between items-center">
@@ -49,6 +38,14 @@
 
 <script>
   export default {
+    props: {
+      project: {
+        type: Object
+      },
+      tasks: {
+        type: Array
+      },
+    },
     computed: {
       taskperproject() {
         return this.$page.props.tasks.filter((task) => this.project.id === task.project_id);
@@ -64,5 +61,4 @@
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
   };
-
 </script>

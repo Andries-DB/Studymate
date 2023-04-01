@@ -1,5 +1,4 @@
 <script setup>
-  import NavBarMenu from './NavBarMenu.vue';
   import {ref} from 'vue';
 
   const MOBILE_BREAKPOINT = 1024; //tailwind lg
@@ -62,7 +61,12 @@
 </template>
 
 <script>
+  import NavBarMenu from './NavBarMenu.vue';
+
   export default {
+    components: {
+      NavBarMenu,
+    },
     data: () => ({
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),

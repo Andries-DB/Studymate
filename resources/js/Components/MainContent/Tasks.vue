@@ -1,9 +1,4 @@
 <script setup>
-  import Task from './Task.vue';
-  import InputLabel from '@/Components/InputLabel.vue';
-  import TextInput from '@/Components/TextInput.vue';
-  import PrimaryButton from '@/Components/PrimaryButton.vue';
-
   const props = defineProps({
     tasks: {
         type: Array
@@ -79,7 +74,28 @@
 </template>
 
 <script>
+  import Task from './Task.vue';
+  import InputLabel from '@/Components/InputLabel.vue';
+  import TextInput from '@/Components/TextInput.vue';
+  import PrimaryButton from '@/Components/PrimaryButton.vue';
+
   export default {
+    components: {
+      Task,
+      InputLabel,
+      TextInput,
+      PrimaryButton,
+    },
+    props: {
+      tasks: {
+        type: Array,
+        required: true,
+      },
+      projects: {
+        type: Array,
+        required: true,
+      },
+    },
     methods: {
       // Get non completed tasks
       getTasks() {
@@ -99,7 +115,7 @@
   };
 </script>
 
-<style>
+<style scoped>
 .close {
   position: absolute;
   top: 5px;

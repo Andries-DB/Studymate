@@ -1,13 +1,3 @@
-<script setup>
-import { Head } from '@inertiajs/vue3';
-import NavBar from '../Components/Navigation/Navbar.vue';
-import Overview from '@/Components/StudyRooms/Overview.vue';
-import PublicStudyRooms from '@/Components/StudyRooms/PublicStudyRooms.vue';
-import MyStudyRooms from '@/Components/StudyRooms/MyStudyRooms.vue';
-import Invites from '@/Components/StudyRooms/Invites.vue';
-
-</script>
-
 <template>
     <Head title="Studeerkamers" />
     <div class="grid grid-cols-12 gap-2 h-screen">
@@ -38,4 +28,23 @@ import Invites from '@/Components/StudyRooms/Invites.vue';
     </div>
 </template>
 
+<script>
+  import { Head } from '@inertiajs/vue3';
+  import NavBar from '../Components/Navigation/Navbar.vue';
+  import Overview from '@/Components/StudyRooms/Overview.vue';
+  import PublicStudyRooms from '@/Components/StudyRooms/PublicStudyRooms.vue';
+  import MyStudyRooms from '@/Components/StudyRooms/MyStudyRooms.vue';
+  import Invites from '@/Components/StudyRooms/Invites.vue';
+
+  export default {
+    components: {
+      Overview,
+      PublicStudyRooms,
+      MyStudyRooms,
+      Invites,
+      NavBar,
+      Head,
+    },
+  };
+</script>
 

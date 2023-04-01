@@ -2,7 +2,18 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\StudyRoomController;
+use App\Http\Controllers\Project\Create\CreateProjectController;
+use App\Http\Controllers\Project\Detail\DetailProjectController;
+use App\Http\Controllers\Project\Delete\DeleteProjectController;
+use App\Http\Controllers\Project\Update\UpdateProjectController;
+use App\Http\Controllers\Tasks\Create\CreateTaskController;
+use App\Http\Controllers\Tasks\Delete\DeleteTaskController;
+use App\Http\Controllers\Tasks\Update\UpdateTaskController;
+use App\Http\Controllers\StudyRooms\StudyRoomController;
+use App\Http\Controllers\StudyRooms\Create\CreateStudyRoomController;
+use App\Http\Controllers\StudyRooms\Detail\StudyRoomDetailController;
+use App\Http\Controllers\StudyRooms\Detail\InviteStudyRoomController;
+use App\Http\Controllers\StudyRooms\Delete\DeleteStudyRoom;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,58 +30,48 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
-/** Dashboard Routes */
-//Show Dashboard with projects, tasks and stats & friends
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-/** Add a new Project */
-Route::post('newProject', [DashboardController::class, 'createProject'])->middleware(['auth', 'verified'])->name('addProject');
-/** Project Detail */
-Route::get('/dashboard/edit/{id}', [DashboardController::class, 'ProjectDetail'])->middleware(['auth', 'verified'])->name('projectDetail');
-// Edit name of project
-Route::post('editProject', [DashboardController::class, 'editProject'])->middleware(['auth', 'verified'])->name('editProject');
-// Add new task in dashboard
-Route::post('newTask', [DashboardController::class, 'createTask'])->middleware(['auth', 'verified'])->name('addTask');
-// Add new task to specific project
-Route::post('addTasktoProject', [DashboardController::class, 'createTaskToProject'])->middleware(['auth', 'verified'])->name('addTasktoProject');
-// Delete a task from a project
-Route::post('deleteTask', [DashboardController::class, 'deleteTask'])->middleware(['auth', 'verified'])->name('deleteTask');
-//Delete a project
-Route::post('deleteProject', [DashboardController::class, 'deleteProject'])->middleware(['auth', 'verified'])->name('deleteProject');
-//Complete a task
-Route::post('updateTask', [DashboardController::class, 'updateTask'])->middleware(['auth', 'verified'])->name('updateTask');
 
+// Project Routes
+Route::middleware('auth')->group(function () {
+  Route::get('/dashboard/edit/{id}', [DetailProjectController::class, 'index'])->name('projectDetail');
+  Route::post('newProject', [CreateProjectController::class, 'index'])->name('addProject');
+  Route::post('editProject', [UpdateProjectController::class, 'index'])->name('editProject');
+  Route::post('deleteProject', [DeleteProjectController::class, 'index'])->name('deleteProject');
+});
 
-/** StudyRoom Routes */
-// Get all studyrooms (public, private, shared, owned)
-Route::get('/studeerkamers', [StudyRoomController::class, 'index'])->middleware(['auth', 'verified'])->name('studeerkamers');
-// Add a new studyroom
-Route::post('newStudyRoom', [StudyRoomController::class, 'createStudyRoom'])->middleware(['auth', 'verified'])->name('addStudyRoom');
-// Get details of specific studyroom
-Route::get('/studeerkamers/edit/{id}', [StudyRoomController::class, 'StudyRoomDetail'])->middleware(['auth', 'verified'])->name('studyroomDetail');
-// Send an invitation to a user for a studyroom (as owner)
-Route::post('/addInvite', [StudyRoomController::class, 'AddUserToStudyRoom'])->middleware(['auth', 'verified'])->name('addUserToStudyRoom');
-// Delete an invitation from a studyroom
-Route::post('/deleteInvite', [StudyRoomController::class, 'DeleteInviteFromStudyRoom'])->middleware(['auth', 'verified'])->name('deleteInviteFromStudyRoom');
-// Delete a user from a studyroom
-Route::post('/deleteStudyRoomuser', [StudyRoomController::class, 'DeleteUserFromStudyRoom'])->middleware(['auth', 'verified'])->name('deleteUserFromStudyRoom');
-// Accept an invitation (as user)
-Route::post('/acceptInvite', [StudyRoomController::class, 'AcceptInvite'])->middleware(['auth', 'verified'])->name('acceptInvite');
-// Decline an invitation (as user)
-Route::post('/declineInvite', [StudyRoomController::class, 'DeclineInvite'])->middleware(['auth', 'verified'])->name('declineInvite');
+// Task Routes
+Route::middleware('auth')->group(function () {
+  Route::post('newTask', [CreateTaskController::class, 'index'])->name('addTask');
+  Route::post('addTasktoProject', [CreateTaskController::class, 'indexToProject'])->name('addTasktoProject');
+  Route::post('deleteTask', [DeleteTaskController::class, 'index'])->name('deleteTask');
+  Route::post('updateTask', [UpdateTaskController::class, 'index'])->name('updateTask');
+});
 
-//Get active users from studyroom
-Route::get('/studeerkamers/{id}', [StudyRoomController::class, 'Study'])->middleware(['auth', 'verified'])->name('study');
+// StudyRoom Routes
+Route::middleware('auth')->group(function () {
+Route::get('/studeerkamers', [StudyRoomController::class, 'index'])->name('studeerkamers');
+Route::post('newStudyRoom', [CreateStudyRoomController::class, 'index'])->name('addStudyRoom');
+Route::get('/studeerkamers/edit/{id}', [StudyRoomDetailController::class, 'index'])->name('studyroomDetail');
+Route::post('/addInvite', [InviteStudyRoomController::class, 'sendInvite'])->name('addUserToStudyRoom');
+Route::post('/deleteInvite', [InviteStudyRoomController::class, 'DeleteInviteFromStudyRoom'])->name('deleteInviteFromStudyRoom');
+Route::post('/deleteStudyRoomuser', [DeleteStudyRoom::class, 'DeleteUserFromStudyRoom'])->name('deleteUserFromStudyRoom');
+Route::post('/acceptInvite', [InviteStudyRoomController::class, 'AcceptInvite'])->name('acceptInvite');
+Route::post('/declineInvite', [InviteStudyRoomController::class, 'DeclineInvite'])->name('declineInvite');
+Route::get('/studeerkamers/{id}', [StudyRoomDetailController::class, 'Study'])->name('study');
+});
 
-/** Settings Routes */
+// Settings Routes
 Route::get('/instellingen', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('instellingen');
 
-
+// Profile Routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Agora Routes
 Route::group(['middleware' => ['auth']], function () {
   Route::post('/agora/token', 'App\Http\Controllers\AgoraVideoController@token');
 });

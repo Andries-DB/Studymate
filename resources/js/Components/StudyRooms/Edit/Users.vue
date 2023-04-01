@@ -1,16 +1,3 @@
-<script setup>
-  import moment from 'moment';
-
-  const props = defineProps({
-    studyroomuserInfo: {
-      type: Object,
-    },
-    studyroomuser: {
-      type: Object,
-    },
-  });
-</script>
-
 <template>
   <div class="w-full bg-indigo-500 flex justify-between p-4 rounded-xl text-gray-50 items-center">
     <div name="INFO">
@@ -32,7 +19,18 @@
 </template>
 
 <script>
+  import moment from 'moment';
   export default {
+    props: {
+      studyroomuserInfo: {
+        type: Object,
+        required: true,
+      },
+      studyroomuser: {
+        type: Object,
+        required: true,
+      },
+    },
     data: () => ({
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       moment: moment,

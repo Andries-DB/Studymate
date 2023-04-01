@@ -1,11 +1,3 @@
-<script setup>
-  const data = defineProps({
-    studyroom: {
-      type: Object,
-    },
-  });
-</script>
-
 <template>
   <div
     class="bg rounded-xl text-white p-4 flex justify-between flex-row gap-7 bg-indigo-500"
@@ -20,6 +12,17 @@
   </div>
 
 </template>
+
+<script>
+  export default {
+    props: {
+      studyroom: {
+        type: Object,
+        required: true,
+      },
+    },
+  }
+</script>
 
 <style>
   .bg {

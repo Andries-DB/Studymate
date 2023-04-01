@@ -1,10 +1,3 @@
-<script setup>
-import MainContent from '@/Components/MainContent/MainContent.vue';
-import { Head } from '@inertiajs/vue3';
-import NavBar from '../Components/Navigation/NavBar.vue';
-
-</script>
-
 <template>
     <Head title="Dashboard" />
     <div class="grid grid-cols-12 gap-2 h-screen">
@@ -20,3 +13,17 @@ import NavBar from '../Components/Navigation/NavBar.vue';
         </div>
     </div>
 </template>
+
+<script>
+  import MainContent from '@/Components/MainContent/MainContent.vue';
+  import { Head } from '@inertiajs/vue3';
+  import NavBar from '../Components/Navigation/NavBar.vue';
+
+export default {
+    components: {
+        MainContent,
+        NavBar,
+        Head,
+    },
+};
+</script>

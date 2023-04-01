@@ -1,8 +1,3 @@
-<script setup>
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-</script>
-
-
 <template>
   <h3 class="text-3xl mt-5">Update de naam van je project</h3>
   <div class="mt-10 w-1/2">
@@ -18,7 +13,12 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 </template>
 
 <script>
+  import PrimaryButton from '@/Components/PrimaryButton.vue';
+
   export default {
+    components: {
+      PrimaryButton,
+    },
     props: {
       project: {
         type: Object

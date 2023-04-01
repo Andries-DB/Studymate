@@ -1,7 +1,3 @@
-<script setup>
-  import PrimaryButton from '@/Components/PrimaryButton.vue';
-</script>
-
 <template>
   <h3 class="text-3xl">Voeg een taak aan het project toe!</h3>
   <div class="w-1/2 flex flex-col ">
@@ -25,7 +21,12 @@
 </template>
 
 <script>
+  import PrimaryButton from '@/Components/PrimaryButton.vue';
+
   export default {
+    components: {
+      PrimaryButton,
+    },
     props: {
       project: {
         type: Object

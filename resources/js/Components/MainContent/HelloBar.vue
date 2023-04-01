@@ -1,10 +1,3 @@
-<script setup>
-import InputLabel from '@/Components/InputLabel.vue';
-import TextInput from '@/Components/TextInput.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-</script>
-
-
 <template>
   <!-- New Project Form -->
   <div id='projectform' class="w-full h-full bg-black bg-opacity-70 absolute top-0 left-0 z-30 flex justify-center items-center hidden">
@@ -55,7 +48,16 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 </template>
 
 <script>
+  import InputLabel from '@/Components/InputLabel.vue';
+  import TextInput from '@/Components/TextInput.vue';
+  import PrimaryButton from '@/Components/PrimaryButton.vue';
+
   export default {
+    components: {
+      InputLabel,
+      TextInput,
+      PrimaryButton,
+    },
     methods: {
       // Get the current date
       currentDate() {
@@ -80,12 +82,12 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 </script>
 
 <style scoped>
-  .button {
-    background-color: rgb(229,231,235);
-    display: flex;
-    flex-direction: row;
-    cursor: pointer;
-    border-radius: .5rem;
+.button {
+  background-color: rgb(229,231,235);
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  border-radius: .5rem;
   }
 
 .search-container {

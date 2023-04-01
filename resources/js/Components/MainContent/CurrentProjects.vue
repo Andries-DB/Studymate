@@ -1,13 +1,3 @@
-<script setup>
-import Project from './Project.vue';
-
-const props = defineProps({
-  projects: {
-    type: Array,
-  },
-});
-</script>
-
 <template>
   <div class="flex flex-col md:flex-row items-center md:items-stretch gap-6">
     <project
@@ -18,3 +8,19 @@ const props = defineProps({
     />
   </div>
 </template>
+
+<script>
+import Project from './Project.vue';
+
+export default {
+  components: {
+    Project,
+  },
+  props: {
+    projects: {
+      type: Array,
+      required: true,
+    },
+  },
+};
+</script>

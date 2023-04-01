@@ -1,16 +1,3 @@
-<script setup>
-import StudyRoom from '@/Components/StudyRooms/Detail/StudyRoom.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import TextInput from '@/Components/TextInput.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-
-const props = defineProps({
-  sharedStudyRoom: {
-    type: Array,
-  },
-});
-</script>
-
 <template>
   <!-- New Studyroom Form -->
   <div id='studyroomForm' class="w-full h-full bg-black bg-opacity-70 absolute top-0 left-0 z-30 flex justify-center items-center hidden">
@@ -61,22 +48,36 @@ const props = defineProps({
 </template>
 
 <script>
-export default {
-  methods: {
-    showForm() {
-    document.getElementById('studyroomForm').classList.remove('hidden');
-    },
-    // Hide the Add project form
-    hideForm() {
-      document.getElementById('studyroomForm').classList.add('hidden');
-    },
-  },
-  data: () => ({
-    csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-  }),
+  import StudyRoom from '@/Components/StudyRooms/Detail/StudyRoom.vue';
+  import InputLabel from '@/Components/InputLabel.vue';
+  import TextInput from '@/Components/TextInput.vue';
+  import PrimaryButton from '@/Components/PrimaryButton.vue';
 
-
-}
+  export default {
+    components: {
+      StudyRoom,
+      InputLabel,
+      TextInput,
+      PrimaryButton,
+    },
+    props: {
+      sharedStudyRoom: {
+        type: Array,
+      },
+    },
+    methods: {
+      showForm() {
+      document.getElementById('studyroomForm').classList.remove('hidden');
+      },
+      // Hide the Add project form
+      hideForm() {
+        document.getElementById('studyroomForm').classList.add('hidden');
+      },
+    },
+    data: () => ({
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+    }),
+  }
 </script>
 
 <style>

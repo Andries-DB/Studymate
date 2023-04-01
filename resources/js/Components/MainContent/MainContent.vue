@@ -1,10 +1,3 @@
-<script setup>
-import HelloBar from './HelloBar.vue';
-import CurrentProjects from './CurrentProjects.vue';
-import Tasks from './Tasks.vue'
-import Friends from './Friends.vue'
-</script>
-
 <template>
   <div class="flex flex-col gap-10 p-7">
     <div><HelloBar /></div>
@@ -20,3 +13,19 @@ import Friends from './Friends.vue'
     </div>
   </div>
 </template>
+
+<script>
+  import HelloBar from './HelloBar.vue';
+  import CurrentProjects from './CurrentProjects.vue';
+  import Tasks from './Tasks.vue'
+  import Friends from './Friends.vue'
+
+  export default {
+    components: {
+      HelloBar,
+      CurrentProjects,
+      Tasks,
+      Friends,
+    },
+  }
+</script>
