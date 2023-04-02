@@ -125,10 +125,10 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
 
-            <div class="flex items-center justify-between mt-4">
+            <div class="flex items-center justify-between mt-4 gap-5">
                 <Link
                     :href="route('login')"
-                    class="font-medium text-gray-200 hover:text-gray-50"
+                    class="text-sm text-black hover:text-indigo-500"
                 >
                     Heb je al een account?
                 </Link>

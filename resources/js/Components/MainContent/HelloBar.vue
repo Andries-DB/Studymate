@@ -41,8 +41,11 @@
           </label>
         </form>
       </div>
-      <button v-on:click="showForm()" id="addProject" class="bg-indigo-500 py-2 px-4 text-gray-300 rounded-lg
-      hover:bg-gray-300 hover:text-indigo-500">Voeg een project toe</button>
+      <PrimaryButton
+        id="addProject"
+        v-on:click="showForm()">
+          Voeg een project toe!
+      </PrimaryButton>
     </div>
   </div>
 </template>
@@ -92,10 +95,9 @@
 
 .search-container {
 	position: relative;
-	margin: 4px 2px;
-	height: 40px;
-	width: 40px;
-	vertical-align: bottom;
+	height: 50px;
+	width: 50px;
+  margin-top: 13px;
 }
 
 .mglass {
@@ -127,7 +129,7 @@ search:focus + .searchbutton {
   border: none;
 	padding: 0;
 	width: 0;
-	height: 100%;
+	height: 80%;
 	z-index: -10;
 	transition-duration: 0.4s;
 	-moz-transition-duration: 0.4s;

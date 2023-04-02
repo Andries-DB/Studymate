@@ -1,34 +1,17 @@
-<script setup>
-  import {Head} from '@inertiajs/vue3'
-
-  const props = defineProps({
-    users : {
-      type: Array,
-      required: true
-    },
-    studyrooms : {
-      type: Array,
-      required: true
-    }
-  })
-
-  console.log(props.userCount)
-</script>
-
 <template>
-   <Head :title="head()" />
+  <Head title="Welkom" />
   <div class="isolate bg-white">
-  <div class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
-    <svg class="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]" viewBox="0 0 1155 678">
-      <path fill="url(#45de2b6b-92d5-4d68-a6a0-9b9b2abad533)" fill-opacity=".3" d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z" />
-      <defs>
-        <linearGradient id="45de2b6b-92d5-4d68-a6a0-9b9b2abad533" x1="1155.49" x2="-78.208" y1=".177" y2="474.645" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#9089FC" />
-          <stop offset="1" stop-color="#FF80B5" />
-        </linearGradient>
-      </defs>
-    </svg>
-  </div>
+    <div class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
+      <svg class="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]" viewBox="0 0 1155 678">
+        <path fill="url(#45de2b6b-92d5-4d68-a6a0-9b9b2abad533)" fill-opacity=".3" d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z" />
+        <defs>
+          <linearGradient id="45de2b6b-92d5-4d68-a6a0-9b9b2abad533" x1="1155.49" x2="-78.208" y1=".177" y2="474.645" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#9089FC" />
+            <stop offset="1" stop-color="#FF80B5" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
   <div class="px-6 pt-6 lg:px-8">
     <nav class="flex items-center justify-between" aria-label="Global">
       <div class="flex lg:flex-1">
@@ -166,7 +149,7 @@
             </div>
             Privé studeerkamers
           </dt>
-          <dd class="mt-2 text-base leading-7 text-gray-600">Naast openbare hebben we ook private studeerkamers. Dit zodat je op je gemakje met je vrienden kan studeren</dd>
+          <dd class="mt-2 text-base leading-7 text-gray-600">Naast openbare hebben we ook private studeerkamers. Dit zodat je op je gemak met je vrienden kan studeren</dd>
         </div>
 
         <div class="relative pl-16">
@@ -178,7 +161,7 @@
             </div>
             To do's
           </dt>
-          <dd class="mt-2 text-base leading-7 text-gray-600">Voeg projecten en taken toe die je kan afvinken tijdens het studeren!</dd>
+          <dd class="mt-2 text-base leading-7 text-gray-600">Voeg projecten en taken toe en vink ze af tijdens het studeren!</dd>
         </div>
       </dl>
     </div>
@@ -209,21 +192,15 @@
 </template>
 
 <script>
-import {Head} from '@inertiajs/vue3'
+  import { Head } from '@inertiajs/vue3';
 
-export default {
-  props: {
-    users: Array,
-    studyrooms: Array,
-  },
-  components: {
-    Head,
-  },
-  head() {
-    return {
-      title: 'Home',
-    }
-  },
-}
-
+  export default {
+    components: {
+      Head,
+    },
+    props: {
+      users: Array,
+      studyrooms: Array,
+    },
+  }
 </script>

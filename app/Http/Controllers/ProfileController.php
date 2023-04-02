@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -18,27 +20,32 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): Response
     {
-        return Inertia::render('Profile/Edit', [
+        return Inertia::render('Instellingen', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
         ]);
     }
 
-    /**
-     * Update the user's profile information.
-     */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function updateMainInfo(Request $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+      $client = User::find(auth()->id());
+      $client->first_name = $request->first_name;
+      $client->last_name = $request->last_name;
+      $client->username = $request->username;
+      $client->email = $request->email;
+      if ($request->hasFile('avatar'))
+      {
+        $imagepath = $request->file('avatar')->storeAs(
+          'users-avatar',
+          $client->username . '.' . $request->file('avatar')->getClientOriginalExtension() ,
+          'public');
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
+        $client->avatar = $imagepath;
+      }
+      $client->save();
 
-        $request->user()->save();
-
-        return Redirect::route('profile.edit');
-    }
+      return redirect()->route('instellingen');
+      }
 
     /**
      * Delete the user's account.

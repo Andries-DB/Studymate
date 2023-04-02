@@ -1,28 +1,3 @@
-<script setup>
-  import NavBar from '@/Components/Navigation/Navbar.vue';
-  import { Head } from '@inertiajs/vue3';
-
-  import Invite from '@/Components/StudyRooms/Edit/Invite.vue';
-  import Users from '@/Components/StudyRooms/Edit/Users.vue';
-
-  import PrimaryButton from '@/Components/PrimaryButton.vue';
-
-  const props = defineProps({
-    studyroom: {
-        type: Object
-    },
-    studyroomInvitations: {
-        type: Array
-    },
-    users: {
-        type: Array
-    },
-    studyroomUsers: {
-        type: Array
-    }
-  });
-</script>
-
 <template>
   <!-- New invite form -->
   <div id='projectform' class="w-full h-full bg-black bg-opacity-70 absolute top-0 left-0 z-30 flex justify-center items-center hidden">
@@ -80,6 +55,7 @@
               <h3 class="text-2xl font-bold mb-3">Leden</h3>
               <Users
                 v-for="user in $page.props.studyroomUsers"
+                class="flex flex-row mb-3"
                 :studyroomuser = "user"
                 :studyroomuserInfo ="user.user"
 
@@ -100,7 +76,35 @@
 </template>
 
 <script>
+    import NavBar from '@/Components/Navigation/Navbar.vue';
+    import { Head } from '@inertiajs/vue3';
+
+    import Invite from '@/Components/StudyRooms/Edit/Invite.vue';
+    import Users from '@/Components/StudyRooms/Edit/Users.vue';
+
+    import PrimaryButton from '@/Components/PrimaryButton.vue';
   export default {
+    components: {
+      NavBar,
+      Head,
+      Invite,
+      Users,
+      PrimaryButton
+    },
+    props: {
+      studyroom: {
+        type: Object
+      },
+      studyroomInvitations: {
+        type: Array
+      },
+      users: {
+        type: Array
+      },
+      studyroomUsers: {
+        type: Array
+      }
+    },
     methods: {
       // Show the Add project form
       showForm() {
@@ -136,7 +140,7 @@
   }
 </script>
 
-<style>
+<style scoped>
 .close {
   position: absolute;
   top: 5px;

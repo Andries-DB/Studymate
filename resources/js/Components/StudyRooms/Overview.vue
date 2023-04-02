@@ -38,7 +38,14 @@
 
   <div class="flex justify-between py-3">
     <h3 class="text-3xl">Gedeelde studeerkamers</h3>
-    <button v-on:click="showForm()" id="addProject" class="bg-indigo-500 py-2 px-4 text-gray-300 rounded-lg hover:bg-gray-300 hover:text-indigo-500"> + Maak een nieuwe studeerkamer</button>
+    <div>
+      <PrimaryButton
+        v-on:click="showForm()"
+        id="addProject"
+      >
+        + Maak een nieuwe studeerkamer
+      </PrimaryButton>
+    </div>
   </div>
   <div class="flex flex-row gap-3">
     <div v-for="shared in $page.props.sharedStudyRoom">

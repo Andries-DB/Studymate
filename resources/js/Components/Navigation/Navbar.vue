@@ -16,7 +16,8 @@
 </script>
 
 <template>
-  <div class="sidenav flex justify-center items-center text-3xl mt-5 text-indigo-500">
+  <div class="fixed">
+    <div class="sidenav flex justify-center items-center text-3xl mt-5 ml-5 text-indigo-500">
     <a :href="route('dashboard')" class="flex flex-row">
       Studym
       <span>
@@ -28,13 +29,13 @@
     </a>
   </div>
 
-  <div class="col-span-12 hidden lg:block pt-5 space-y-5">
+  <div class="col-span-12 hidden lg:block pt-5 space-y-5 ml-5">
     <div class="relative w-full h-24 flex flex-col items-center gap-4">
-      <img src="assets/Sara.jpg" alt="Sara" class="w-24 h-24 rounded-full">
+      <img :src="`storage/${$page.props.auth.user.avatar}`" :alt="$page.props.auth.user.username" class="w-24 h-24 rounded-full">
     </div>
 
-    <div class="text-center mt-4">
-      <a :href="route('profile.edit')">
+    <div class="flex flex-col text-center justify-center mt-4">
+      <a :href="route('instellingen')">
         <h1 class="font-bold text-black">{{ $page.props.auth.user.first_name + ' ' + $page.props.auth.user.last_name}} </h1>
         <p class="text-gray-500 ">{{ $page.props.auth.user.email }}</p>
       </a>
@@ -44,28 +45,31 @@
       <NavBarMenu />
     </div>
 
-    <div class="absolute bottom-24 left-24">
+    <div class="absolute -bottom-24 left-20">
       <!-- Logout form -->
       <form method="POST" :action="route('logout')">
         <input type="hidden" name="_token" :value="csrf">
-        <button type="submit" class="flex flex-row items-center gap-2 bg-indigo-500 py-2 px-4 text-gray-300 rounded-lg
-      hover:bg-gray-300 hover:text-indigo-500">
+        <PrimaryButton type="submit" class="flex justify-between items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H3" />
           </svg>
           <span>Logout</span>
-        </button>
+        </PrimaryButton>
       </form>
     </div>
   </div>
+  </div>
+
 </template>
 
 <script>
   import NavBarMenu from './NavBarMenu.vue';
+  import PrimaryButton from '@/Components/PrimaryButton.vue';
 
   export default {
     components: {
       NavBarMenu,
+      PrimaryButton,
     },
     data: () => ({
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),

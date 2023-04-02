@@ -50,25 +50,24 @@ Route::middleware('auth')->group(function () {
 
 // StudyRoom Routes
 Route::middleware('auth')->group(function () {
-Route::get('/studeerkamers', [StudyRoomController::class, 'index'])->name('studeerkamers');
-Route::post('newStudyRoom', [CreateStudyRoomController::class, 'index'])->name('addStudyRoom');
-Route::get('/studeerkamers/edit/{id}', [StudyRoomDetailController::class, 'index'])->name('studyroomDetail');
-Route::post('/addInvite', [InviteStudyRoomController::class, 'sendInvite'])->name('addUserToStudyRoom');
-Route::post('/deleteInvite', [InviteStudyRoomController::class, 'DeleteInviteFromStudyRoom'])->name('deleteInviteFromStudyRoom');
-Route::post('/deleteStudyRoomuser', [DeleteStudyRoom::class, 'DeleteUserFromStudyRoom'])->name('deleteUserFromStudyRoom');
-Route::post('/acceptInvite', [InviteStudyRoomController::class, 'AcceptInvite'])->name('acceptInvite');
-Route::post('/declineInvite', [InviteStudyRoomController::class, 'DeclineInvite'])->name('declineInvite');
-Route::get('/studeerkamers/{id}', [StudyRoomDetailController::class, 'Study'])->name('study');
+  Route::get('/studeerkamers', [StudyRoomController::class, 'index'])->name('studeerkamers');
+  Route::post('newStudyRoom', [CreateStudyRoomController::class, 'index'])->name('addStudyRoom');
+  Route::get('/studeerkamers/edit/{id}', [StudyRoomDetailController::class, 'index'])->name('studyroomDetail');
+  Route::post('/addInvite', [InviteStudyRoomController::class, 'sendInvite'])->name('addUserToStudyRoom');
+  Route::post('/deleteInvite', [InviteStudyRoomController::class, 'DeleteInviteFromStudyRoom'])->name('deleteInviteFromStudyRoom');
+  Route::post('/deleteStudyRoomuser', [DeleteStudyRoom::class, 'DeleteUserFromStudyRoom'])->name('deleteUserFromStudyRoom');
+  Route::post('/acceptInvite', [InviteStudyRoomController::class, 'AcceptInvite'])->name('acceptInvite');
+  Route::post('/declineInvite', [InviteStudyRoomController::class, 'DeclineInvite'])->name('declineInvite');
+  Route::get('/studeerkamers/{id}', [StudyRoomDetailController::class, 'Study'])->name('study');
 });
 
 // Settings Routes
-Route::get('/instellingen', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('instellingen');
+Route::get('/instellingen', [ProfileController::class, 'edit'])->middleware(['auth', 'verified'])->name('instellingen');
+Route::post('/instellingen/update', [ProfileController::class, 'updateMainInfo'])->middleware(['auth', 'verified'])->name('instellingen.update');
 
 // Profile Routes
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 // Agora Routes

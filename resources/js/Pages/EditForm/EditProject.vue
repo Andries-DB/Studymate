@@ -1,20 +1,3 @@
-<script setup>
-import { Head } from '@inertiajs/vue3';
-import NavBar from '@/Components/Navigation/NavBar.vue';
-
-import Task from '@/Components/ProjectDetail/Task.vue';
-import UpdateProject from '@/Components/ProjectDetail/UpdateProject.vue';
-import addTask from '@/Components/ProjectDetail/addTask.vue';
-const props = defineProps({
-    project: {
-        type: Object
-    },
-    tasks: {
-        type: Array
-    },
-  });
-</script>
-
 <template>
     <Head title="Dashboard" />
     <div class="grid grid-cols-12 gap-2 h-screen">
@@ -49,7 +32,29 @@ const props = defineProps({
 </template>
 
 <script>
+  import { Head } from '@inertiajs/vue3';
+  import NavBar from '@/Components/Navigation/Navbar.vue';
+
+  import Task from '@/Components/ProjectDetail/Task.vue';
+  import UpdateProject from '@/Components/ProjectDetail/UpdateProject.vue';
+  import addTask from '@/Components/ProjectDetail/addTask.vue';
+
   export default {
+    components: {
+      Head,
+      NavBar,
+      Task,
+      UpdateProject,
+      addTask,
+    },
+    props: {
+      project: {
+        type: Object,
+      },
+      tasks: {
+        type: Array,
+      },
+    },
     data: () => ({
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),

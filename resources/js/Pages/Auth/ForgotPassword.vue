@@ -23,7 +23,7 @@ const submit = () => {
     <GuestLayout title="Wachtwoord vergeten?">
         <Head title="Wachtwoord vergeten" />
 
-        <div class="mb-4 text-sm text-gray-200">
+        <div class="mb-4 text-sm text-black">
             Ben je je wachtwoord vergeten? Geen probleem! Laat ons gewoon weten wat je email adres is en we sturen je een link om je wachtwoord te resetten.
         </div>
 
@@ -50,7 +50,7 @@ const submit = () => {
 
             <div class="flex items-center justify-end mt-4">
                 <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Email Password Reset Link
+                    Reset wachtwoord
                 </PrimaryButton>
             </div>
         </form>

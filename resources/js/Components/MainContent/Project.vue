@@ -24,7 +24,7 @@
     </div>
     <div class="space-y-2">
       <p class="text-white">
-        {{ taskperproject.length }} taken | {{ completedTasksperproject.length }} voltooid
+        {{ taskperproject.length }} {{ taskperproject.length === 1 ? "taak" : "taken" }} | {{ completedTasksperproject.length }} voltooid
       </p>
       <div class="relative h-2 bg-black bg-opacity-20 rounded-xl">
         <span class="absolute bg-gray-200 h-2 top-0 left-0 rounded-xl"
