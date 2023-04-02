@@ -82,7 +82,7 @@
     import Invite from '@/Components/StudyRooms/Edit/Invite.vue';
     import Users from '@/Components/StudyRooms/Edit/Users.vue';
 
-    import PrimaryButton from '@/Components/PrimaryButton.vue';
+    import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
   export default {
     components: {
       NavBar,

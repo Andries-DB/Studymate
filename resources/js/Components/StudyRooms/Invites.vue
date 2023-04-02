@@ -12,11 +12,11 @@
             <input type="hidden" name="_token" :value="csrf">
             <input type="hidden" name="invite_id" :value="invite.id">
             <input type="hidden" name="studyroom_id" :value="invite.studyroom.id">
-            <button type="submit" class="bg-gray-200 p-1.5  rounded-lg">
+            <TertiaryButton type="submit">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-indigo-500">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
               </svg>
-            </button>
+            </TertiaryButton>
           </form>
         </div>
         <div class="">
@@ -24,11 +24,11 @@
             <input type="hidden" name="_token" :value="csrf">
             <input type="hidden" name="invite_id" :value="invite.id">
 
-            <button type="submit" class="bg-gray-200 p-1.5 rounded-lg">
+            <TertiaryButton type="submit">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-500">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
               </svg>
-            </button>
+            </TertiaryButton>
           </form>
         </div>
       </div>
@@ -38,7 +38,12 @@
 
 <script>
   import moment from 'moment';
+  import TertiaryButton from '../Buttons/TertiaryButton.vue';
+
   export default {
+    components: {
+      TertiaryButton,
+    },
     props: {
       invites: {
         type: Array,

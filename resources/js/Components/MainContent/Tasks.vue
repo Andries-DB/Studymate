@@ -11,11 +11,28 @@
 </script>
 
 <template>
+  <div class="space-y-7 w-full">
+    <div class="flex justify-between">
+      <h3 class="text-3xl">Taken te voltooien</h3>
+      <TertiaryButton id="addProject" @click="showModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg>
+      </TertiaryButton>
 
-  <!-- New Task Form -->
-  <div id='taskform' class="w-full h-full bg-black bg-opacity-70 absolute top-0 left-0 z-30 flex justify-center items-center hidden">
-    <div class="w-96 h-72 bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
-      <div class="close" @click="hideForm()">+</div>
+    </div>
+
+    <div class="flex flex-col space-y-4">
+      <Task
+        v-for="(task, index) in getTasks()"
+        :key="index"
+        :task="task"
+      />
+    </div>
+  </div>
+
+  <Modal :show="AddTask" @close="closeModal">
+    <div class="bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
       <h1 class="mb-5">Maak een nieuwe taak aan!</h1>
       <form method="POST" :action="route('addTask')" class="flex flex-col gap-2" >
         <input type="hidden" name="_token" :value="csrf">
@@ -51,33 +68,19 @@
         </PrimaryButton>
       </form>
     </div>
-  </div>
-
-  <div class="space-y-7 w-full">
-    <div class="flex justify-between">
-      <h3 class="text-3xl">Taken te voltooien</h3>
-      <button v-on:click="showForm()" id="addProject" class="bg-gray-200 text-indigo-500 p-2 rounded-lg hover:bg-indigo-500 hover:text-gray-200">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-        </svg>
-      </button>
-    </div>
-
-    <div class="flex flex-col space-y-4">
-      <Task
-        v-for="(task, index) in getTasks()"
-        :key="index"
-        :task="task"
-      />
-    </div>
-  </div>
+  </Modal>
 </template>
 
 <script>
   import Task from './Task.vue';
+  import { ref } from 'vue';
+  import Modal from '@/Components/Modal.vue';
   import InputLabel from '@/Components/InputLabel.vue';
   import TextInput from '@/Components/TextInput.vue';
-  import PrimaryButton from '@/Components/PrimaryButton.vue';
+  import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
+  import TertiaryButton from '../Buttons/TertiaryButton.vue';
+
+  const AddTask = ref(false);
 
   export default {
     components: {
@@ -85,6 +88,8 @@
       InputLabel,
       TextInput,
       PrimaryButton,
+      TertiaryButton,
+      Modal,
     },
     props: {
       tasks: {
@@ -101,16 +106,17 @@
       getTasks() {
         return this.$page.props.tasks.filter((task) => !task.completed);
       },
-      showForm() {
-      document.getElementById('taskform').classList.remove('hidden');
+      showModal() {
+        AddTask.value = true;
       },
       // Hide the Add project form
-      hideForm() {
-        document.getElementById('taskform').classList.add('hidden');
+      closeModal() {
+        AddTask.value = false;
       },
     },
     data: () => ({
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      AddTask,
     }),
   };
 </script>

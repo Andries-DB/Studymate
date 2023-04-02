@@ -1,12 +1,12 @@
 <template>
-  <Head title="Dashboard" />
+  <Head title="Instellingen" />
   <div class="grid grid-cols-12 gap-2 h-screen">
-      <div class="col-span-2 rounded-r-[37px] flex flex-col lg:flex-row md:divide-x-2 ">
-          <div class="w-full overflow-hidden bg-stone-50 h-full">
-              <NavBar />
-          </div>
+    <div class="col-span-12 xl:col-span-12 bg-stone-50 rounded-r-[37px] flex gap-2 md:divide-x-2 flex-col lg:flex-row">
+      <div class="lg:w-[250px] w-full lg:h-full overflow-hidden">
+        <NavBar />
       </div>
-      <div class="col-span-10 xl:block">
+      <div class="flex-1 overflow-hidden">
+        <div class="col-span-10 xl:block">
           <div class="flex-1 overflow-hidden w-full h-full">
             <div class="py-12">
               <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
@@ -29,15 +29,18 @@
             </div>
           </div>
       </div>
+      </div>
+    </div>
   </div>
 </template>
+
 
 <script>
 import DeleteUserForm from './Profile/Partials/DeleteUserForm.vue';
 import UpdatePasswordForm from './Profile/Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from './Profile/Partials/UpdateProfileInformationForm.vue';
 import { Head } from '@inertiajs/vue3';
-import NavBar from '@/Components/Navigation/NavBar.vue';
+import NavBar from '@/Components/Navigation/Navbar.vue';
 
 export default {
     components: {

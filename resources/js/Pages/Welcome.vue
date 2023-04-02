@@ -34,12 +34,12 @@
         </button>
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
-        <a class="bg-indigo-500 py-2 px-4 text-gray-300 rounded-lg
-      hover:bg-gray-300 hover:text-indigo-500" :href="route('register')">Registreren</a>
-
-        <a class="bg-indigo-500 py-2 px-4 text-gray-300 rounded-lg
-      hover:bg-gray-300 hover:text-indigo-500" :href="route('login')">Login</a>
-
+        <PrimaryAnchor :href=" route('register')">
+          Registreren
+        </PrimaryAnchor>
+        <PrimaryAnchor :href=" route('login')">
+          Login
+        </PrimaryAnchor>
       </div>
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->
@@ -65,9 +65,12 @@
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
-              <a :href="route('register')" class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Registreren</a>
-
-              <a :href="route('login')" class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">Log in</a>
+              <PrimaryAnchor :href=" route('register')">
+                Registreren
+              </PrimaryAnchor>
+              <PrimaryAnchor :href=" route('login')">
+                Login
+              </PrimaryAnchor>
             </div>
           </div>
         </div>
@@ -193,10 +196,12 @@
 
 <script>
   import { Head } from '@inertiajs/vue3';
+  import PrimaryAnchor from '@/Components/Anchors/PrimaryAnchor.vue';
 
   export default {
     components: {
       Head,
+      PrimaryAnchor,
     },
     props: {
       users: Array,

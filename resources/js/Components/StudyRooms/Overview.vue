@@ -1,8 +1,28 @@
 <template>
   <!-- New Studyroom Form -->
   <div id='studyroomForm' class="w-full h-full bg-black bg-opacity-70 absolute top-0 left-0 z-30 flex justify-center items-center hidden">
-    <div class="w-96 h-72 bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
-      <div class="close" @click="hideForm()">+</div>
+
+  </div>
+
+  <div class="flex justify-between py-3">
+    <h3 class="text-3xl">Gedeelde studeerkamers</h3>
+    <div>
+      <PrimaryButton
+        v-on:click="showModal()"
+        id="addProject"
+      >
+        + Maak een nieuwe studeerkamer
+      </PrimaryButton>
+    </div>
+  </div>
+  <div class="flex flex-row gap-3">
+    <div v-for="shared in $page.props.sharedStudyRoom">
+      <StudyRoom :studyroom="shared.studyroom" />
+    </div>
+  </div>
+
+  <Modal :show="addStudyRoom" @close="closeModal">
+    <div class="bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
       <h1 class="mb-5">Maak een nieuwe studeerkamer aan!</h1>
       <form method="POST" :action="route('addStudyRoom')" class="flex flex-col gap-2" enctype="multipart/form-data" >
         <input type="hidden" name="_token" :value="csrf">
@@ -34,31 +54,18 @@
         </PrimaryButton>
       </form>
     </div>
-  </div>
-
-  <div class="flex justify-between py-3">
-    <h3 class="text-3xl">Gedeelde studeerkamers</h3>
-    <div>
-      <PrimaryButton
-        v-on:click="showForm()"
-        id="addProject"
-      >
-        + Maak een nieuwe studeerkamer
-      </PrimaryButton>
-    </div>
-  </div>
-  <div class="flex flex-row gap-3">
-    <div v-for="shared in $page.props.sharedStudyRoom">
-      <StudyRoom :studyroom="shared.studyroom" />
-    </div>
-  </div>
+  </Modal>
 </template>
 
 <script>
+  import Modal from '@/Components/Modal.vue';
+  import { ref } from 'vue';
   import StudyRoom from '@/Components/StudyRooms/Detail/StudyRoom.vue';
   import InputLabel from '@/Components/InputLabel.vue';
   import TextInput from '@/Components/TextInput.vue';
-  import PrimaryButton from '@/Components/PrimaryButton.vue';
+  import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
+
+  const addStudyRoom = ref(false);
 
   export default {
     components: {
@@ -66,6 +73,7 @@
       InputLabel,
       TextInput,
       PrimaryButton,
+      Modal,
     },
     props: {
       sharedStudyRoom: {
@@ -73,16 +81,16 @@
       },
     },
     methods: {
-      showForm() {
-      document.getElementById('studyroomForm').classList.remove('hidden');
+      showModal() {
+        addStudyRoom.value = true;
       },
-      // Hide the Add project form
-      hideForm() {
-        document.getElementById('studyroomForm').classList.add('hidden');
+      closeModal() {
+        addStudyRoom.value = false;
       },
     },
     data: () => ({
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      addStudyRoom,
     }),
   }
 </script>

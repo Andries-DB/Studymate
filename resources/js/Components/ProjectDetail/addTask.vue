@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  import PrimaryButton from '@/Components/PrimaryButton.vue';
+  import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
 
   export default {
     components: {

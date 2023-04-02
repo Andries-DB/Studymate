@@ -1,29 +1,4 @@
 <template>
-  <!-- New Project Form -->
-  <div id='projectform' class="w-full h-full bg-black bg-opacity-70 absolute top-0 left-0 z-30 flex justify-center items-center hidden">
-    <div class="w-96 h-72 bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
-      <div class="close" @click="hideForm()">+</div>
-      <h1 class="mb-5">Maak een nieuw project aan!</h1>
-      <form method="POST" :action="route('addProject')" >
-        <input type="hidden" name="_token" :value="csrf">
-        <InputLabel for="name" value="Name" />
-        <TextInput
-        id="name"
-        type="text"
-        name="name"
-        class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-        required
-        autofocus
-        autocomplete="Name"
-        placeholder="Naam van het project"
-        />
-        <PrimaryButton class="mt-3">
-          Maak nieuw project aan
-        </PrimaryButton>
-      </form>
-    </div>
-  </div>
-
   <!-- Hello Bar -->
   <div class="flex flex-col md:flex-row gap-10 justify-between items-center">
     <div class="space-y-2">
@@ -43,20 +18,48 @@
       </div>
       <PrimaryButton
         id="addProject"
-        v-on:click="showForm()">
+        @click="openModal()">
           Voeg een project toe!
       </PrimaryButton>
     </div>
   </div>
+
+  <Modal :show="AddProject" @close="closeModal">
+    <div class="bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
+      <h1 class="mb-5">Maak een nieuw project aan!</h1>
+      <form method="POST" :action="route('addProject')" >
+        <input type="hidden" name="_token" :value="csrf">
+        <InputLabel for="name" value="Name" />
+        <TextInput
+        id="name"
+        type="text"
+        name="name"
+        class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+        required
+        autofocus
+        autocomplete="Name"
+        placeholder="Naam van het project"
+        />
+        <PrimaryButton class="mt-3">
+          Maak nieuw project aan
+        </PrimaryButton>
+      </form>
+    </div>
+  </Modal>
 </template>
 
 <script>
+  import {ref} from 'vue';
   import InputLabel from '@/Components/InputLabel.vue';
   import TextInput from '@/Components/TextInput.vue';
-  import PrimaryButton from '@/Components/PrimaryButton.vue';
+  import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
+  import Modal from '@/Components/Modal.vue';
+
+  const AddProject = ref(false);
 
   export default {
     components: {
+      Modal,
       InputLabel,
       TextInput,
       PrimaryButton,
@@ -68,18 +71,18 @@
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         return currentDate.toLocaleDateString('nl', options);
       },
-      // Show the Add project form
-      showForm() {
-      document.getElementById('projectform').classList.remove('hidden');
+      closeModal() {
+        AddProject.value = false;
       },
-      // Hide the Add project form
-      hideForm() {
-        document.getElementById('projectform').classList.add('hidden');
+      openModal() {
+        AddProject.value = true;
+        console.log(AddProject.value);
       },
     },
     // Get the CSRF token
     data: () => ({
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      AddProject,
     }),
   }
 </script>
