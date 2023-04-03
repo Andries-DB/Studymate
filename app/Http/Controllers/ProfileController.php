@@ -31,6 +31,7 @@ class ProfileController extends Controller
       $client = User::find(auth()->id());
       $client->first_name = $request->first_name;
       $client->last_name = $request->last_name;
+      $client->name = $request->first_name . ' ' . $request->last_name;
       $client->username = $request->username;
       $client->email = $request->email;
       if ($request->hasFile('avatar'))
