@@ -1,6 +1,7 @@
 <template>
+  <Head title="Studeerkamers" />
   <div class="grid grid-cols-12 gap-2 h-screen">
-    <div class="col-span-12 xl:col-span-12 bg-stone-50 rounded-r-[37px] flex gap-2 md:divide-x-2 flex-col lg:flex-row">
+    <div class="col-span-12 xl:col-span-12 rounded-r-[37px] flex gap-2 md:divide-x-2 flex-col lg:flex-row">
       <div class="lg:w-[250px] w-full lg:h-full overflow-hidden">
         <NavBar />
       </div>

@@ -1,5 +1,8 @@
 <template>
   <h3 class="text-3xl">Uitnodigingen</h3>
+  <div class="flex justify-center mt-2" v-if="$page.props.invites.length === 0">
+    <NothingToShow class="text-base py-5 px-10">Er zijn geen uitnodigingen om weer te geven</NothingToShow>
+  </div>
   <div v-for="invite in $page.props.invites" class="mt-2" >
     <div class="w-full bg-indigo-500 flex justify-between p-4 rounded-xl text-gray-50 items-center mb-3">
       <div class="" name="INFO">
@@ -13,9 +16,7 @@
             <input type="hidden" name="invite_id" :value="invite.id">
             <input type="hidden" name="studyroom_id" :value="invite.studyroom.id">
             <TertiaryButton type="submit">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-indigo-500">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-              </svg>
+              <CheckIcon class="w-6 h-6 text-green-500" />
             </TertiaryButton>
           </form>
         </div>
@@ -25,9 +26,7 @@
             <input type="hidden" name="invite_id" :value="invite.id">
 
             <TertiaryButton type="submit">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-500">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-              </svg>
+              <NoSymbolIcon class="w-6 h-6 text-red-500" />
             </TertiaryButton>
           </form>
         </div>
@@ -39,11 +38,16 @@
 <script>
   import moment from 'moment';
   import TertiaryButton from '../Buttons/TertiaryButton.vue';
+  import NothingToShow from '../NothingToShow.vue';
+import { NoSymbolIcon, CheckIcon } from '@heroicons/vue/20/solid';
 
   export default {
     components: {
-      TertiaryButton,
-    },
+    TertiaryButton,
+    NothingToShow,
+    NoSymbolIcon,
+    CheckIcon
+},
     props: {
       invites: {
         type: Array,

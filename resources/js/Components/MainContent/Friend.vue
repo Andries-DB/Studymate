@@ -2,7 +2,7 @@
   <div class="bg-stone-200 rounded-xl p-5 flex-1 space-y-10">
     <div class="flex flex-col md:flex-row gap-4">
       <div class="flex-1">
-        <h3 class="text-2xl">
+        <h3>
           {{ getFriend(friend).username }}
         </h3>
         <p class="text-gray-500">

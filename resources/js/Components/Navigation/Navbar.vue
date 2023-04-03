@@ -44,7 +44,7 @@
 
       <div class="text-center">
         <a :href="route('instellingen')">
-          <h1 class="font-bold text-black">{{ $page.props.auth.user.first_name + ' ' + $page.props.auth.user.last_name}} </h1>
+          <h3 class="font-bold text-black">{{ $page.props.auth.user.first_name + ' ' + $page.props.auth.user.last_name}} </h3>
           <p class="text-gray-500 ">{{ $page.props.auth.user.email }}</p>
         </a>
       </div>

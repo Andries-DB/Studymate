@@ -11,19 +11,22 @@
     <form method="post" :action="route('updateTask')">
       <input type="hidden" name="_token" :value="csrf">
       <input type="hidden" name="id" :value="task.id" />
-      <button type="submit" class="flex justify-center items-center w-7 h-7 border rounded-full border-indigo-500">
-        <mdicon
-          name="check"
-          v-if="task.completed"
-          class="w-7 text-sm text-white bg-black rounded-full"
-          />
-      </button>
+      <TertiaryButton type="submit">
+        <CheckIcon class="h-5 w-5" />
+      </TertiaryButton>
     </form>
   </div>
 </template>
 
 <script>
+  import { CheckIcon } from '@heroicons/vue/20/solid';
+  import TertiaryButton from '../Buttons/TertiaryButton.vue';
+
   export default {
+    components: {
+    TertiaryButton,
+    CheckIcon
+},
     props: {
       task: {
         type: Object,

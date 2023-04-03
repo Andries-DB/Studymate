@@ -1,6 +1,6 @@
 <template>
   <div class="space-y-7">
-    <h3 class="text-3xl">
+    <h3>
       Vrienden
     </h3>
     <div class="flex flex-col md:flex-row gap-4" v-for="friend in $page.props.friends">

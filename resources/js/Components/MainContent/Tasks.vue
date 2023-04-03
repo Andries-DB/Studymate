@@ -13,16 +13,20 @@
 <template>
   <div class="space-y-7 w-full">
     <div class="flex justify-between">
-      <h3 class="text-3xl">Taken te voltooien</h3>
+      <h3>Taken te voltooien</h3>
       <TertiaryButton id="addProject" @click="showModal()">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
         </svg>
+
       </TertiaryButton>
 
     </div>
 
     <div class="flex flex-col space-y-4">
+      <div class="flex justify-center" v-if="getTasks().length === 0">
+        <NothingToShow class="text-base py-5 px-10" >Er zijn geen taken om te voltooien</NothingToShow>
+      </div>
       <Task
         v-for="(task, index) in getTasks()"
         :key="index"
@@ -33,7 +37,7 @@
 
   <Modal :show="AddTask" @close="closeModal">
     <div class="bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
-      <h1 class="mb-5">Maak een nieuwe taak aan!</h1>
+      <h3 class="mb-5">Maak een nieuwe taak aan!</h3>
       <form method="POST" :action="route('addTask')" class="flex flex-col gap-2" >
         <input type="hidden" name="_token" :value="csrf">
         <InputLabel for="project" value="Project"/>
@@ -65,6 +69,7 @@
         />
         <PrimaryButton class="mt-3">
           Maak een nieuwe taak aan
+
         </PrimaryButton>
       </form>
     </div>
@@ -79,6 +84,7 @@
   import TextInput from '@/Components/TextInput.vue';
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
   import TertiaryButton from '../Buttons/TertiaryButton.vue';
+  import NothingToShow from '../NothingToShow.vue';
 
   const AddTask = ref(false);
 
@@ -90,6 +96,7 @@
       PrimaryButton,
       TertiaryButton,
       Modal,
+      NothingToShow,
     },
     props: {
       tasks: {

@@ -2,7 +2,7 @@
   <!-- Hello Bar -->
   <div class="flex flex-col md:flex-row gap-10 justify-between items-center">
     <div class="space-y-2">
-      <h1 class="font-extrabold text-5xl text-blueGray-700">Hallo, {{ $page.props.auth.user.username }}</h1>
+      <h1>Hallo, {{ $page.props.auth.user.username }}</h1>
       <p>Vandaag is het {{ currentDate() }} </p>
     </div>
     <div class="flex justify-between gap-2 items-center">
@@ -17,7 +17,7 @@
 
   <Modal :show="AddProject" @close="closeModal">
     <div class="bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
-      <h1 class="mb-5">Maak een nieuw project aan!</h1>
+      <h3 class="mb-5">Maak een nieuw project aan!</h3>
       <form method="POST" :action="route('addProject')" >
         <input type="hidden" name="_token" :value="csrf">
         <InputLabel for="name" value="Name" />

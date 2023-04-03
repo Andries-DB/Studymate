@@ -54,10 +54,16 @@ class StudyRoomDetailController
 
     // Go study in a studyroom
     public function Study(Request $r) {
-      // check if user is in studyroom or not
-      $user = StudyRoomsUser::where('user_id', auth()->user()->id)->where('study_room_id', $r->id)->first();
-      if ($user == null) {
-        return redirect()->back();
+      $studyroom = StudyRooms::where('id', $r->id)->first();
+
+      // First check if it is a private studyroom
+      if ($studyroom->private == 1) {
+        // Check if the user is invited
+        $isInvited = StudyRoomsUser::where('user_id', auth()->user()->id)->where('study_room_id', $r->id)->first();
+        // If not invited, redirect to the studyroom
+        if (!$isInvited) {
+          return redirect()->route('studeerkamers');
+        }
       }
 
       $client = auth()->user();

@@ -1,9 +1,4 @@
 <template>
-  <!-- New Studyroom Form -->
-  <div id='studyroomForm' class="w-full h-full bg-black bg-opacity-70 absolute top-0 left-0 z-30 flex justify-center items-center hidden">
-
-  </div>
-
   <div class="flex justify-between py-3">
     <h3 class="text-3xl">Gedeelde studeerkamers</h3>
     <div>
@@ -16,6 +11,11 @@
     </div>
   </div>
   <div class="flex flex-row gap-3">
+    <div class="flex justify-center cursor-pointer" v-if="$page.props.sharedStudyRoom.length === 0" @click="showModal()">
+      <NothingToShow class="text-base px-10 py-5">
+        Je hebt momenteel geen toegang to private studeerkamers, maak er één en nodig vrienden uit!
+      </NothingToShow>
+    </div>
     <div v-for="shared in $page.props.sharedStudyRoom">
       <StudyRoom :studyroom="shared.studyroom" />
     </div>
@@ -23,7 +23,7 @@
 
   <Modal :show="addStudyRoom" @close="closeModal">
     <div class="bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
-      <h1 class="mb-5">Maak een nieuwe studeerkamer aan!</h1>
+      <h3 class="mb-5">Maak een nieuwe studeerkamer aan!</h3>
       <form method="POST" :action="route('addStudyRoom')" class="flex flex-col gap-2" enctype="multipart/form-data" >
         <input type="hidden" name="_token" :value="csrf">
         <InputLabel for="name" value="Name" />
@@ -64,17 +64,19 @@
   import InputLabel from '@/Components/InputLabel.vue';
   import TextInput from '@/Components/TextInput.vue';
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
+import NothingToShow from '../NothingToShow.vue';
 
   const addStudyRoom = ref(false);
 
   export default {
     components: {
-      StudyRoom,
-      InputLabel,
-      TextInput,
-      PrimaryButton,
-      Modal,
-    },
+    StudyRoom,
+    InputLabel,
+    TextInput,
+    PrimaryButton,
+    Modal,
+    NothingToShow
+},
     props: {
       sharedStudyRoom: {
         type: Array,
