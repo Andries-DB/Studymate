@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-indigo-500 flex justify-between p-4 rounded-xl text-gray-50 items-center">
+  <div class=" bg-indigo-500 flex justify-between p-4 rounded-xl text-gray-50 items-center">
     <div name="INFO">
       <h3 class="text-xl">{{ studyroomuserInfo.first_name + ' ' + studyroomuserInfo.last_name }} - <strong>{{ studyroomuserInfo.email }}</strong></h3>
       <p class="text-sm text-gray-200">Toegetreden op {{ moment(studyroomuserInfo.created_at).format("DD/MM/YYYY") }}</p>

@@ -18,31 +18,26 @@
         <PrimaryButton class="mt-3">
           Voeg gebruiker toe
         </PrimaryButton>
-
       </form>
     </div>
   </div>
-
-
-  <Head :title="'Bewerken van ' + studyroom.name" />
   <div class="grid grid-cols-12 gap-2 h-screen">
-    <div class="col-span-2 rounded-r-[37px] flex flex-col lg:flex-row md:divide-x-2 ">
-        <div class="w-full overflow-hidden bg-stone-50 h-full">
-            <NavBar />
-        </div>
-    </div>
-    <div class="col-span-10 xl:block">
-      <div class="grid grid-cols-12 grid-rows-2 gap-10 h-full">
-        <div class="row-span-2 col-span-12 md:col-span-6">
-          <div class="flex justify-between items-center space-y-7">
+    <div class="col-span-12 xl:col-span-12 bg-stone-50 rounded-r-[37px] flex gap-2 md:divide-x-2 flex-col lg:flex-row">
+      <div class="lg:w-[250px] w-full lg:h-full overflow-hidden">
+        <NavBar />
+      </div>
+      <div class="flex-1 overflow-hidden">
+        <div class="flex flex-col gap-10 p-7">
+          <div class="flex justify-between items-center space-y-7 xl:w-1/3">
             <h3 class="text-3xl mt-5 ml-5">Uitnodigingen & Leden</h3>
-            <button id="addInvitation" v-on:click="showForm()" class="bg-gray-200 text-indigo-500 p-2 mr-5 rounded-lg hover:bg-indigo-500 hover:text-gray-200">
+            <TertiaryButton id="addInvitation" @click="showForm()">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
               </svg>
-            </button>
+            </TertiaryButton>
+
           </div>
-          <div class="space-y-7 mt-5 ml-5 mr-5">
+          <div class="space-y-7 ml-5 mr-5 xl:w-1/3">
             <div>
               <h3 class="text-2xl mb-3 font-bold">Uitnodigingen</h3>
               <Invite
@@ -58,17 +53,14 @@
                 class="flex flex-row mb-3"
                 :studyroomuser = "user"
                 :studyroomuserInfo ="user.user"
-
               />
             </div>
-
           </div>
-        </div>
-        <div class="row-span-1 col-span-12 md:col-span-6 bg-red-500" >
-          Update studyroom
-        </div>
-        <div class="space-y-7 col-span-12 md:col-span-6 bg-red-500">
-          COMING SOON
+          <div class="grid grid-cols-12 grid-rows-1 gap-10 h-full">
+            <div class="row-span-1 col-span-12 md:col-span-6 ml-5">
+              Update studyroom
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -83,13 +75,15 @@
     import Users from '@/Components/StudyRooms/Edit/Users.vue';
 
     import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
+    import TertiaryButton from '@/Components/Buttons/TertiaryButton.vue';
   export default {
     components: {
       NavBar,
       Head,
       Invite,
       Users,
-      PrimaryButton
+      PrimaryButton,
+      TertiaryButton
     },
     props: {
       studyroom: {

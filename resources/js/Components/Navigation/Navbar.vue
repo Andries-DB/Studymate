@@ -16,9 +16,7 @@
 </script>
 
 <template>
-
-
-  <div class="lg:space-y-10 lg:block fixed grid grid-cols-12 border-r-2 h-full">
+  <div class="lg:space-y-10 lg:block fixed grid grid-cols-12 h-full bg-stone-100">
     <div class="col-span-9 flex justify-center items-center gap-4">
       <a :href="route('dashboard')" class="flex flex-row items-center justify-center text-indigo-500 mt-12 text-3xl">
         Studym
@@ -41,7 +39,7 @@
 
     <div class="col-span-12 hidden lg:block pt-5">
       <div class="relative w-full h-24 flex flex-col items-center gap-4">
-        <img :src="`storage/${$page.props.auth.user.avatar}`" :alt="$page.props.auth.user.username" class="w-24 h-24 rounded-full">
+        <img :src="`../../storage/${$page.props.auth.user.avatar}`" :alt="$page.props.auth.user.username" class="w-24 h-24 rounded-full">
       </div>
 
       <div class="text-center">

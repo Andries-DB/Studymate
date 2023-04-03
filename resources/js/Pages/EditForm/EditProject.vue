@@ -1,34 +1,28 @@
 <template>
-    <Head title="Dashboard" />
-    <div class="grid grid-cols-12 gap-2 h-screen">
-        <div class="col-span-2 rounded-r-[37px] flex flex-col lg:flex-row md:divide-x-2 ">
-            <div class="w-full overflow-hidden bg-stone-50 h-full">
-                <NavBar />
-            </div>
-        </div>
-        <div class="col-span-10 xl:block">
-          <div class="grid grid-cols-12 grid-rows-2 gap-10 h-full">
-            <div class="row-span-2 col-span-12 md:col-span-6">
-              <div class="space-y-7">
+  <div class="grid grid-cols-12 gap-2 h-screen">
+    <div class="col-span-12 xl:col-span-12 bg-stone-50 rounded-r-[37px] flex gap-2 md:divide-x-2 flex-col lg:flex-row">
+      <div class="lg:w-[250px] w-full lg:h-full overflow-hidden">
+        <NavBar />
+      </div>
+      <div class="flex-1 overflow-hidden">
+        <div class="flex flex-col gap-10 p-7">
+          <UpdateProject :project="project" />
+          <addTask :project="project" />
+          <div class="grid grid-cols-12 grid-rows-1 gap-10 h-full">
+            <div class="row-span-1 col-span-12 md:col-span-6">
+              <div class="space-y-8">
                 <h3 class="text-3xl mt-5 ml-5">Alle gerelateerde taken</h3>
-                <div class="flex flex-col items-center gap-5">
+                <div class="flex flex-col items-start gap-5">
                   <Task v-for="task in tasks" :key="task.id" :task="task" />
                 </div>
+
               </div>
-            </div>
-            <div class="row-span-1 col-span-12 md:col-span-6" >
-              <div class="space-y-3">
-                <UpdateProject :project="project" />
-                <hr>
-                <addTask :project="project" />
-              </div>
-            </div>
-            <div class="space-y-7 col-span-12 md:col-span-6 bg-red-500">
-              COMING SOON
             </div>
           </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
