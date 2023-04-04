@@ -1,83 +1,64 @@
-<script setup>
-import { Head } from '@inertiajs/vue3';
-import NavBar from '../Components/Navigation/Navbar.vue';
-import PrimaryButton from '../Components/Buttons/PrimaryButton.vue';
-import NothingToShow from '@/Components/NothingToShow.vue';
-</script>
-
 <template>
   <!-- https://www.youtube.com/watch?v=QsH8FL0952k&t=8226s -->
-    <Head :title="$page.props.studyroomInformation.name" />
-    <div class="grid grid-cols-12 gap-2">
-        <div class="lg:col-span-2 col-span-12  rounded-r-[37px] flex gap-2 md:divide-x-2 flex-col lg:flex-row">
-            <div class="lg:w[225px] w-full overflow-hidden h-full">
-                <NavBar />
-            </div>
+  <Head :title="$page.props.studyroomInformation.name" />
+  <UserLayout>
+    <div class="flex flex-col gap-10 p-7">
+      <div class="flex justify-between">
+        <div>
+          <h1 class="font-bold text-3xl">{{$page.props.studyroomInformation.name}}</h1>
+          <h2>{{ $page.props.studyroomInformation.private ? `Een kamer van ${$page.props.owner.user.username}` : "Een openbare studeerkamer" }}</h2>
         </div>
-        <div class="col-span-10 xl:block">
-            <div class="flex-1 overflow-hidden w-full h-full">
-              <div class="flex flex-col gap-10 p-7">
-                <div class="flex justify-between">
-                  <div>
-                    <h1 class="font-bold text-3xl">{{$page.props.studyroomInformation.name}}</h1>
-                    <h2>{{ $page.props.studyroomInformation.private ? `Een kamer van ${$page.props.owner.user.username}` : "Een openbare studeerkamer" }}</h2>
-                  </div>
-                  <div>
-
-                  </div>
-                </div>
-
-                <div class="grid grid-cols-12 grid-rows-2 gap-10 h-full w-full">
-                  <div class="row-span-5 col-span-12 md:col-span-3">
-                    <div class="w-full flex items-center justify-center lg:block">
-                      <div id="cameraPlaceholder" class="video-player border-2 border-black">
-                        <h2 class="flex items-center justify-center h-full text-center">Join de studeerkamer om samen te studeren!</h2>
-                      </div>
-                      <div id="yourCamera">
-                        <!-- Here comes your camera when joining the studyroom -->
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="row-span-5 col-span-12 md:col-span-9 flex justify-center lg:block" >
-                    <div class="block lg:flex lg:justify-center cursor-pointer" @click="joinstream()">
-                      <NothingToShow id="nothingtoshow">Join de studeerkamer en zie wie er aan het studeren is!</NothingToShow>
-                    </div>
-                    <div id="videos" class="flex gap-5">
-                      <!-- Here come the other users cameras -->
-                    </div>
-                  </div>
-                </div>
-              </div>
+      </div>
+      <div class="grid grid-cols-12 grid-rows-2 gap-10 h-full w-full">
+        <div class="row-span-5 col-span-12 md:col-span-3">
+          <div class="w-full flex items-center justify-center lg:block">
+            <div id="cameraPlaceholder" class="video-player border-2 border-black">
+              <h2 class="flex items-center justify-center h-full text-center">Join de studeerkamer om samen te studeren!</h2>
             </div>
+            <div id="yourCamera">
+              <!-- Here comes your camera when joining the studyroom -->
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="w-full h-20 bg-stone-100 fixed bottom-0 flex justify-center gap-5 items-center">
-
-      <div>
-        <PrimaryButton id="join-btn" @click="joinstream()">
-          Join de kamer
-        </PrimaryButton>
-      </div>
-
-      <div>
-        <PrimaryButton id="leave-btn" class="hidden" @click="leaveStream()">
-          Verlaat de kamer
-        </PrimaryButton>
-      </div>
-
-      <div id="screen-btn-div">
-        <PrimaryButton id="screen-btn" class="hidden" @click="toggleCamera(event)">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M12 18.75H4.5a2.25 2.25 0 01-2.25-2.25V9m12.841 9.091L16.5 19.5m-1.409-1.409c.407-.407.659-.97.659-1.591v-9a2.25 2.25 0 00-2.25-2.25h-9c-.621 0-1.184.252-1.591.659m12.182 12.182L2.909 5.909M1.5 4.5l1.409 1.409" />
-          </svg>
-        </PrimaryButton>
+        <div class="row-span-5 col-span-12 md:col-span-9 flex justify-center lg:block" >
+          <div class="block lg:flex lg:justify-center cursor-pointer" @click="joinstream()">
+            <NothingToShow id="nothingtoshow">Join de studeerkamer en zie wie er aan het studeren is!</NothingToShow>
+          </div>
+          <div id="videos" class="flex gap-5">
+            <!-- Here come the other users cameras -->
+          </div>
+        </div>
       </div>
     </div>
+  </UserLayout>
+  <div class="w-full h-20 bg-stone-100 fixed bottom-0 flex justify-center gap-5 items-center">
+    <div>
+      <PrimaryButton id="join-btn" @click="joinstream()">
+        Join de kamer
+      </PrimaryButton>
+    </div>
+    <div>
+      <PrimaryButton id="leave-btn" class="hidden" @click="leaveStream()">
+        Verlaat de kamer
+      </PrimaryButton>
+    </div>
+    <div id="screen-btn-div">
+      <PrimaryButton id="screen-btn" class="hidden" @click="toggleCamera(event)">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M12 18.75H4.5a2.25 2.25 0 01-2.25-2.25V9m12.841 9.091L16.5 19.5m-1.409-1.409c.407-.407.659-.97.659-1.591v-9a2.25 2.25 0 00-2.25-2.25h-9c-.621 0-1.184.252-1.591.659m12.182 12.182L2.909 5.909M1.5 4.5l1.409 1.409" />
+        </svg>
+      </PrimaryButton>
+    </div>
+  </div>
 
 </template>
 
 <script>
+import { Head } from '@inertiajs/vue3';
+import PrimaryButton from '../Components/Buttons/PrimaryButton.vue';
+import NothingToShow from '@/Components/NothingToShow.vue';
+import UserLayout from '@/Layouts/UserLayout.vue';
+
 // These are the Agora RTC variables
 const APP_ID = import.meta.env.VITE_AGORA_APP_ID;
 const channel = window.location.pathname.split("/").pop();
@@ -194,7 +175,12 @@ export default {
             }
         }
     },
-    components: { NothingToShow }
+    components: {
+      NothingToShow,
+      UserLayout,
+      Head,
+      PrimaryButton,
+    }
 };
 </script>
 

@@ -1,28 +1,21 @@
 <template>
-  <Head title="Dashboard" />
-  <div class="grid grid-cols-12 gap-2 h-screen">
-    <div class="col-span-12 xl:col-span- bg-stone-50 rounded-r-[37px] flex gap-2 md:divide-x-2 flex-col lg:flex-row">
-      <div class="w-full lg:w-[225px] lg:h-full overflow-hidden">
-        <NavBar />
-      </div>
-      <div class="flex-1 overflow-hidden">
-        <MainContent />
-      </div>
-    </div>
-  </div>
+  <Head title="Dashboard"/>
+  <UserLayout>
+    <MainContent />
+  </UserLayout>
 </template>
 
 
 <script>
-  import MainContent from '@/Components/MainContent/MainContent.vue';
   import { Head } from '@inertiajs/vue3';
-  import NavBar from '@/Components/Navigation/Navbar.vue';
+  import MainContent from '@/Components/MainContent/MainContent.vue';
+  import UserLayout from '@/Layouts/UserLayout.vue';
 
 export default {
     components: {
-        MainContent,
-        NavBar,
-        Head,
-    },
+    MainContent,
+    Head,
+    UserLayout
+  },
 };
 </script>
