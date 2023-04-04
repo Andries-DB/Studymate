@@ -43,7 +43,6 @@
   ];
 
   function getUrl() {
-    console.log(window.location.pathname.replace(/^\/([^\/]*).*$/, '$1'))
     return window.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
   }
 

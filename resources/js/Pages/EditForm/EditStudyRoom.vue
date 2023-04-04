@@ -1,55 +1,48 @@
 <template>
   <Head :title="$page.props.studyroom.name" />
-  <div class="grid grid-cols-12 gap-2 h-screen">
-    <div class="col-span-12 xl:col-span-12 bg-stone-50 rounded-r-[37px] flex gap-2 md:divide-x-2 flex-col lg:flex-row">
-      <div class="lg:w-[250px] w-full lg:h-full overflow-hidden">
-        <NavBar />
-      </div>
-      <div class="flex-1 overflow-hidden">
-        <div class="flex flex-col gap-10 p-7">
-          <div class="flex justify-between items-center space-y-7 xl:w-1/3">
-            <h3 class="text-3xl mt-5 ml-5">Uitnodigingen & Leden</h3>
-            <TertiaryButton id="addInvitation" @click="showModal()">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-            </TertiaryButton>
+  <UserLayout>
+    <div class="flex flex-col gap-10 p-7">
+      <div class="flex justify-between items-center space-y-7 xl:w-1/3">
+        <h3 class="text-3xl mt-5 ml-5">Uitnodigingen & Leden</h3>
+        <TertiaryButton id="addInvitation" @click="showModal()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
+        </TertiaryButton>
 
+      </div>
+      <div class="space-y-7 ml-5 mr-5 xl:w-1/3">
+        <div>
+          <h3 class="mb-2">Uitnodigingen</h3>
+          <div class="flex justify-center text-center" v-if="$page.props.studyroomInvitations.length === 0">
+            <NothingToShow class="text-base px-10 py-5 cursor-pointer" @click="showModal()">Er is op dit moment niemand uitgenodigd, Klik hier en nodig mensen uit!</NothingToShow>
           </div>
-          <div class="space-y-7 ml-5 mr-5 xl:w-1/3">
-            <div>
-              <h3 class="mb-2">Uitnodigingen</h3>
-              <div class="flex justify-center text-center" v-if="$page.props.studyroomInvitations.length === 0">
-                <NothingToShow class="text-base px-10 py-5 cursor-pointer" @click="showModal()">Er is op dit moment niemand uitgenodigd, Klik hier en nodig mensen uit!</NothingToShow>
-              </div>
-              <Invite
-                v-for="invite in $page.props.studyroomInvitations"
-                :invite = "invite"
-                :invitedUser = "invite.user"
-              />
-            </div>
-            <div>
-              <h3 class="mb-2">Leden</h3>
-              <div class="flex justify-center text-center" v-if="$page.props.studyroomUsers.length === 0">
-                <NothingToShow class="text-base px-10 py-5 cursor-pointer" @click="showModal()">Er zijn op dit moment geen leden, Klik hier en nodig mensen uit!</NothingToShow>
-              </div>
-              <Users
-                v-for="user in $page.props.studyroomUsers"
-                class="flex flex-row mb-3"
-                :studyroomuser = "user"
-                :studyroomuserInfo ="user.user"
-              />
-            </div>
+          <Invite
+            v-for="invite in $page.props.studyroomInvitations"
+            :invite = "invite"
+            :invitedUser = "invite.user"
+          />
+        </div>
+        <div>
+          <h3 class="mb-2">Leden</h3>
+          <div class="flex justify-center text-center" v-if="$page.props.studyroomUsers.length === 0">
+            <NothingToShow class="text-base px-10 py-5 cursor-pointer" @click="showModal()">Er zijn op dit moment geen leden, Klik hier en nodig mensen uit!</NothingToShow>
           </div>
-          <div class="grid grid-cols-12 grid-rows-1 gap-10 h-full">
-            <div class="row-span-1 col-span-12 md:col-span-6 ml-5">
-              Update studyroom
-            </div>
-          </div>
+          <Users
+            v-for="user in $page.props.studyroomUsers"
+            class="flex flex-row mb-3"
+            :studyroomuser = "user"
+            :studyroomuserInfo ="user.user"
+          />
+        </div>
+      </div>
+      <div class="grid grid-cols-12 grid-rows-1 gap-10 h-full">
+        <div class="row-span-1 col-span-12 md:col-span-6 ml-5">
+          Update studyroom
         </div>
       </div>
     </div>
-  </div>
+  </UserLayout>
 
   <Modal :show="AddUser" @close="hideModal()">
     <div class=" bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
@@ -84,6 +77,7 @@
     import TertiaryButton from '@/Components/Buttons/TertiaryButton.vue';
     import Modal from '@/Components/Modal.vue';
     import NothingToShow from '@/Components/NothingToShow.vue';
+import UserLayout from '@/Layouts/UserLayout.vue';
 
     const AddUser = ref(false);
 
@@ -96,7 +90,8 @@
     PrimaryButton,
     TertiaryButton,
     Modal,
-    NothingToShow
+    NothingToShow,
+    UserLayout
 },
     props: {
       studyroom: {

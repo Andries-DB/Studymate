@@ -5,22 +5,20 @@
     >
     <a class="p-2">
       <div class="flex justify-between items-center">
-        <h3 class="font-bold text-3xl">{{ room.studyroom.name }}</h3>
+        <h3>{{ room.studyroom.name }}</h3>
       </div>
       <p>{{ room.studyroom.description }}</p>
     </a>
-
     <div class="flex items-center gap-2">
       <SecondaryAnchor :href="route('studyroomDetail' , room.study_room_id)">
         <PencilIcon class="w-5 h-5" />
       </SecondaryAnchor>
       <form method="post" class="bg-gray-200 p-0.30 rounded-lg cursor-pointer">
-          <input type="hidden" name="_token" :value="csrf">
+        <input type="hidden" name="_token" :value="csrf">
         <TertiaryButton type="submit">
           <TrashIcon class="w-5 h-5" />
         </TertiaryButton>
-        </form>
-
+      </form>
     </div>
   </div>
 </template>

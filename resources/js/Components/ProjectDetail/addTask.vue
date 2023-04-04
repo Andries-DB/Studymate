@@ -5,14 +5,22 @@
       <form method="post" :action="route('addTasktoProject')" class="flex flex-col gap-2">
         <input type="hidden" name="_token" :value="csrf">
         <input type="hidden" name="id" :value="project.id">
-        <div class=" flex flex-col">
-          <label for="name"><strong>Naam van de taak</strong></label>
-          <input type="text" name="name" id='name' class="rounded-lg">
-        </div>
-        <div class="flex flex-col">
-        <label for="description"><strong>Beschrijving van de taak</strong></label>
-        <input type="text" name="description" id='description' class="rounded-lg">
-        </div>
+        <TextInput
+          id="name"
+          type="text"
+          name="name"
+          required
+          autocomplete="Name"
+          placeholder="Naam van de taak"
+        />
+        <TextInput
+          id="description"
+          type="text"
+          name="description"
+          required
+          autocomplete="description"
+          placeholder="Beschrijving van de taak"
+        />
         <PrimaryButton class="mt-3">
           Voeg taak toe
         </PrimaryButton>
@@ -25,11 +33,13 @@
 
 <script>
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
+import TextInput from '../TextInput.vue';
 
   export default {
     components: {
-      PrimaryButton,
-    },
+    PrimaryButton,
+    TextInput
+},
     props: {
       project: {
         type: Object

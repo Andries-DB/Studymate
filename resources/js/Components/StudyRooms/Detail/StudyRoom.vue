@@ -1,11 +1,11 @@
 <template>
   <div
     class="bg rounded-xl text-white p-4 flex justify-between flex-row gap-7 bg-indigo-500"
-    :style="{'background-image':'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(storage/' + studyroom.image + ')' }"
+    :style="{'background-image':'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../storage/' + studyroom.image + ')' }"
     >
     <a class="p-2" :href="route('study' , studyroom.id)">
       <div class="flex justify-between items-center">
-        <h3 class="font-bold text-3xl">{{ studyroom.name }}</h3>
+        <h3>{{ studyroom.name }}</h3>
       </div>
       <p>{{ studyroom.description }}</p>
     </a>

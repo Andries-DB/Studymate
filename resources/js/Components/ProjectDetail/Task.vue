@@ -1,5 +1,4 @@
 <template>
-
   <div class=" bg-indigo-500 flex w-full lg:w-1/2 flex-wrap gap-10 justify-between p-4 rounded-xl text-gray-50 items-center">
     <div>
       <div name="INFO">
@@ -38,20 +37,21 @@
 <script>
   import TertiaryButton from '../Buttons/TertiaryButton.vue';
   import { DocumentMinusIcon, TrashIcon } from '@heroicons/vue/20/solid';
-export default {
-  components: {
-    TertiaryButton,
-    DocumentMinusIcon,
-    TrashIcon
-  },
-  props: {
-    task: {
-      type: Object,
-      required: true,
+
+  export default {
+    components: {
+      TertiaryButton,
+      DocumentMinusIcon,
+      TrashIcon
     },
-  },
-  data: () => ({
-    csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-  }),
-}
+    props: {
+      task: {
+        type: Object,
+        required: true,
+      },
+    },
+    data: () => ({
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+    }),
+  }
 </script>

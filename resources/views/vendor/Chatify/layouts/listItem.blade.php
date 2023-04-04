@@ -10,8 +10,8 @@
             </td>
             {{-- center side --}}
             <td>
-                <p data-id="{{ Auth::user()->id }}" data-type="user">Saved Messages <span>You</span></p>
-                <span>Save messages secretly</span>
+                <p data-id="{{ Auth::user()->id }}" data-type="user">Opgeslagen berichten <span>You</span></p>
+                <span>Geheime opgeslagen berichten</span>
             </td>
         </tr>
     </table>
@@ -26,14 +26,11 @@
             @if($user->active_status)
                 <span class="activeStatus"></span>
             @endif
-        <div class="avatar av-m"
-        style="background-image: url('{{ $user->avatar }}');">
-        </div>
         </td>
         {{-- center side --}}
         <td>
         <p data-id="{{ $user->id }}" data-type="user">
-            {{ strlen($user->name) > 12 ? trim(substr($user->name,0,12)).'..' : $user->name }}
+            {{ strlen($user->name) > 30 ? trim(substr($user->name,0,30)).'..' : $user->name }}
             <span>{{ $lastMessage->created_at->diffForHumans() }}</span></p>
         <span>
             {{-- Last Message user indicator --}}
@@ -50,7 +47,7 @@
                 : $lastMessage->body
             !!}
             @else
-            <span class="fas fa-file"></span> Attachment
+            <span class="fas fa-file"></span> Bijlage
             @endif
         </span>
         {{-- New messages counter --}}
@@ -74,7 +71,7 @@
         {{-- center side --}}
         <td>
             <p data-id="{{ $user->id }}" data-type="user">
-            {{ strlen($user->name) > 12 ? trim(substr($user->name,0,12)).'..' : $user->name }}
+            {{ strlen($user->name) > 30 ? trim(substr($user->name,0,30)).'..' : $user->name }}
         </td>
 
     </tr>

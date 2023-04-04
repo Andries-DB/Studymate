@@ -40,7 +40,6 @@ class ProfileController extends Controller
           'users-avatar',
           $client->username . '.' . $request->file('avatar')->getClientOriginalExtension() ,
           'public');
-
         $client->avatar = $imagepath;
       }
       $client->save();

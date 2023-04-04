@@ -24,7 +24,6 @@
           <form :action="route('declineInvite')" method="post">
             <input type="hidden" name="_token" :value="csrf">
             <input type="hidden" name="invite_id" :value="invite.id">
-
             <TertiaryButton type="submit">
               <NoSymbolIcon class="w-6 h-6 text-red-500" />
             </TertiaryButton>

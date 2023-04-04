@@ -31,14 +31,13 @@ const submit = () => {
         <Head title="Log in" />
 
         <form @submit.prevent="submit" class="mt-8 space-y-6">
-            <div class="-space-y-px rounded-md shadow-sm">
+            <div class="space-y-2 rounded-md shadow-sm">
                 <div>
                     <InputLabel for="email" value="Email" />
                     <TextInput
                     id="email"
                     type="email"
                     name="email"
-                    class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                     v-model="form.email"
                     required
                     autofocus
@@ -53,7 +52,6 @@ const submit = () => {
                     id="password"
                     type="password"
                     name="password"
-                    class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                     v-model="form.password"
                     required
                     autocomplete="current-password"
