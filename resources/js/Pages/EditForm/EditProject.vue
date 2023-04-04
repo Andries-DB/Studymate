@@ -12,7 +12,7 @@
           <div class="grid grid-cols-12 grid-rows-1 gap-10 h-full">
             <div class="row-span-1 col-span-12 md:col-span-6">
               <div class="space-y-8">
-                <h3 class="text-3xl mt-5 ml-5">Alle gerelateerde taken</h3>
+                <h4>Alle gerelateerde taken</h4>
                 <div class="flex justify-start" v-if="tasks.length === 0 ">
                   <NothingToShow class="text-base px-10 py-5">Er zijn geen taken! Voeg taken toe om deze te voltooien!</NothingToShow>
                 </div>

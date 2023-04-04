@@ -8,9 +8,9 @@ import NothingToShow from '@/Components/NothingToShow.vue';
 <template>
   <!-- https://www.youtube.com/watch?v=QsH8FL0952k&t=8226s -->
     <Head :title="$page.props.studyroomInformation.name" />
-    <div class="grid grid-cols-12 gap-2 h-screen ">
-        <div class="col-span-2 rounded-r-full flex flex-col xl:flex-row md:divide-x-2 ">
-            <div class="w-full overflow-hidden h-full">
+    <div class="grid grid-cols-12 gap-2">
+        <div class="lg:col-span-2 col-span-12  rounded-r-[37px] flex gap-2 md:divide-x-2 flex-col lg:flex-row">
+            <div class="lg:w[225px] w-full overflow-hidden h-full">
                 <NavBar />
             </div>
         </div>
@@ -27,11 +27,11 @@ import NothingToShow from '@/Components/NothingToShow.vue';
                   </div>
                 </div>
 
-                <div class="grid grid-cols-12 grid-rows-2 gap-10 h-full">
+                <div class="grid grid-cols-12 grid-rows-2 gap-10 h-full w-full">
                   <div class="row-span-5 col-span-12 md:col-span-3">
-                    <div>
+                    <div class="w-full flex items-center justify-center lg:block">
                       <div id="cameraPlaceholder" class="video-player border-2 border-black">
-                        <h2 class="font-bold text-xl flex items-center justify-center h-full text-center">Join de studeerkamer om samen te studeren!</h2>
+                        <h2 class="flex items-center justify-center h-full text-center">Join de studeerkamer om samen te studeren!</h2>
                       </div>
                       <div id="yourCamera">
                         <!-- Here comes your camera when joining the studyroom -->
@@ -39,9 +39,9 @@ import NothingToShow from '@/Components/NothingToShow.vue';
 
                     </div>
                   </div>
-                  <div class="row-span-5 col-span-12 md:col-span-9" >
-                    <div class="flex justify-center cursor-pointer" @click="joinstream()">
-                      <NothingToShow id="nothingtoshow" class="text-base px-10 py-5">Join de studeerkamer en zie wie er aan het studeren is!</NothingToShow>
+                  <div class="row-span-5 col-span-12 md:col-span-9 flex justify-center lg:block" >
+                    <div class="block lg:flex lg:justify-center cursor-pointer" @click="joinstream()">
+                      <NothingToShow id="nothingtoshow">Join de studeerkamer en zie wie er aan het studeren is!</NothingToShow>
                     </div>
                     <div id="videos" class="flex gap-5">
                       <!-- Here come the other users cameras -->
@@ -210,16 +210,6 @@ export default {
 
 .video-player video {
   border-radius: 5px;
-
-}
-
-.active {
-  background-color: rgb(99,102,241); /* Green */
-  color: white;
-}
-.active:hover {
-  background-color: white; /* Green */
-  color: rgb(99,102,241);
 }
 
 </style>

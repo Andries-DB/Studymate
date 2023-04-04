@@ -6,11 +6,10 @@
       <p>Vandaag is het {{ currentDate() }} </p>
     </div>
     <div class="flex justify-between gap-2 items-center">
-
       <PrimaryButton
         id="addProject"
         @click="openModal()">
-          Voeg een project toe!
+          + Voeg een project toe!
       </PrimaryButton>
     </div>
   </div>

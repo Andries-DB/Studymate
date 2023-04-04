@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-between py-3">
-    <h3 class="text-3xl">Gedeelde studeerkamers</h3>
+    <h4>Gedeelde studeerkamers</h4>
     <div>
       <PrimaryButton
         v-on:click="showModal()"

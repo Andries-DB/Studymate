@@ -13,12 +13,11 @@
 <template>
   <div class="space-y-7 w-full">
     <div class="flex justify-between">
-      <h3>Taken te voltooien</h3>
+      <h4>Taken te voltooien</h4>
       <TertiaryButton id="addProject" @click="showModal()">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
         </svg>
-
       </TertiaryButton>
 
     </div>
@@ -35,6 +34,7 @@
     </div>
   </div>
 
+  <!-- Make new task modal -->
   <Modal :show="AddTask" @close="closeModal">
     <div class="bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
       <h3 class="mb-5">Maak een nieuwe taak aan!</h3>
@@ -69,11 +69,11 @@
         />
         <PrimaryButton class="mt-3">
           Maak een nieuwe taak aan
-
         </PrimaryButton>
       </form>
     </div>
   </Modal>
+
 </template>
 
 <script>

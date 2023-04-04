@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-5">
-    <h3 class="text-3xl">Voeg een taak aan het project toe</h3>
-    <div class="w-1/4 flex flex-col ">
+    <h4>Voeg een taak aan het project toe</h4>
+    <div class="w-full lg:w-1/4 flex flex-col ">
       <form method="post" :action="route('addTasktoProject')" class="flex flex-col gap-2">
         <input type="hidden" name="_token" :value="csrf">
         <input type="hidden" name="id" :value="project.id">

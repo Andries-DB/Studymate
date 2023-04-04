@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-5">
-    <h3 class="text-3xl mt-5">Update de naam van je project</h3>
-    <div class="mt-10 w-1/4">
+    <h4>Update de naam van je project</h4>
+    <div class="w-full lg:w-1/4">
       <form :action="route('editProject')" method="post" class="flex flex-col">
         <input type="hidden" name="_token" :value="csrf">
         <input type="hidden" name="id" :value="project.id">

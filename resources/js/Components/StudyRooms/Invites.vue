@@ -1,5 +1,5 @@
 <template>
-  <h3 class="text-3xl">Uitnodigingen</h3>
+  <h4>Uitnodigingen</h4>
   <div class="flex justify-center mt-2" v-if="$page.props.invites.length === 0">
     <NothingToShow class="text-base py-5 px-10">Er zijn geen uitnodigingen om weer te geven</NothingToShow>
   </div>

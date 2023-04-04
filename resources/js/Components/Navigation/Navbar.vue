@@ -16,9 +16,9 @@
 </script>
 
 <template>
-  <div class="lg:space-y-10 lg:block fixed grid grid-cols-12 h-full bg-stone-100">
+  <div class="lg:space-y-10 lg:block xl:fixed relative grid grid-cols-12 h-full bg-stone-100">
     <div class="col-span-9 flex justify-center items-center gap-4">
-      <a :href="route('dashboard')" class="flex flex-row items-center justify-center text-indigo-500 mt-12 text-3xl">
+      <a :href="route('dashboard')" class="flex flex-row items-center justify-center text-indigo-500 xl:mt-12 py-10 xl:py-0 text-3xl">
         Studym
         <span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-8 h-8">
@@ -29,7 +29,7 @@
       </a>
     </div>
 
-    <div class="lg:hidden block col-span-3 flex justify-end items-center p-2">
+    <div class="lg:hidden col-span-3 flex justify-end items-center p-2 mr-16">
       <button class="bg-stone-300 rounded-lg p-2" @click="toggleMenu">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -41,14 +41,14 @@
       <div class="relative w-full h-24 flex flex-col items-center gap-4">
         <img :src="`../../storage/${$page.props.auth.user.avatar}`" :alt="$page.props.auth.user.username" class="w-24 h-24 rounded-full">
       </div>
-
       <div class="text-center">
         <a :href="route('instellingen')">
-          <h3 class="font-bold text-black">{{ $page.props.auth.user.first_name + ' ' + $page.props.auth.user.last_name}} </h3>
+          <h5 class="font-bold text-black">{{ $page.props.auth.user.first_name + ' ' + $page.props.auth.user.last_name}} </h5>
           <p class="text-gray-500 ">{{ $page.props.auth.user.email }}</p>
         </a>
       </div>
     </div>
+
     <div class="col-span-12 p-10 mb-20" v-if="menuIsActive">
       <NavBarMenu />
       <div class="">
@@ -62,7 +62,6 @@
         </PrimaryButton>
       </form>
       </div>
-
     </div>
   </div>
 </template>

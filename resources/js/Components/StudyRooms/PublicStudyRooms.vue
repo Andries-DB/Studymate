@@ -1,5 +1,5 @@
 <template>
-  <h3 class="text-3xl">Openbare Studeerkamers</h3>
+  <h4>Openbare Studeerkamers</h4>
   <div class="flex flex-col space-y-4 pt-5">
     <PublicStudyRoom
       v-for="room in $page.props.publicStudyrooms"

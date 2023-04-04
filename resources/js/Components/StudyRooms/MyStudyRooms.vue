@@ -1,5 +1,5 @@
 <template>
-  <h3 class="text-3xl">Mijn studeerkamers</h3>
+  <h4>Mijn studeerkamers</h4>
   <div class="flex flex-col space-y-4 pt-5">
     <div class="flex justify-center" v-if="$page.props.myStudyrooms.length === 0 ">
       <NothingToShow class="text-base py-5 px-10" >Je hebt nog geen studeerkamers. Voeg er één toe en nodig mensen uit!</NothingToShow>
