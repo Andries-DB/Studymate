@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col md:flex-row items-center md:items-stretch gap-6" :class="$page.props.projects.length === 0 ? 'justify-center' : ''">
-    <div class="flex justify-center items-center" v-if="$page.props.projects.length === 0">
-      <NothingToShow id="info_text" class="text-base px-10 py-5">Je hebt nog geen projecten. Voeg er één toe en begin met studeren!</NothingToShow>
+    <div class="w-full" v-if="$page.props.projects.length === 0">
+      <NoProjects @click="openModal()"/>
     </div>
     <project
       v-for="project in $page.props.projects"
@@ -10,21 +10,45 @@
       :project="project"
     />
   </div>
+
+  <ProjectModal
+    :show="AddProject"
+    @close="closeModal"
+  />
 </template>
 
 <script>
 import Project from './Project.vue';
-import NothingToShow from '../NothingToShow.vue';
+import NoProjects from '@/Components/Widgets/NoProjects.vue';
+import {ref} from 'vue';
+import ProjectModal from '@/Components/Modals/ProjectModal.vue';
+
+const AddProject = ref(false);
 
 export default {
   components: {
     Project,
-    NothingToShow,
+    NoProjects,
+    ProjectModal
+},
+  data() {
+    return {
+      AddProject,
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+    };
   },
   props: {
     projects: {
       type: Array,
       required: true,
+    },
+  },
+  methods: {
+    closeModal() {
+      AddProject.value = false;
+    },
+    openModal() {
+      AddProject.value = true;
     },
   },
 };

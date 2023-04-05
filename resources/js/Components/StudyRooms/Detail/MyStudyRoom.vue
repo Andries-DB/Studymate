@@ -13,8 +13,9 @@
       <SecondaryAnchor :href="route('studyroomDetail' , room.study_room_id)">
         <PencilIcon class="w-5 h-5" />
       </SecondaryAnchor>
-      <form method="post" class="bg-gray-200 p-0.30 rounded-lg cursor-pointer">
+      <form :action="route('deleteStudyRoom')" method="post" class="bg-gray-200 p-0.30 rounded-lg cursor-pointer">
         <input type="hidden" name="_token" :value="csrf">
+        <input type="hidden" name="id" :value="room.study_room_id">
         <TertiaryButton type="submit">
           <TrashIcon class="w-5 h-5" />
         </TertiaryButton>

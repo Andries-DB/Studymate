@@ -13,14 +13,12 @@ class DashboardController extends Controller
 {
   public function index()
   {
-    $study_stats = Study_stats::where('user_id', auth()->user()->id)->get();
     $projects = Projects::where('user_id', auth()->user()->id)->get();
     $tasks = Tasks::whereIn('project_id', $projects->pluck('id'))->with('project')->get();
     $friends = Friends::where('user_1', auth()->user()->id)->orWhere('user_2', auth()->user()->id)->with('user')->limit(3)->get();
     $users = User::all();
     return Inertia::render('Dashboard', [
         'projects' => $projects,
-        'study_stats' => $study_stats,
         'tasks' => $tasks,
         'friends' => $friends,
         'users' => $users

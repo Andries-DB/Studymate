@@ -2,15 +2,9 @@
 
 namespace App\Http\Controllers\StudyRooms\Detail;
 
-use App\Models\StudyRoom__user_active;
-use App\Models\StudyRooms;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use App\Models\StudyRooms_invitations;
-use App\Models\StudyRooms_Owner;
 use App\Models\StudyRoomsUser;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class InviteStudyRoomController
 {

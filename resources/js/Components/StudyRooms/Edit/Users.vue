@@ -7,7 +7,9 @@
     <div class="" name="CTA">
       <form method="post" :action="route('deleteUserFromStudyRoom')" class="bg-gray-200 p-0.30 rounded-lg">
         <input type="hidden" name="_token" :value="csrf">
-        <input type="hidden" name="id" :value="studyroomuser.id" />
+        <input type="hidden" name="id" :value="studyroomuser.id">
+        <input type="hidden" name="studyroom_id" :value="studyroomuser.studyroom_id">
+        <input type="hidden" name="user_id" :value="studyroomuser.user_id">
       <TertiaryButton type="submit">
         <TrashIcon class="w-5 h-5" />
       </TertiaryButton>

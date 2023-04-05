@@ -1,7 +1,7 @@
 <template>
   <div
-    class="bg rounded-xl text-white p-4 flex justify-between flex-row gap-7 bg-indigo-500"
-    :style="{'background-image':'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../storage/' + studyroom.image + ')' }"
+    class="bg rounded-xl text-white p-4 flex justify-between flex-row gap-7"
+    v-bind:style="{ backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(storage/' + studyroom.image + ')' }"
     >
     <a class="p-2" :href="route('study' , studyroom.id)">
       <div class="flex justify-between items-center">

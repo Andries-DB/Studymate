@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class StudyRooms_invitations extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'user_id',
+        'study_room_id',
+    ];
 
     public function StudyRoom()
     {

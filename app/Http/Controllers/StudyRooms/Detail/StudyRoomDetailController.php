@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\StudyRooms\Detail;
 
-use App\Models\StudyRoom__user_active;
 use App\Models\StudyRooms;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use App\Models\StudyRooms_invitations;
 use App\Models\StudyRooms_Owner;
 use App\Models\StudyRoomsUser;
@@ -69,14 +67,11 @@ class StudyRoomDetailController
       $client = auth()->user();
       $studyroomInformation = StudyRooms::where('id', $r->id)->first();
       $owner = StudyRooms_Owner::where('study_room_id', $r->id)->with('user')->first();
-      $activeUsers = StudyRoom__user_active::where('study_room_id', $r->id)->with('user')->get();
 
       return Inertia::render('StudyDetail', [
         'studyroomInformation' => $studyroomInformation,
         'client' => $client,
         'owner' => $owner,
-        'activeUsers' => $activeUsers,
-
       ]);
 
     }

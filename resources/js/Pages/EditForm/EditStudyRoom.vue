@@ -1,3 +1,6 @@
+
+import InviteModal from '@/Components/Modals/InviteModal.vue';
+
 <template>
   <Head :title="$page.props.studyroom.name" />
   <UserLayout>
@@ -15,7 +18,7 @@
         <div>
           <h3 class="mb-2">Uitnodigingen</h3>
           <div class="flex justify-center text-center" v-if="$page.props.studyroomInvitations.length === 0">
-            <NothingToShow class="text-base px-10 py-5 cursor-pointer" @click="showModal()">Er is op dit moment niemand uitgenodigd, Klik hier en nodig mensen uit!</NothingToShow>
+            <NoStudyRoomInvites @click="showModal()" />
           </div>
           <Invite
             v-for="invite in $page.props.studyroomInvitations"
@@ -26,7 +29,7 @@
         <div>
           <h3 class="mb-2">Leden</h3>
           <div class="flex justify-center text-center" v-if="$page.props.studyroomUsers.length === 0">
-            <NothingToShow class="text-base px-10 py-5 cursor-pointer" @click="showModal()">Er zijn op dit moment geen leden, Klik hier en nodig mensen uit!</NothingToShow>
+            <NothingToShow class="text-base px-10 py-5" >Er zijn op dit moment geen leden</NothingToShow>
           </div>
           <Users
             v-for="user in $page.props.studyroomUsers"
@@ -36,33 +39,20 @@
           />
         </div>
       </div>
-      <div class="grid grid-cols-12 grid-rows-1 gap-10 h-full">
-        <div class="row-span-1 col-span-12 md:col-span-6 ml-5">
-          Update studyroom
+      <div class="h-full w-full">
+        <div class="ml-5">
+          <UpdateStudyRoom :studyroom="$page.props.studyroom" />
         </div>
       </div>
     </div>
   </UserLayout>
 
-  <Modal :show="AddUser" @close="hideModal()">
-    <div class=" bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
-      <h3 class="mb-5">Nodig een nieuw lid uit</h3>
-      <form method="post" :action="route('addUserToStudyRoom')">
-        <input type="hidden" name="_token" :value="csrf">
-        <input type="hidden" name="studyroom" :value="studyroom.id">
-        <select name="user" id="user" class="relative block w-full text-center appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" @click="getUserInfo()">
-          <option value="" selected disabled>-- Selecteer een gebruiker --</option>
-          <option v-for="user in $page.props.users" :value="user.id">{{ user.username }}</option>
-        </select>
-        <div id="info">
-          <NothingToShow id="info_text">Selecteer een gebruiker om zijn info te krijgen</NothingToShow>
-        </div>
-        <PrimaryButton class="mt-3">
-          Voeg gebruiker toe
-        </PrimaryButton>
-      </form>
-    </div>
-  </Modal>
+  <InviteModal
+    :show="AddUser"
+    :close="this.closeModal"
+    :users="this.$page.props.users"
+    :studyroom="this.$page.props.studyroom"
+  />
 </template>
 
 <script>
@@ -77,7 +67,10 @@
     import TertiaryButton from '@/Components/Buttons/TertiaryButton.vue';
     import Modal from '@/Components/Modal.vue';
     import NothingToShow from '@/Components/NothingToShow.vue';
-import UserLayout from '@/Layouts/UserLayout.vue';
+    import UserLayout from '@/Layouts/UserLayout.vue';
+    import NoStudyRoomInvites from '@/Components/Widgets/NoStudyRoomInvites.vue';
+    import UpdateStudyRoom from '@/Components/StudyRooms/Edit/UpdateStudyRoom.vue';
+    import InviteModal from '@/Components/Modals/InviteModal.vue';
 
     const AddUser = ref(false);
 
@@ -91,7 +84,10 @@ import UserLayout from '@/Layouts/UserLayout.vue';
     TertiaryButton,
     Modal,
     NothingToShow,
-    UserLayout
+    UserLayout,
+    NoStudyRoomInvites,
+    UpdateStudyRoom,
+    InviteModal
 },
     props: {
       studyroom: {
@@ -113,28 +109,9 @@ import UserLayout from '@/Layouts/UserLayout.vue';
         AddUser.value = true;
       },
       // Hide the Add project form
-      hideModal() {
+      closeModal() {
         AddUser.value = false;
       },
-      getUserInfo() {
-        // Get ID of selected user
-        const id = document.getElementById('user').value;
-        // Get the user from the users array
-        const user = this.$page.props.users.find(user => user.id == id);
-        const divInfo = document.getElementById('info');
-        divInfo.classList.remove('hidden');
-        const SelectedUserUsername = user.username;
-        const SelectedUserName = user.first_name + ' ' + user.last_name;
-        const SelectedUserEmail = user.email;
-        divInfo.innerHTML = `
-          <div class="w-auto mt-2">
-            <h3 class="text-2xl font-bold">${SelectedUserUsername}</h3>
-            <h3 class="text-2xl border-b-2 border-black">${SelectedUserName}</h3>
-            <p class="text-sm mt-2">${SelectedUserEmail}</p>
-          </div>
-        `;
-        document.getElementById('info_text').classList.add('hidden');
-      }
     },
     data: () => ({
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),

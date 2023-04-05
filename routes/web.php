@@ -14,6 +14,7 @@ use App\Http\Controllers\StudyRooms\Create\CreateStudyRoomController;
 use App\Http\Controllers\StudyRooms\Detail\StudyRoomDetailController;
 use App\Http\Controllers\StudyRooms\Detail\InviteStudyRoomController;
 use App\Http\Controllers\StudyRooms\Delete\DeleteStudyRoom;
+use App\Http\Controllers\StudyRooms\Update\UpdateStudyRoomController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,6 +52,7 @@ Route::middleware('auth')->group(function () {
 // StudyRoom Routes
 Route::middleware('auth')->group(function () {
   Route::get('/studeerkamers', [StudyRoomController::class, 'index'])->name('studeerkamers');
+  Route::post('/studeerkamers/delete', [DeleteStudyRoom::class, 'DeleteStudyRoom'])->name('deleteStudyRoom');
   Route::post('newStudyRoom', [CreateStudyRoomController::class, 'index'])->name('addStudyRoom');
   Route::get('/studeerkamers/edit/{id}', [StudyRoomDetailController::class, 'index'])->name('studyroomDetail');
   Route::post('/addInvite', [InviteStudyRoomController::class, 'sendInvite'])->name('addUserToStudyRoom');
@@ -59,6 +61,7 @@ Route::middleware('auth')->group(function () {
   Route::post('/acceptInvite', [InviteStudyRoomController::class, 'AcceptInvite'])->name('acceptInvite');
   Route::post('/declineInvite', [InviteStudyRoomController::class, 'DeclineInvite'])->name('declineInvite');
   Route::get('/studeerkamers/{id}', [StudyRoomDetailController::class, 'Study'])->name('study');
+  Route::post('studeerkamers/{id}/edit', [UpdateStudyRoomController::class, 'index'])->name('editStudyRoom');
 });
 
 // Settings Routes

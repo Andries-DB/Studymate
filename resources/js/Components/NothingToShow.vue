@@ -10,7 +10,7 @@
 </script>
 
 <template>
-   <p :id="id" class="shadow-lg bg-gray-200 px-5 py-3 lg:px-10 lg:py-5 rounded-full mt-5 mb-5 text-sm lg:text-base" :class="class">
+   <p :id="id" class="w-full h-16 bg-white text-black border-2 border-dashed rounded-xl p-4 flex justify-center text-center items-center gap-3" :class="class">
     <slot />
    </p>
 </template>

@@ -14,45 +14,24 @@
     </div>
   </div>
 
-  <Modal :show="AddProject" @close="closeModal">
-    <div class="bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
-      <h3 class="mb-5">Maak een nieuw project aan!</h3>
-      <form method="POST" :action="route('addProject')" >
-        <input type="hidden" name="_token" :value="csrf">
-        <InputLabel for="name" value="Name" />
-        <TextInput
-        id="name"
-        type="text"
-        name="name"
-        required
-        autofocus
-        autocomplete="Name"
-        placeholder="Naam van het project"
-        />
-        <PrimaryButton class="mt-3">
-          Maak nieuw project aan
-        </PrimaryButton>
-      </form>
-    </div>
-  </Modal>
+  <ProjectModal
+    :show="AddProject"
+    @close="closeModal"
+  />
 </template>
 
 <script>
   import {ref} from 'vue';
-  import InputLabel from '@/Components/InputLabel.vue';
-  import TextInput from '@/Components/TextInput.vue';
+  import ProjectModal from '@/Components/Modals/ProjectModal.vue';
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
-  import Modal from '@/Components/Modal.vue';
 
   const AddProject = ref(false);
 
   export default {
     components: {
-      Modal,
-      InputLabel,
-      TextInput,
-      PrimaryButton,
-    },
+    ProjectModal,
+    PrimaryButton,
+},
     methods: {
       // Get the current date
       currentDate() {
@@ -65,7 +44,6 @@
       },
       openModal() {
         AddProject.value = true;
-        console.log(AddProject.value);
       },
     },
     // Get the CSRF token

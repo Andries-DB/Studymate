@@ -9,7 +9,7 @@
           <div class="space-y-8">
             <h4>Alle gerelateerde taken</h4>
             <div class="flex justify-start" v-if="tasks.length === 0 ">
-              <NothingToShow class="text-base px-10 py-5">Er zijn geen taken! Voeg taken toe om deze te voltooien!</NothingToShow>
+              <NoTasks @click="setFocus()" />
             </div>
             <div class="flex flex-col items-start gap-5">
               <Task v-for="task in tasks" :key="task.id" :task="task" />
@@ -29,6 +29,7 @@
   import addTask from '@/Components/ProjectDetail/addTask.vue';
   import NothingToShow from '@/Components/NothingToShow.vue';
   import UserLayout from '@/Layouts/UserLayout.vue';
+import NoTasks from '@/Components/Widgets/NoTasks.vue';
 
   export default {
     components: {
@@ -37,7 +38,8 @@
     UpdateProject,
     addTask,
     NothingToShow,
-    UserLayout
+    UserLayout,
+    NoTasks
 },
     props: {
       project: {
@@ -45,6 +47,11 @@
       },
       tasks: {
         type: Array,
+      },
+    },
+    methods: {
+      setFocus() {
+        document.getElementById('input_name').focus();
       },
     },
     data: () => ({

@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class StudyRooms extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'description',
+        'private',
+        'image',
+
+    ];
 
     public function StudyRoomsUsers()
     {
@@ -22,10 +29,5 @@ class StudyRooms extends Model
     public function StudyRooms_invitations()
     {
         return $this->hasMany(StudyRooms_invitations::class);
-    }
-
-    public function StudyRoom__user_active()
-    {
-        return $this->hasMany(StudyRoom__user_active::class);
     }
 }

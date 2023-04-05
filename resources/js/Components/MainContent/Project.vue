@@ -6,8 +6,6 @@
         <SecondaryAnchor :href="route('projectDetail', project.id)">
           <PencilIcon class="w-5 h-5" />
         </SecondaryAnchor>
-
-
         <form method="post" :action="route('deleteProject')" class="bg-gray-200 p-0.30 rounded-lg">
           <input type="hidden" name="_token" :value="csrf">
           <input type="hidden" name="id" :value="project.id" />
@@ -15,7 +13,6 @@
             <TrashIcon class="w-5 h-5" />
           </TertiaryButton>
         </form>
-
       </div>
     </div>
     <div class="space-y-2">

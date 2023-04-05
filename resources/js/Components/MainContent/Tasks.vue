@@ -1,15 +1,3 @@
-<script setup>
-  const props = defineProps({
-    tasks: {
-        type: Array
-    },
-    projects: {
-        type: Array
-    },
-  });
-
-</script>
-
 <template>
   <div class="space-y-7 w-full">
     <div class="flex justify-between">
@@ -24,7 +12,7 @@
 
     <div class="flex flex-col space-y-4">
       <div class="flex justify-center" v-if="getTasks().length === 0">
-        <NothingToShow class="text-base py-5 px-10" >Er zijn geen taken om te voltooien</NothingToShow>
+        <NoTasks @click="showModal()"/>
       </div>
       <Task
         v-for="(task, index) in getTasks()"
@@ -34,43 +22,11 @@
     </div>
   </div>
 
-  <!-- Make new task modal -->
-  <Modal :show="AddTask" @close="closeModal">
-    <div class="bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
-      <h3 class="mb-5">Maak een nieuwe taak aan!</h3>
-      <form method="POST" :action="route('addTask')" class="flex flex-col gap-2" >
-        <input type="hidden" name="_token" :value="csrf">
-        <InputLabel for="project" value="Project"/>
-        <select name="project" id="project" class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-          <option value="" disabled selected>-- Selecteer een project --</option>
-          <option v-for="project in $page.props.projects" :value="project.id">{{ project.name }}</option>
-        </select>
-        <InputLabel for="name" value="Name" />
-        <TextInput
-        id="name"
-        type="text"
-        name="name"
-        required
-        autofocus
-        autocomplete="Name"
-        placeholder="Naam van de nieuwe taak"
-        />
-        <InputLabel for="description" value="Description" />
-        <TextInput
-        id="description"
-        type="text"
-        name="description"
-        required
-        autofocus
-        autocomplete="Description"
-        placeholder="Beschrijving van de nieuwe taak"
-        />
-        <PrimaryButton class="mt-3">
-          Maak een nieuwe taak aan
-        </PrimaryButton>
-      </form>
-    </div>
-  </Modal>
+  <TaskModal
+    :show="AddTask"
+    :close="this.closeModal"
+    :projects="this.$page.props.projects"
+  />
 
 </template>
 
@@ -78,23 +34,25 @@
   import Task from './Task.vue';
   import { ref } from 'vue';
   import Modal from '@/Components/Modal.vue';
-  import InputLabel from '@/Components/InputLabel.vue';
   import TextInput from '@/Components/TextInput.vue';
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
-  import TertiaryButton from '../Buttons/TertiaryButton.vue';
-  import NothingToShow from '../NothingToShow.vue';
+  import TertiaryButton from '@/Components/Buttons/TertiaryButton.vue';
+  import NothingToShow from '@/Components/NothingToShow.vue';
+  import NoTasks from '@/Components/Widgets/NoTasks.vue';
+  import TaskModal from '@/Components/Modals/TaskModal.vue';
 
   const AddTask = ref(false);
 
   export default {
     components: {
-      Task,
-      InputLabel,
-      TextInput,
-      PrimaryButton,
-      TertiaryButton,
-      Modal,
-      NothingToShow,
+    Task,
+    TextInput,
+    PrimaryButton,
+    TertiaryButton,
+    Modal,
+    NothingToShow,
+    NoTasks,
+    TaskModal
     },
     props: {
       tasks: {

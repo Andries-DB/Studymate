@@ -6,7 +6,7 @@
         <input type="hidden" name="_token" :value="csrf">
         <input type="hidden" name="id" :value="project.id">
         <TextInput
-          id="name"
+          id="input_name"
           type="text"
           name="name"
           required
