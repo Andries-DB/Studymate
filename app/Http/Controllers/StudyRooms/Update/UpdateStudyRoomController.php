@@ -18,7 +18,6 @@ class UpdateStudyRoomController
 
       // Replace space with underscore in name
       $studyroomImageName = str_replace(' ', '_', $studyroom->name);
-
       if ($request->hasFile('image'))
       {
         $imagepath = $request->file('image')->storeAs(
@@ -26,6 +25,9 @@ class UpdateStudyRoomController
           $studyroomImageName . '.' . $request->file('image')->getClientOriginalExtension() ,
           'public');
         $studyroom->image = $imagepath;
+      }
+      else {
+        $studyroom->image = 'studyroomImages/default.jpg';
       }
       $studyroom->save();
 

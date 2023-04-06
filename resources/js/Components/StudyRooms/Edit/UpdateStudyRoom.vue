@@ -2,7 +2,7 @@
   <div class="space-y-5 ">
     <h4>Update de informatie van je studeerkamer</h4>
     <div class="w-full lg:w-1/3" >
-      <form :action="route('editStudyRoom' , studyroom.id)" method="post" class="flex flex-col">
+      <form :action="route('editStudyRoom' , studyroom.id)" method="post" enctype="multipart/form-data" class="flex flex-col">
         <input type="hidden" name="_token" :value="csrf">
         <input type="hidden" name="id" :value="studyroom.id">
         <TextInput
@@ -22,7 +22,7 @@
           name="description"
           required
           autocomplete="Description"
-          placeholder="Beschrijvin van de studeerkamer"
+          placeholder="Beschrijving van de studeerkamer"
           :value="studyroom.description"
         />
         <input type="file" name="image" id="image" class="mb-3">

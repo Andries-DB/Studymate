@@ -1,6 +1,10 @@
 <template>
-  <div class="flex justify-between py-3">
-    <h4>Gedeelde studeerkamers</h4>
+  <div class="flex justify-between items-center py-3">
+    <div class="">
+      <h4>Gedeelde studeerkamers</h4>
+      <p class="text-gray-500">Overzicht van alle studeerkamers die gedeeld zijn met jou</p>
+    </div>
+
     <div>
       <PrimaryButton
         v-on:click="showModal()"
@@ -10,12 +14,12 @@
       </PrimaryButton>
     </div>
   </div>
-  <div class="flex flex-row gap-3">
+  <div class="flex flex-row flex-wrap gap-3 w-full">
     <div class="flex justify-start w-full cursor-pointer" v-if="$page.props.sharedStudyRoom.length === 0" @click="showModal()">
       <NoStudyRooms @click="showModal()" />
     </div>
     <div v-for="shared in $page.props.sharedStudyRoom">
-      <StudyRoom :studyroom="shared.studyroom" />
+      <StudyRoom :studyroom="shared.studyroom" :canEdit="true"/>
     </div>
   </div>
 

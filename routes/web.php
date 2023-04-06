@@ -62,6 +62,7 @@ Route::middleware('auth')->group(function () {
   Route::post('/declineInvite', [InviteStudyRoomController::class, 'DeclineInvite'])->name('declineInvite');
   Route::get('/studeerkamers/{id}', [StudyRoomDetailController::class, 'Study'])->name('study');
   Route::post('studeerkamers/{id}/edit', [UpdateStudyRoomController::class, 'index'])->name('editStudyRoom');
+  Route::post('/studeerkamers/user/delete' , [DeleteStudyRoom::class, 'DeleteSelfFromStudyRoom'])->name('deleteSelfFromStudyRoom');
 });
 
 // Settings Routes

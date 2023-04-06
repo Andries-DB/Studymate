@@ -1,5 +1,6 @@
 <template>
   <h4>Uitnodigingen</h4>
+  <p class="text-gray-500">Hieronder staan alle uitnodigingen die je hebt ontvangen.</p>
   <div class="flex justify-center mt-2" v-if="$page.props.invites.length === 0">
     <NothingToShow class="text-base py-5 px-10">Er zijn geen uitnodigingen om weer te geven</NothingToShow>
   </div>

@@ -1,12 +1,12 @@
 <template>
-  <div class="flex flex-col md:flex-row items-center md:items-stretch gap-6" :class="$page.props.projects.length === 0 ? 'justify-center' : ''">
+  <div class="flex flex-col flex-wrap md:flex-row items-center md:items-stretch gap-6">
     <div class="w-full" v-if="$page.props.projects.length === 0">
       <NoProjects @click="openModal()"/>
     </div>
     <project
       v-for="project in $page.props.projects"
       :key="project.id"
-      class="w-full md:w-1/3 rounded-xl p-4"
+      class="w-full md:w-1/4 rounded-xl p-4"
       :project="project"
     />
   </div>

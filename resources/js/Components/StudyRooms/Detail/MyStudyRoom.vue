@@ -3,12 +3,12 @@
     class="bg rounded-xl text-white p-4 flex justify-between flex-row gap-7 bg-indigo-500"
     :style="{'background-image':'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(storage/' + room.studyroom.image + ')' }"
     >
-    <a class="p-2">
-      <div class="flex justify-between items-center">
-        <h3>{{ room.studyroom.name }}</h3>
+    <div class=" w-3/4 p-2">
+      <div>
+        <h3 class="break-words hypens-auto">{{ room.studyroom.name }}</h3>
       </div>
       <p>{{ room.studyroom.description }}</p>
-    </a>
+    </div>
     <div class="flex items-center gap-2">
       <SecondaryAnchor :href="route('studyroomDetail' , room.study_room_id)">
         <PencilIcon class="w-5 h-5" />

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\StudyRooms\Delete;
 
+use Illuminate\Support\Facades\Storage;
 use App\Models\StudyRooms;
 use App\Models\StudyRooms_invitations;
 use App\Models\StudyRooms_Owner;
@@ -33,6 +34,14 @@ class DeleteStudyRoom
         $studyroomOwner->delete();
       }
 
+      //Delete the photo from the storage
+      $studyroom = StudyRooms::where('id', $r->id)->first();
+      $imagePath = $studyroom->image;
+      if (Storage::exists($imagePath))
+      {
+        Storage::disk('public')->delete($imagePath);
+      }
+
       StudyRooms::where('id', $r->id)->delete();
 
       return redirect()->back();
@@ -51,7 +60,25 @@ class DeleteStudyRoom
       }
 
       //Delete the user from the studyroom
-      $studyroomUser = StudyRoomsUser::where('study_room_id', $r->studyroom_id)->where('user_id', $r->user_id)->first();
+      StudyRoomsUser::where('id', $r->id)->delete();
+
+      return redirect()->back();
+    }
+
+    // Delete yourself from a studyroom
+    public function DeleteSelfFromStudyRoom(Request $r)
+    {
+      //Check if the user u want to delete is the owner
+      $studyroomOwner = StudyRooms_Owner::where('study_room_id', $r->studyroom_id)->where('user_id', auth()->user()->id)->first();
+
+      //If the user is the owner, go back
+      if ($studyroomOwner != null)
+      {
+        return redirect()->back();
+      }
+
+      //Delete the user from the studyroom
+      StudyRoomsUser::where('study_room_id', $r->id)->where('user_id', auth()->user()->id)->delete();
 
       return redirect()->back();
     }

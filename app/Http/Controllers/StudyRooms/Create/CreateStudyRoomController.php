@@ -16,14 +16,24 @@ class CreateStudyRoomController
       $studyroom = new StudyRooms();
       $studyroom->name = $r->name;
       $studyroom->description = $r->description;
-      $imagepath = $r->file('image')->storeAs(
-        'studyroomImages',
-        $studyroom->name . '.' . $r->file('image')->getClientOriginalExtension() ,
-        'public');
 
-      $studyroom->image = $imagepath;
+      // Replace spaces with underscores
+      $studyroomImageName = str_replace(' ', '_', $studyroom->name);
+
+      // Check if the image field is empty, if empty dont upload an image
+      if ($r->file('image') == null)
+      {
+        $studyroom->image = 'studyroomImages/default.jpg';
+      }
+      else {
+        $imagepath = $r->file('image')->storeAs(
+          'studyroomImages',
+          $studyroomImageName . '.' . $r->file('image')->getClientOriginalExtension() ,
+          'public');
+        $studyroom->image = $imagepath;
+      }
+
       $studyroom->private = true;
-      $studyroom->time_studied = 0;
       $studyroom->save();
 
       // Make the user that created the studyroom the owner

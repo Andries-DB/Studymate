@@ -1,7 +1,10 @@
 <template>
   <div class="space-y-7 w-full">
-    <div class="flex justify-between">
-      <h4>Taken te voltooien</h4>
+    <div class="flex justify-between items-center">
+      <div>
+        <h4>Taken te voltooien</h4>
+        <p class="text-gray-500">Hieronder staan alle taken die je nog moet voltooien</p>
+      </div>
       <TertiaryButton id="addProject" @click="showModal()">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -33,11 +36,8 @@
 <script>
   import Task from './Task.vue';
   import { ref } from 'vue';
-  import Modal from '@/Components/Modal.vue';
   import TextInput from '@/Components/TextInput.vue';
-  import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
   import TertiaryButton from '@/Components/Buttons/TertiaryButton.vue';
-  import NothingToShow from '@/Components/NothingToShow.vue';
   import NoTasks from '@/Components/Widgets/NoTasks.vue';
   import TaskModal from '@/Components/Modals/TaskModal.vue';
 
@@ -47,10 +47,7 @@
     components: {
     Task,
     TextInput,
-    PrimaryButton,
     TertiaryButton,
-    Modal,
-    NothingToShow,
     NoTasks,
     TaskModal
     },

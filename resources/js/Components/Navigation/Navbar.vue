@@ -16,7 +16,7 @@
 </script>
 
 <template>
-  <div class="lg:space-y-10 lg:block xl:fixed relative grid grid-cols-12 h-full bg-stone-100">
+  <div class="lg:space-y-10 lg:block lg:fixed relative grid grid-cols-12 h-full bg-stone-100">
     <div class="col-span-9 flex justify-center items-center gap-4">
       <a :href="route('dashboard')" class="flex flex-row items-center justify-center text-indigo-500 xl:mt-12 py-10 xl:py-0 text-3xl">
         Studym

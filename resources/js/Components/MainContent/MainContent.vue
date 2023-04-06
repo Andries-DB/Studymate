@@ -8,7 +8,7 @@
         <Tasks />
       </div>
       <div class="row-span-2 col-span-12 md:col-span-6">
-        <Friends />
+        <LatestStudyRooms />
       </div>
     </div>
   </div>
@@ -18,14 +18,14 @@
   import HelloBar from './HelloBar.vue';
   import CurrentProjects from './CurrentProjects.vue';
   import Tasks from './Tasks.vue'
-  import Friends from './Friends.vue'
+  import LatestStudyRooms from './LatestStudyRooms.vue'
 
   export default {
     components: {
       HelloBar,
       CurrentProjects,
       Tasks,
-      Friends,
+      LatestStudyRooms,
     },
   }
 </script>

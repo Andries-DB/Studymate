@@ -27,9 +27,8 @@
   import Task from '@/Components/ProjectDetail/Task.vue';
   import UpdateProject from '@/Components/ProjectDetail/UpdateProject.vue';
   import addTask from '@/Components/ProjectDetail/addTask.vue';
-  import NothingToShow from '@/Components/NothingToShow.vue';
   import UserLayout from '@/Layouts/UserLayout.vue';
-import NoTasks from '@/Components/Widgets/NoTasks.vue';
+  import NoTasks from '@/Components/Widgets/NoTasks.vue';
 
   export default {
     components: {
@@ -37,10 +36,9 @@ import NoTasks from '@/Components/Widgets/NoTasks.vue';
     Task,
     UpdateProject,
     addTask,
-    NothingToShow,
     UserLayout,
     NoTasks
-},
+    },
     props: {
       project: {
         type: Object,

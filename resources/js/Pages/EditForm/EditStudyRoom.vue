@@ -1,6 +1,3 @@
-
-import InviteModal from '@/Components/Modals/InviteModal.vue';
-
 <template>
   <Head :title="$page.props.studyroom.name" />
   <UserLayout>
@@ -56,16 +53,11 @@ import InviteModal from '@/Components/Modals/InviteModal.vue';
 </template>
 
 <script>
-    import NavBar from '@/Components/Navigation/Navbar.vue';
     import { Head } from '@inertiajs/vue3';
     import { ref } from 'vue';
-
     import Invite from '@/Components/StudyRooms/Edit/Invite.vue';
     import Users from '@/Components/StudyRooms/Edit/Users.vue';
-
-    import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
     import TertiaryButton from '@/Components/Buttons/TertiaryButton.vue';
-    import Modal from '@/Components/Modal.vue';
     import NothingToShow from '@/Components/NothingToShow.vue';
     import UserLayout from '@/Layouts/UserLayout.vue';
     import NoStudyRoomInvites from '@/Components/Widgets/NoStudyRoomInvites.vue';
@@ -76,13 +68,10 @@ import InviteModal from '@/Components/Modals/InviteModal.vue';
 
   export default {
     components: {
-    NavBar,
     Head,
     Invite,
     Users,
-    PrimaryButton,
     TertiaryButton,
-    Modal,
     NothingToShow,
     UserLayout,
     NoStudyRoomInvites,

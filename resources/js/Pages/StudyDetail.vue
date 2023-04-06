@@ -11,17 +11,14 @@
       </div>
       <div class="grid grid-cols-12 grid-rows-2 gap-10 h-full w-full">
         <div class="row-span-5 col-span-12 md:col-span-3">
-          <div class="w-full flex items-center justify-center lg:block">
-            <JoinStudy @click="joinstream()" />
+          <div class="flex items-center justify-center lg:block">
+            <JoinStudy @click="joinstream()"/>
             <div id="yourCamera" class="lg:fixed">
               <!-- Here comes your camera when joining the studyroom -->
             </div>
           </div>
         </div>
         <div class="row-span-5 col-span-12 md:col-span-9 flex justify-center lg:block mb-36" >
-         <div class="block lg:flex lg:justify-center cursor-pointer" @click="joinstream()">
-            <NothingToShow id="nothingtoshow">Join de studeerkamer en zie wie er aan het studeren is!</NothingToShow>
-          </div>
           <div id="videos" class="flex h-full flex-wrap justify-center gap-5">
             <!-- Here comes the other users cameras -->
           </div>
@@ -83,7 +80,6 @@ export default {
                     this.joinRoomInit(response.data, channel);
                     document.getElementById("cameraPlaceholder").classList.add("hidden");
                     document.getElementById("join-btn").classList.add("hidden");
-                    document.getElementById("nothingtoshow").classList.add("hidden");
                     document.getElementById("leave-btn").classList.remove("hidden");
                     document.getElementById("screen-btn").classList.remove("hidden");
 
@@ -96,7 +92,6 @@ export default {
         // Creating the client & listening for events
         async joinRoomInit(token, channel) {
             const uid = this.client.username;
-            console.log(avatar);
             client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
             await client.join(APP_ID, channel, token, uid);
             client.on("user-published", this.handleUserPublished);
