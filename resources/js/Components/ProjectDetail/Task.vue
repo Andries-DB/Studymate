@@ -1,5 +1,5 @@
 <template>
-  <div class=" bg-indigo-500 flex w-full lg:w-1/2 flex-wrap gap-10 justify-between p-4 rounded-xl text-gray-50 items-center">
+  <div class=" flex items-center justify-between  gap-5 w-11/12 h-auto bg-gray-200 px-5 py-3 rounded-lg">
     <div>
       <div name="INFO">
         <strong>{{task.name}}</strong> - {{task.description}}

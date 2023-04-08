@@ -192,6 +192,33 @@
   </div>
 </div>
 
+<footer
+  class="bg-white text-center ">
+  <div class="container p-6 text-black">
+    <hr class="mb-5">
+    <div class="grid gap-4 lg:grid-cols-1">
+      <div class="mb-6 md:mb-0">
+        <h5 class="mb-2 font-bold">Arteveldehogeschool</h5>
+
+        <p class="mb-4">
+          Deze webapplicatie werkt gemaakt als opdracht voor de bachelorproef van de
+          <a class="hover:text-indigo-500" href="https://www.arteveldehogeschool.be/nl/opleidingen/bachelor/grafische-en-digitale-media">
+            Arteveldehogeschool opleiding Grafische en Digitale media
+          </a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!--Copyright section-->
+  <div
+    class="bg-white p-4 text-center text-black">
+    © 2023 Copyright: Andries De Baere
+
+  </div>
+</footer>
+
 </template>
 
 <script>

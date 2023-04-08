@@ -6,8 +6,9 @@
       <addTask :project="project" />
       <div class="grid grid-cols-12 grid-rows-1 gap-10 h-full">
         <div class="row-span-1 col-span-12 md:col-span-6">
-          <div class="space-y-8">
+          <div >
             <h4>Alle gerelateerde taken</h4>
+            <p class="text-gray-500 mb-5">Hier zie je alle taken die je hebt aangemaakt</p>
             <div class="flex justify-start" v-if="tasks.length === 0 ">
               <NoTasks @click="setFocus()" />
             </div>

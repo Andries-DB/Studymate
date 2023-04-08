@@ -23,37 +23,36 @@ class DashboardController extends Controller
 
 
     $studyrooms = [];
-    $test = [];
+    $studyrooms_owner_member = [];
 
 
     // Add studyrooms where user is owner
     $studyrooms_owner = StudyRooms_Owner::where('user_id', auth()->user()->id)->with('studyroom')->get();
     if ($studyrooms_owner->count() > 0) {
       foreach ($studyrooms_owner as $studyroom_member) {
-        $test[$studyroom_member->studyroom->id] = $studyroom_member->studyroom->toArray();
+        $studyrooms_owner_member[$studyroom_member->studyroom->id] = $studyroom_member->studyroom->toArray();
       }
-    }
-    else {
-      $test += [];
+    } else {
+      $studyrooms_owner_member += [];
     }
 
     // Add studyrooms where user is member
     $studyrooms_member = StudyRoomsUser::where('user_id', auth()->user()->id)->with('studyroom')->get();
     if ($studyrooms_member->count() > 0) {
       foreach ($studyrooms_member as $studyroom_member) {
-        $test[$studyroom_member->studyroom->id] = $studyroom_member->studyroom->toArray();
+        $studyrooms_owner_member[$studyroom_member->studyroom->id] = $studyroom_member->studyroom->toArray();
       }
     }
     else {
-      $test += [];
+      $studyrooms_owner_member += [];
     }
 
     // Add the public studyrooms
     $studyrooms_public = StudyRooms::where('private', false)->get();
 
     // Put them in an array
-    foreach ($test as $test) {
-      $studyrooms[] = $test;
+    foreach ($studyrooms_owner_member as $studyroom_owner_member) {
+      $studyrooms[] = $studyroom_owner_member;
     }
     foreach ($studyrooms_public as $studyroom_public) {
       $studyrooms[] = $studyroom_public;

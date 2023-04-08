@@ -1,8 +1,13 @@
 <template>
-  <div class=" bg-indigo-500 flex justify-between p-4 rounded-xl text-gray-50 items-center">
-    <div name="INFO">
-      <h4>{{ studyroomuserInfo.first_name + ' ' + studyroomuserInfo.last_name }} - <strong>{{ studyroomuserInfo.email }}</strong></h4>
-      <p class="text-sm text-gray-200">Toegetreden op {{ moment(studyroomuserInfo.created_at).format("DD/MM/YYYY") }}</p>
+  <div class="flex items-center justify-between  gap-5 w-11/12 h-auto bg-gray-200 px-5 py-3 rounded-lg">
+    <div class="">
+      <div class="flex flex-row gap-5 items-center">
+        <div class="w-16 h-16 rounded-full hidden md:block" :style="{'background-image':' url(../../storage/' + studyroomuserInfo.avatar + ')' }" id="avatar" />
+        <div class="" name="INFO">
+          <h4>{{ studyroomuserInfo.first_name + ' ' + studyroomuserInfo.last_name }} - <strong>{{ studyroomuserInfo.email }}</strong></h4>
+          <p class="text-sm text-black">Toegetreden op {{ moment(studyroomuserInfo.created_at).format("DD/MM/YYYY") }}</p>
+        </div>
+      </div>
     </div>
     <div class="" name="CTA">
       <form method="post" :action="route('deleteUserFromStudyRoom')" class="bg-gray-200 p-0.30 rounded-lg">

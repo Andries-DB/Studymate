@@ -1,31 +1,23 @@
 <template>
   <Head :title="$page.props.studyroom.name" />
   <UserLayout>
-    <div class="flex flex-col gap-10 p-7">
-      <div class="flex justify-between items-center space-y-7 xl:w-1/3">
-        <h3 class="text-3xl mt-5 ml-5">Uitnodigingen & Leden</h3>
-        <TertiaryButton id="addInvitation" @click="showModal()">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-          </svg>
-        </TertiaryButton>
-
-      </div>
-      <div class="space-y-7 ml-5 mr-5 xl:w-1/3">
-        <div>
-          <h3 class="mb-2">Uitnodigingen</h3>
-          <div class="flex justify-center text-center" v-if="$page.props.studyroomInvitations.length === 0">
-            <NoStudyRoomInvites @click="showModal()" />
+    <div class="grid grid-cols-12 grid-rows-2 gap-10 h-full ml-10 mt-8">
+      <div class="row-span-2 col-span-12 md:col-span-6 spaxe-y-7">
+        <UpdateStudyRoom :studyroom="$page.props.studyroom" />
+        <div class="mt-8">
+          <h4 >Uitnodigingen</h4>
+          <p class="text-gray-500 mb-4">Hier zie je alle uitnodigingen die je hebt verstuurd</p>
+          <div class="flex justify-center text-center w-11/12" v-if="$page.props.studyroomInvitations.length === 0">
+            <NothingToShow class="text-base px-10 py-5" >Er zijn op dit moment geen uitnodigingen</NothingToShow>
           </div>
           <Invite
             v-for="invite in $page.props.studyroomInvitations"
             :invite = "invite"
             :invitedUser = "invite.user"
           />
-        </div>
-        <div>
-          <h3 class="mb-2">Leden</h3>
-          <div class="flex justify-center text-center" v-if="$page.props.studyroomUsers.length === 0">
+          <h4 class="mt-2">Leden</h4>
+          <p class="text-gray-500 mb-4">Hier zie je alle leden van de studiezaal</p>
+          <div class="flex justify-center text-center w-11/12" v-if="$page.props.studyroomUsers.length === 0">
             <NothingToShow class="text-base px-10 py-5" >Er zijn op dit moment geen leden</NothingToShow>
           </div>
           <Users
@@ -36,35 +28,33 @@
           />
         </div>
       </div>
-      <div class="h-full w-full">
-        <div class="ml-5">
-          <UpdateStudyRoom :studyroom="$page.props.studyroom" />
+      <div class="row-span-1 col-span-12 md:col-span-6 ">
+        <div class="flex flex-col gap-5">
+          <div class="">
+            <h4>Nodig mensen uit</h4>
+            <p class="text-gray-500">Selecteer gebruikers en nodig ze uit</p>
+          </div>
+          <div class="flex flex-col gap-5">
+            <UserOverview
+            :user="user"
+            :studyroom="$page.props.studyroom"
+          />
+          </div>
         </div>
       </div>
     </div>
   </UserLayout>
-
-  <InviteModal
-    :show="AddUser"
-    :close="this.closeModal"
-    :users="this.$page.props.users"
-    :studyroom="this.$page.props.studyroom"
-  />
 </template>
 
 <script>
-    import { Head } from '@inertiajs/vue3';
-    import { ref } from 'vue';
-    import Invite from '@/Components/StudyRooms/Edit/Invite.vue';
-    import Users from '@/Components/StudyRooms/Edit/Users.vue';
-    import TertiaryButton from '@/Components/Buttons/TertiaryButton.vue';
-    import NothingToShow from '@/Components/NothingToShow.vue';
-    import UserLayout from '@/Layouts/UserLayout.vue';
-    import NoStudyRoomInvites from '@/Components/Widgets/NoStudyRoomInvites.vue';
-    import UpdateStudyRoom from '@/Components/StudyRooms/Edit/UpdateStudyRoom.vue';
-    import InviteModal from '@/Components/Modals/InviteModal.vue';
-
-    const AddUser = ref(false);
+  import { Head } from '@inertiajs/vue3';
+  import Invite from '@/Components/StudyRooms/Edit/Invite.vue';
+  import Users from '@/Components/StudyRooms/Edit/Users.vue';
+  import TertiaryButton from '@/Components/Buttons/TertiaryButton.vue';
+  import NothingToShow from '@/Components/NothingToShow.vue';
+  import UserLayout from '@/Layouts/UserLayout.vue';
+  import UpdateStudyRoom from '@/Components/StudyRooms/Edit/UpdateStudyRoom.vue';
+  import UserOverview from '@/Components/StudyRooms/Edit/UserOverview.vue';
 
   export default {
     components: {
@@ -74,9 +64,8 @@
     TertiaryButton,
     NothingToShow,
     UserLayout,
-    NoStudyRoomInvites,
     UpdateStudyRoom,
-    InviteModal
+    UserOverview
 },
     props: {
       studyroom: {
@@ -92,19 +81,8 @@
         type: Array
       }
     },
-    methods: {
-      // Show the Add project form
-      showModal() {
-        AddUser.value = true;
-      },
-      // Hide the Add project form
-      closeModal() {
-        AddUser.value = false;
-      },
-    },
     data: () => ({
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-      AddUser
     }),
   }
 </script>
