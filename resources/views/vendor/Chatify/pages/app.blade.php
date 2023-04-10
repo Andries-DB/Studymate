@@ -17,7 +17,7 @@
             <input type="text" class="messenger-search" placeholder="Zoek" />
             {{-- Tabs --}}
             <div class="messenger-listView-tabs">
-                <a href="#" class="active-tab" data-view="users">
+                <a href="#" @if($type == 'user') class="active-tab" @endif data-view="users">
                     <span class="far fa-user"></span> Personen</a>
             </div>
         </div>
@@ -25,7 +25,7 @@
         <div class="m-body contacts-container">
            {{-- Lists [Users/Group] --}}
            {{-- ---------------- [ User Tab ] ---------------- --}}
-           <div class=" show messenger-tab users-tab app-scroll" data-view="users">
+           <div class="@if($type == 'user') show @endif messenger-tab users-tab app-scroll" data-view="users">
 
                {{-- Favorites --}}
                <div class="favorites-section">
