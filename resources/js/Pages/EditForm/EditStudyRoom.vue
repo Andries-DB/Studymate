@@ -7,13 +7,14 @@
         <div class="mt-8">
           <h4 >Uitnodigingen</h4>
           <p class="text-gray-500 mb-4">Hier zie je alle uitnodigingen die je hebt verstuurd</p>
-          <div class="flex justify-center text-center w-11/12" v-if="$page.props.studyroomInvitations.length === 0">
+          <div class="flex justify-center placeholder:text-center w-11/12" v-if="$page.props.studyroomInvitations.length === 0">
             <NothingToShow class="text-base px-10 py-5" >Er zijn op dit moment geen uitnodigingen</NothingToShow>
           </div>
           <Invite
             v-for="invite in $page.props.studyroomInvitations"
             :invite = "invite"
             :invitedUser = "invite.user"
+            class="flex flex-row mb-3"
           />
           <h4 class="mt-2">Leden</h4>
           <p class="text-gray-500 mb-4">Hier zie je alle leden van de studiezaal</p>

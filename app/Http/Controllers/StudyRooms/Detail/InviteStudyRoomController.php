@@ -51,7 +51,7 @@ class InviteStudyRoomController
       $studyroomUser->study_room_id = $r->studyroom_id;
       $studyroomUser->save();
 
-      return redirect()->route('studeerkamers');
+      return redirect()->back();
     }
 
     // Decline an invitation to a studyroom

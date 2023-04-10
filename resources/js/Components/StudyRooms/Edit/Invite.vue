@@ -1,10 +1,10 @@
 <template>
-  <div class="flex items-center justify-between  gap-5 w-11/12 h-auto bg-gray-200 px-5 py-3 rounded-lg">
+  <div class="flex items-center justify-between gap-5 w-11/12 h-auto bg-gray-200 px-5 py-3 rounded-lg">
     <div class="flex flex-row gap-5 items-center">
       <div class="w-16 h-16 rounded-full hidden md:block" :style="{'background-image':' url(../../storage/' + invitedUser.avatar + ')' }" id="avatar" />
       <div class="" name="INFO">
-      <h4>{{ invitedUser.first_name + ' ' + invitedUser.last_name }} - <strong>{{ invitedUser.email }}</strong></h4>
-      <p class="text-sm text-black">Verzonden op {{ moment(invitedUser.created_at).format("DD/MM/YYYY") }}</p>
+      <h4>{{ invitedUser.username }} - <strong>{{ invitedUser.name }}</strong></h4>
+      <p class="text-sm text-black">Verzonden op {{ moment(invite.created_at).format("DD/MM/YYYY") }}</p>
     </div>
     </div>
 

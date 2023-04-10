@@ -1,5 +1,4 @@
 <template>
-  <!-- https://www.youtube.com/watch?v=QsH8FL0952k&t=8226s -->
   <Head :title="$page.props.studyroomInformation.name" />
   <UserLayout>
     <div class="flex flex-col gap-10 p-7 lg:ml-8">

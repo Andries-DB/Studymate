@@ -89,7 +89,9 @@
           <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Studymate bevordert de productiviteit</h1>
           <p class="mt-6 text-lg leading-8 text-gray-600">Ontdek alle studeerkamers en begin te studeren! Maak nieuwe vrienden en studeer samen online!</p>
           <div class="mt-10 flex items-center justify-center gap-x-6">
-            <a class="bg-indigo-500 py-2 px-4 text-white rounded-lg hover:bg-gray-300 hover:text-indigo-500" :href="route('register')">Maak een account aan</a>
+            <PrimaryAnchor :href=" route('register')" class="w-1/3">
+              Maak een account aan
+            </PrimaryAnchor>
             <a :href="route('login')" class="text-sm font-semibold leading-6 text-gray-900">Heb je al een account? <span aria-hidden="true">→</span></a>
           </div>
         </div>

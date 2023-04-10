@@ -1,5 +1,5 @@
 <template>
-  <p class="text-red-500 text-sm" :id="id">
+  <p class="text-red-500 text-sm error" :id="id">
     <slot />
   </p>
 </template>

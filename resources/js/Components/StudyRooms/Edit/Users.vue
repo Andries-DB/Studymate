@@ -4,8 +4,8 @@
       <div class="flex flex-row gap-5 items-center">
         <div class="w-16 h-16 rounded-full hidden md:block" :style="{'background-image':' url(../../storage/' + studyroomuserInfo.avatar + ')' }" id="avatar" />
         <div class="" name="INFO">
-          <h4>{{ studyroomuserInfo.first_name + ' ' + studyroomuserInfo.last_name }} - <strong>{{ studyroomuserInfo.email }}</strong></h4>
-          <p class="text-sm text-black">Toegetreden op {{ moment(studyroomuserInfo.created_at).format("DD/MM/YYYY") }}</p>
+          <h4>{{ studyroomuserInfo.username }} - <strong>{{ studyroomuserInfo.name }}</strong></h4>
+          <p class="text-sm text-black">Toegetreden op {{ moment(studyroomuser.created_at).format("DD/MM/YYYY") }}</p>
         </div>
       </div>
     </div>
@@ -13,7 +13,7 @@
       <form method="post" :action="route('deleteUserFromStudyRoom')" class="bg-gray-200 p-0.30 rounded-lg">
         <input type="hidden" name="_token" :value="csrf">
         <input type="hidden" name="id" :value="studyroomuser.id">
-        <input type="hidden" name="studyroom_id" :value="studyroomuser.studyroom_id">
+        <input type="hidden" name="studyroom_id" :value="studyroomuser.study_room_id">
         <input type="hidden" name="user_id" :value="studyroomuser.user_id">
       <TertiaryButton type="submit">
         <TrashIcon class="w-5 h-5" />

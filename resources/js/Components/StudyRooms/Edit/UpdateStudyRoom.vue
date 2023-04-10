@@ -6,27 +6,25 @@
         <input type="hidden" name="_token" :value="csrf">
         <input type="hidden" name="id" :value="studyroom.id">
         <TextInput
-          class="mb-3"
           id="name"
           type="text"
           name="name"
-          required
           autocomplete="Name"
           placeholder="Naam van de studeerkamer"
           :value="studyroom.name"
         />
+        <ErrorHandling id="nameError" class="mb-3" />
         <TextInput
           id="description"
-          class="mb-3"
           type="text"
           name="description"
-          required
           autocomplete="Description"
           placeholder="Beschrijving van de studeerkamer"
           :value="studyroom.description"
         />
+        <ErrorHandling id="descriptionError" class="mb-3"/>
         <input type="file" name="image" id="image" class="mb-3">
-        <PrimaryButton class="mt-3">
+        <PrimaryButton class="mt-3" @click="UpdateError()">
           Update
         </PrimaryButton>
       </form>
@@ -36,16 +34,42 @@
 
 <script>
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
+  import ErrorHandling from '@/Components/Error/ErrorHandling.vue';
   import TextInput from '@/Components/TextInput.vue';
 
   export default {
     components: {
       PrimaryButton,
-      TextInput
+      TextInput,
+      ErrorHandling,
     },
     props: {
       studyroom: {
         type: Object
+      },
+    },
+    methods: {
+      UpdateError() {
+        // Reset all errors
+        document.querySelectorAll('.error').forEach((error) => {
+          error.innerHTML = '';
+        });
+
+        // Check if the name is empty
+        if (document.getElementById('name').value == '') {
+          document.getElementById('nameError').classList.remove('hidden');
+          document.getElementById('nameError').innerHTML = 'De naam van de studeerkamer is verplicht';
+
+          event.preventDefault();
+        }
+
+        if (document.getElementById('description').value == '') {
+          document.getElementById('descriptionError').classList.remove('hidden');
+          document.getElementById('descriptionError').innerHTML = 'De beschrijving van de studeerkamer is verplicht';
+
+          event.preventDefault();
+        }
+
       },
     },
     data: () => ({

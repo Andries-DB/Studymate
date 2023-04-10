@@ -7,8 +7,8 @@
   <div v-for="invite in $page.props.invites" class="mt-2" >
     <div class="w-full bg-indigo-500 flex justify-between p-4 rounded-xl text-gray-50 items-center mb-3">
       <div class="" name="INFO">
-        <h3 class="text-xl">{{ invite.studyroom.name }}</h3>
-        <p class="text-sm text-gray-200">Verzonden op {{ moment(invite.created_at).format("DD/MM/YYYY") }}</p>
+        <h3>{{ invite.studyroom.name }}</h3>
+        <p>Verzonden op {{ moment(invite.created_at).format("DD/MM/YYYY") }}</p>
       </div>
       <div class="flex gap-2" name="CTA">
         <div>

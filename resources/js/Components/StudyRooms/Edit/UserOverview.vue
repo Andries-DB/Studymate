@@ -12,19 +12,29 @@
   </div>
   </div>
 
+  <div class="" v-if="$page.props.users.length == 0">
+    <NothingToShow class="w-11/12">
+      Er zijn geen gebruikers om uit te nodigen.
+    </NothingToShow>
+  </div>
+
   <form :action="route('addUserToStudyRoom')" method="post">
     <input type="hidden" name="_token" :value="csrf">
     <input type="hidden" name="id" :value="studyroom.id">
     <input type="hidden" name="users" :value="users">
 
-    <PrimaryButton type="submit" class="mt-3 w-11/12">
+    <PrimaryButton type="submit" class="mt-3 w-11/12" @click="UsersError()">
       Nodig uit
     </PrimaryButton>
+    <ErrorHandling id="usersError">
+    </ErrorHandling>
   </form>
 </template>
 
 <script>
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
+  import ErrorHandling from '@/Components/Error/ErrorHandling.vue';
+import NothingToShow from '@/Components/NothingToShow.vue';
   import { ref } from 'vue';
 
   // ref array
@@ -72,6 +82,16 @@
         document.getElementById('user-' + user.id).classList.remove('bg-indigo-500');
         document.getElementById('user-' + user.id).classList.add('bg-gray-200');
       },
+      UsersError() {
+        // Reset all errors
+        document.getElementById('usersError').classList.add('hidden');
+
+        if (users.value.length == 0) {
+          document.getElementById('usersError').classList.remove('hidden');
+          document.getElementById('usersError').innerHTML = 'Je moet minimaal 1 gebruiker selecteren om uit te nodigen.';
+          event.preventDefault();
+        }
+      }
     },
     data() {
       return {
@@ -80,7 +100,7 @@
         users: users
       }
     },
-    components: { PrimaryButton }
+    components: { PrimaryButton, ErrorHandling, NothingToShow }
   }
 </script>
 
