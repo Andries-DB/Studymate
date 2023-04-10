@@ -25,7 +25,7 @@
         <div class="m-body contacts-container">
            {{-- Lists [Users/Group] --}}
            {{-- ---------------- [ User Tab ] ---------------- --}}
-           <div class="@if($type == 'user') show @endif messenger-tab users-tab app-scroll" data-view="users">
+           <div class=" show messenger-tab users-tab app-scroll" data-view="users">
 
                {{-- Favorites --}}
                <div class="favorites-section">
