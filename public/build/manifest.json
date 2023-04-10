@@ -1,0 +1,344 @@
+{
+  "resources/js/app.css": {
+    "file": "assets/app-cec13a5b.css",
+    "src": "resources/js/app.css"
+  },
+  "UserLayout.css": {
+    "file": "assets/UserLayout-267dbea6.css",
+    "src": "UserLayout.css"
+  },
+  "resources/js/Pages/StudyDetail.css": {
+    "file": "assets/StudyDetail-9fa1e318.css",
+    "src": "resources/js/Pages/StudyDetail.css"
+  },
+  "resources/js/Pages/Studeerkamers.css": {
+    "file": "assets/Studeerkamers-37ebac95.css",
+    "src": "resources/js/Pages/Studeerkamers.css"
+  },
+  "resources/js/Pages/EditForm/EditStudyRoom.css": {
+    "file": "assets/EditStudyRoom-f9eb7d52.css",
+    "src": "resources/js/Pages/EditForm/EditStudyRoom.css"
+  },
+  "__plugin-vue_export-helper-c27b6911.js": {
+    "file": "assets/_plugin-vue_export-helper-c27b6911.js"
+  },
+  "_InputError-ba197462.js": {
+    "file": "assets/InputError-ba197462.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_Modal-3f0803df.js": {
+    "file": "assets/Modal-3f0803df.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/Pages/Dashboard.vue": {
+    "file": "assets/Dashboard-f4a17006.js",
+    "src": "resources/js/Pages/Dashboard.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_UserLayout-eb210df4.js",
+      "_NoStudyRoomOwner-3c4699b3.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "_Modal-3f0803df.js",
+      "_TextInput-98f2765e.js",
+      "_PrimaryButton-3d93d652.js",
+      "_ErrorHandling-ad68409f.js"
+    ]
+  },
+  "resources/js/Pages/Instellingen.vue": {
+    "file": "assets/Instellingen-f33db470.js",
+    "src": "resources/js/Pages/Instellingen.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_UserLayout-eb210df4.js",
+      "resources/js/Pages/Profile/Partials/DeleteUserForm.vue",
+      "resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue",
+      "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "_Modal-3f0803df.js",
+      "_TextInput-98f2765e.js",
+      "_PrimaryButton-3d93d652.js",
+      "_ErrorHandling-ad68409f.js",
+      "_InputError-ba197462.js",
+      "_InputLabel-4b33865d.js"
+    ]
+  },
+  "_NoStudyRoomOwner-3c4699b3.js": {
+    "file": "assets/NoStudyRoomOwner-3c4699b3.js",
+    "imports": [
+      "_UserLayout-eb210df4.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ConfirmPassword.vue": {
+    "file": "assets/ConfirmPassword-ba8573cc.js",
+    "src": "resources/js/Pages/Auth/ConfirmPassword.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-1a309553.js",
+      "_InputError-ba197462.js",
+      "_InputLabel-4b33865d.js",
+      "_PrimaryButton-3d93d652.js",
+      "_TextInput-98f2765e.js"
+    ]
+  },
+  "_ErrorHandling-ad68409f.js": {
+    "file": "assets/ErrorHandling-ad68409f.js",
+    "imports": [
+      "__plugin-vue_export-helper-c27b6911.js",
+      "resources/js/app.js"
+    ]
+  },
+  "_PrimaryButton-3d93d652.js": {
+    "file": "assets/PrimaryButton-3d93d652.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_GuestLayout-1a309553.js": {
+    "file": "assets/GuestLayout-1a309553.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_TextInput-98f2765e.js": {
+    "file": "assets/TextInput-98f2765e.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_InputLabel-4b33865d.js": {
+    "file": "assets/InputLabel-4b33865d.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/Pages/EditForm/EditProject.vue": {
+    "file": "assets/EditProject-e4912a97.js",
+    "src": "resources/js/Pages/EditForm/EditProject.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_UserLayout-eb210df4.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "_PrimaryButton-3d93d652.js",
+      "_TextInput-98f2765e.js",
+      "_ErrorHandling-ad68409f.js",
+      "_Modal-3f0803df.js"
+    ]
+  },
+  "resources/js/Pages/Auth/VerifyEmail.vue": {
+    "file": "assets/VerifyEmail-9aeee0bd.js",
+    "src": "resources/js/Pages/Auth/VerifyEmail.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-1a309553.js",
+      "_PrimaryButton-3d93d652.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Register.vue": {
+    "file": "assets/Register-214005b0.js",
+    "src": "resources/js/Pages/Auth/Register.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-1a309553.js",
+      "_InputError-ba197462.js",
+      "_PrimaryButton-3d93d652.js",
+      "_TextInput-98f2765e.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ResetPassword.vue": {
+    "file": "assets/ResetPassword-a0af7254.js",
+    "src": "resources/js/Pages/Auth/ResetPassword.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-1a309553.js",
+      "_InputError-ba197462.js",
+      "_InputLabel-4b33865d.js",
+      "_PrimaryButton-3d93d652.js",
+      "_TextInput-98f2765e.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ForgotPassword.vue": {
+    "file": "assets/ForgotPassword-693d6205.js",
+    "src": "resources/js/Pages/Auth/ForgotPassword.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-1a309553.js",
+      "_InputError-ba197462.js",
+      "_InputLabel-4b33865d.js",
+      "_PrimaryButton-3d93d652.js",
+      "_TextInput-98f2765e.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Login.vue": {
+    "file": "assets/Login-0a0ea5ab.js",
+    "src": "resources/js/Pages/Auth/Login.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-1a309553.js",
+      "_InputError-ba197462.js",
+      "_InputLabel-4b33865d.js",
+      "_PrimaryButton-3d93d652.js",
+      "_TextInput-98f2765e.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue": {
+    "file": "assets/UpdatePasswordForm-be9820c9.js",
+    "src": "resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_InputError-ba197462.js",
+      "_InputLabel-4b33865d.js",
+      "_PrimaryButton-3d93d652.js",
+      "_TextInput-98f2765e.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue": {
+    "file": "assets/UpdateProfileInformationForm-e0f96370.js",
+    "src": "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_PrimaryButton-3d93d652.js",
+      "_ErrorHandling-ad68409f.js",
+      "_TextInput-98f2765e.js",
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ]
+  },
+  "resources/js/Pages/Welcome.vue": {
+    "file": "assets/Welcome-513e3333.js",
+    "src": "resources/js/Pages/Welcome.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/DeleteUserForm.vue": {
+    "file": "assets/DeleteUserForm-04200055.js",
+    "src": "resources/js/Pages/Profile/Partials/DeleteUserForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_InputError-ba197462.js",
+      "_InputLabel-4b33865d.js",
+      "_Modal-3f0803df.js",
+      "_TextInput-98f2765e.js"
+    ]
+  },
+  "resources/js/Pages/StudyDetail.vue": {
+    "file": "assets/StudyDetail-cb40c1ea.js",
+    "src": "resources/js/Pages/StudyDetail.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_PrimaryButton-3d93d652.js",
+      "_UserLayout-eb210df4.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "_Modal-3f0803df.js",
+      "_TextInput-98f2765e.js",
+      "_ErrorHandling-ad68409f.js"
+    ],
+    "css": [
+      "assets/StudyDetail-9fa1e318.css"
+    ]
+  },
+  "resources/js/Pages/Studeerkamers.vue": {
+    "file": "assets/Studeerkamers-47663270.js",
+    "src": "resources/js/Pages/Studeerkamers.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_Modal-3f0803df.js",
+      "_NoStudyRoomOwner-3c4699b3.js",
+      "_InputLabel-4b33865d.js",
+      "_TextInput-98f2765e.js",
+      "_PrimaryButton-3d93d652.js",
+      "_ErrorHandling-ad68409f.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "_UserLayout-eb210df4.js",
+      "_NothingToShow-01aac2f7.js"
+    ],
+    "css": [
+      "assets/Studeerkamers-37ebac95.css"
+    ]
+  },
+  "resources/js/Pages/EditForm/EditStudyRoom.vue": {
+    "file": "assets/EditStudyRoom-19fe4670.js",
+    "src": "resources/js/Pages/EditForm/EditStudyRoom.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_NothingToShow-01aac2f7.js",
+      "_UserLayout-eb210df4.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "_PrimaryButton-3d93d652.js",
+      "_ErrorHandling-ad68409f.js",
+      "_TextInput-98f2765e.js",
+      "_Modal-3f0803df.js"
+    ],
+    "css": [
+      "assets/EditStudyRoom-f9eb7d52.css"
+    ]
+  },
+  "_UserLayout-eb210df4.js": {
+    "file": "assets/UserLayout-eb210df4.js",
+    "imports": [
+      "_Modal-3f0803df.js",
+      "_TextInput-98f2765e.js",
+      "_PrimaryButton-3d93d652.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "resources/js/app.js",
+      "_ErrorHandling-ad68409f.js"
+    ],
+    "css": [
+      "assets/UserLayout-267dbea6.css"
+    ]
+  },
+  "_NothingToShow-01aac2f7.js": {
+    "file": "assets/NothingToShow-01aac2f7.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-6524ffaa.js",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Auth/ConfirmPassword.vue",
+      "resources/js/Pages/Auth/ForgotPassword.vue",
+      "resources/js/Pages/Auth/Login.vue",
+      "resources/js/Pages/Auth/Register.vue",
+      "resources/js/Pages/Auth/ResetPassword.vue",
+      "resources/js/Pages/Auth/VerifyEmail.vue",
+      "resources/js/Pages/Dashboard.vue",
+      "resources/js/Pages/EditForm/EditProject.vue",
+      "resources/js/Pages/EditForm/EditStudyRoom.vue",
+      "resources/js/Pages/Instellingen.vue",
+      "resources/js/Pages/Profile/Partials/DeleteUserForm.vue",
+      "resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue",
+      "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue",
+      "resources/js/Pages/Studeerkamers.vue",
+      "resources/js/Pages/StudyDetail.vue",
+      "resources/js/Pages/Welcome.vue"
+    ],
+    "css": [
+      "assets/app-cec13a5b.css"
+    ]
+  }
+}
