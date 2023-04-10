@@ -20,7 +20,6 @@
         <DocumentMinusIcon class="w-5 h-5" />
       </TertiaryButton>
       </form>
-
       </div>
       <form method="post" :action="route('deleteTask')" class="bg-gray-200 p-0.30 rounded-lg">
         <input type="hidden" name="_token" :value="csrf">

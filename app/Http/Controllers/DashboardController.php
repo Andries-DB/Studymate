@@ -16,21 +16,19 @@ class DashboardController extends Controller
 {
   public function index()
   {
+    $studyrooms = [];
+    $studyrooms_owner_member = [];
+
     $projects = Projects::where('user_id', auth()->user()->id)->get();
     $tasks = Tasks::whereIn('project_id', $projects->pluck('id'))->with('project')->get();
     $friends = Friends::where('user_1', auth()->user()->id)->orWhere('user_2', auth()->user()->id)->with('user')->limit(3)->get();
     $users = User::all();
 
-
-    $studyrooms = [];
-    $studyrooms_owner_member = [];
-
-
     // Add studyrooms where user is owner
     $studyrooms_owner = StudyRooms_Owner::where('user_id', auth()->user()->id)->with('studyroom')->get();
     if ($studyrooms_owner->count() > 0) {
-      foreach ($studyrooms_owner as $studyroom_member) {
-        $studyrooms_owner_member[$studyroom_member->studyroom->id] = $studyroom_member->studyroom->toArray();
+      foreach ($studyrooms_owner as $studyroom_owner) {
+        $studyrooms_owner_member[$studyroom_owner->studyroom->id] = $studyroom_owner->studyroom->toArray();
       }
     } else {
       $studyrooms_owner_member += [];

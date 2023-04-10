@@ -15,20 +15,14 @@ class StudyRoomDetailController
     // Get details of specific studyroom
     public function index(Request $r)
     {
-      // Check if the user is the studyroom owner
       $isOwner = StudyRooms_Owner::where('user_id', auth()->user()->id)->where('study_room_id', $r->id)->first();
-      // If not owner, redirect to the studyroom
       if (!$isOwner) {
         return redirect()->route('studeerkamers');
       }
 
-
-      // Get the studyroom
       $studyroom = StudyRooms::where('id', $r->id)->first();
-      // Get the users that are invited
       $studyroomInvitations = StudyRooms_invitations::where('study_room_id', $r->id)->with('user')->get();
 
-      // Get the users that aren't invited yet and that aren't the owner or that aren't in the studyroom
       $users = User::whereNotIn('id', function($query) use ($r) {
         $query->select('user_id')->from('study_rooms_invitations')->where('study_room_id', $r->id);
       })->whereNotIn('id', function($query) use ($r) {
@@ -37,10 +31,7 @@ class StudyRoomDetailController
         $query->select('user_id')->from('study_rooms_users')->where('study_room_id', $r->id);
       })->get();
 
-
-      // Get the users that are in the studyroom
       $studyroomUsers = StudyRoomsUser::where('study_room_id', $r->id)->with('user')->get();
-
 
       return Inertia::render('EditForm/EditStudyRoom', [
         'studyroomUsers' => $studyroomUsers,

@@ -6,10 +6,7 @@
     </div>
 
     <div>
-      <PrimaryButton
-        v-on:click="showModal()"
-        id="addProject"
-      >
+      <PrimaryButton v-on:click="showModal()" id="addProject">
         + Maak een nieuwe studeerkamer
       </PrimaryButton>
     </div>

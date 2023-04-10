@@ -14,7 +14,6 @@ class StudyRoomController
     public function index()
     {
       $client = auth()->user()->id;
-
       $SharedStudyRoom = StudyRoomsUser::where('user_id', $client)->with('Studyroom')->get();
       $Publicstudyrooms = StudyRooms::where('private', false)->get();
       $Mystudyrooms = StudyRooms_Owner::where('user_id', $client)->with('Studyroom')->get();

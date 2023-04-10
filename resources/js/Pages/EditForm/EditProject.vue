@@ -15,7 +15,6 @@
             <div class="flex flex-col items-start gap-5">
               <Task v-for="task in tasks" :key="task.id" :task="task" />
             </div>
-
           </div>
         </div>
       </div>

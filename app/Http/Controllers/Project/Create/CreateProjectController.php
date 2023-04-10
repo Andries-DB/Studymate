@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class CreateProjectController
 {
-    public function index(Request $request)
-    {
-        Projects::create([
-            'name' => $request->name,
-            'user_id' => auth()->user()->id
-        ]);
-        return redirect()->route('dashboard');
-    }
+  public function index(Request $request)
+  {
+    Projects::create([
+      'name' => $request->name,
+      'user_id' => auth()->user()->id
+    ]);
+    return redirect()->route('dashboard');
+  }
 }

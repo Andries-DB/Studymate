@@ -16,7 +16,6 @@ class UpdateStudyRoomController
       $studyroom->name = $request->name;
       $studyroom->description = $request->description;
 
-      // Replace space with underscore in name
       $studyroomImageName = str_replace(' ', '_', $studyroom->name);
       if ($request->hasFile('image'))
       {

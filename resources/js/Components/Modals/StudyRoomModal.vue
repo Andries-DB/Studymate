@@ -8,7 +8,6 @@
         id="name"
         type="text"
         name="name"
-        class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
         autocomplete="Name"
         placeholder="Naam van de nieuwe studeerkamer"
         />
@@ -17,8 +16,6 @@
         id="description"
         type="text"
         name="description"
-        class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-        required
         autocomplete="Description"
         placeholder="Beschrijving van de nieuwe studeerkamer"
         />
@@ -37,7 +34,7 @@
   import Modal from '@/Components/Modal.vue';
   import TextInput from '@/Components/TextInput.vue';
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
-import ErrorHandling from '../Error/ErrorHandling.vue';
+  import ErrorHandling from '../Error/ErrorHandling.vue';
 
   export default {
     components: {

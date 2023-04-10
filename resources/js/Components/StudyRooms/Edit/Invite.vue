@@ -7,14 +7,11 @@
       <p class="text-sm text-black">Verzonden op {{ moment(invite.created_at).format("DD/MM/YYYY") }}</p>
     </div>
     </div>
-
     <div class="" name="CTA">
       <form method="post" :action="route('deleteInviteFromStudyRoom')" class="">
         <input type="hidden" name="_token" :value="csrf">
         <input type="hidden" name="id" :value="invite.id" />
-        <!-- Make hidden input with array -->
         <input type="hidden" name="array" :value="this.array" />
-
         <TertiaryButton type="submit">
           <TrashIcon class="w-5 h-5" />
         </TertiaryButton>

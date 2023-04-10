@@ -10,9 +10,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
         </svg>
       </TertiaryButton>
-
     </div>
-
     <div class="flex flex-col space-y-4">
       <div class="flex justify-center" v-if="getTasks().length === 0">
         <NoTasks @click="showModal()"/>

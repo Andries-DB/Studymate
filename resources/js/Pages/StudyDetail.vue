@@ -50,7 +50,6 @@
 <script>
 import { Head } from '@inertiajs/vue3';
 import PrimaryButton from '../Components/Buttons/PrimaryButton.vue';
-import NothingToShow from '@/Components/NothingToShow.vue';
 import UserLayout from '@/Layouts/UserLayout.vue';
 import JoinStudy from '@/Components/Widgets/JoinStudy.vue';
 
@@ -170,7 +169,6 @@ export default {
         }
     },
     components: {
-    NothingToShow,
     UserLayout,
     Head,
     PrimaryButton,
