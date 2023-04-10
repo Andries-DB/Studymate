@@ -17,6 +17,7 @@
             <input type="text" class="messenger-search" placeholder="Zoek" />
             {{-- Tabs --}}
             <div class="messenger-listView-tabs">
+                {{ dd($type) }}
                 <a href="#" @if($type == 'user') class="active-tab" @endif data-view="users">
                     <span class="far fa-user"></span> Personen</a>
             </div>
