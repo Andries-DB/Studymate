@@ -327,7 +327,7 @@ body {
   width: calc(100% - 30px);
 }
 .message-card div {
-  margin-top: 0px;
+  margin-top: 10px;
 }
 .message-card p {
   margin: 0;
