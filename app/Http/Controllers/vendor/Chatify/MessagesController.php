@@ -2,21 +2,25 @@
 
 namespace App\Http\Controllers\vendor\Chatify;
 
+use App\Models\ChMessage;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
-use App\Models\User;
 use App\Models\ChMessage as Message;
 use App\Models\ChFavorite as Favorite;
 use Chatify\Facades\ChatifyMessenger as Chatify;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request as FacadesRequest;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 class MessagesController extends Controller
 {
     protected $perPage = 30;
+    protected $messengerFallbackColor = '#2180f3';
 
     /**
      * Authenticate the connection for pusher
@@ -42,31 +46,40 @@ class MessagesController extends Controller
      */
     public function index( $id = null)
     {
-        $messenger_color = Auth::user()->messenger_color;
+        $type = 'user';
+
         return view('Chatify::pages.app', [
             'id' => $id ?? 0,
-            'messengerColor' => $messenger_color ? $messenger_color : Chatify::getFallbackColor(),
+            'type' => $type,
+            'messengerColor' => Auth::user()->messenger_color ?? $this->messengerFallbackColor,
             'dark_mode' => Auth::user()->dark_mode < 1 ? 'light' : 'dark',
         ]);
     }
 
 
     /**
-     * Fetch data (user, favorite.. etc).
+     * Fetch data by id for (user/group)
      *
      * @param Request $request
      * @return JsonResponse
      */
     public function idFetchData(Request $request)
     {
+        // Favorite
         $favorite = Chatify::inFavorite($request['id']);
-        $fetch = User::where('id', $request['id'])->first();
-        if($fetch){
-            $userAvatar = Chatify::getUserWithAvatar($fetch)->avatar;
+
+        // User data
+        if ($request['type'] == 'user') {
+            $fetch = User::where('id', $request['id'])->first();
+            if($fetch){
+                $userAvatar = Chatify::getUserWithAvatar($fetch)->avatar;
+            }
         }
+
+        // send the response
         return Response::json([
             'favorite' => $favorite,
-            'fetch' => $fetch ?? null,
+            'fetch' => $fetch ?? [],
             'user_avatar' => $userAvatar ?? null,
         ]);
     }
@@ -130,7 +143,11 @@ class MessagesController extends Controller
         }
 
         if (!$error->status) {
-            $message = Chatify::newMessage([
+            // send to database
+            $messageID = mt_rand(9, 999999999) + time();
+            Chatify::newMessage([
+                'chatify_id' => $messageID,
+                'type' => $request['type'],
                 'from_id' => Auth::user()->id,
                 'to_id' => $request['id'],
                 'body' => htmlentities(trim($request['message']), ENT_QUOTES, 'UTF-8'),
@@ -139,14 +156,16 @@ class MessagesController extends Controller
                     'old_name' => htmlentities(trim($attachment_title), ENT_QUOTES, 'UTF-8'),
                 ]) : null,
             ]);
-            $messageData = Chatify::parseMessage($message);
-            if (Auth::user()->id != $request['id']) {
-                Chatify::push("private-chatify.".$request['id'], 'messaging', [
-                    'from_id' => Auth::user()->id,
-                    'to_id' => $request['id'],
-                    'message' => Chatify::messageCard($messageData, true)
-                ]);
-            }
+
+            // fetch message to send it with the response
+            $messageData = Chatify::fetchMessage($messageID);
+
+            // send to user using pusher
+            Chatify::push("private-chatify.".$request['id'], 'messaging', [
+                'from_id' => Auth::user()->id,
+                'to_id' => $request['id'],
+                'message' => Chatify::messageCard($messageData, 'default')
+            ]);
         }
 
         // send the response
@@ -187,9 +206,9 @@ class MessagesController extends Controller
             return Response::json($response);
         }
         $allMessages = null;
-        foreach ($messages->reverse() as $message) {
+        foreach ($messages->reverse() as $index => $message) {
             $allMessages .= Chatify::messageCard(
-                Chatify::parseMessage($message)
+                Chatify::fetchMessage($message->id, $index)
             );
         }
         $response['messages'] = $allMessages;
@@ -337,6 +356,7 @@ class MessagesController extends Controller
         foreach ($records->items() as $record) {
             $getRecords .= view('Chatify::layouts.listItem', [
                 'get' => 'search_item',
+                'type' => 'user',
                 'user' => Chatify::getUserWithAvatar($record),
             ])->render();
         }
@@ -474,8 +494,9 @@ class MessagesController extends Controller
      */
     public function setActiveStatus(Request $request)
     {
+        $userId = $request['user_id'];
         $activeStatus = $request['status'] > 0 ? 1 : 0;
-        $status = User::where('id', Auth::user()->id)->update(['active_status' => $activeStatus]);
+        $status = User::where('id', $userId)->update(['active_status' => $activeStatus]);
         return Response::json([
             'status' => $status,
         ], 200);

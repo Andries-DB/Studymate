@@ -129,7 +129,9 @@ class MessagesController extends Controller
 
         if (!$error->status) {
             // send to database
+            $messageID = mt_rand(9, 999999999) + time();
             $message = Chatify::newMessage([
+                'chatify_id' => $messageID,
                 'type' => $request['type'],
                 'from_id' => Auth::user()->id,
                 'to_id' => $request['id'],
@@ -170,7 +172,7 @@ class MessagesController extends Controller
      */
     public function fetch(Request $request)
     {
-        $query = Chatify::fetchMessagesQuery($request['id'])->latest();
+        $query = Chatify::fetchMessagesQuery($request['chatify_id'])->latest();
         $messages = $query->paginate($request->per_page ?? $this->perPage);
         $totalMessages = $messages->total();
         $lastPage = $messages->lastPage();
