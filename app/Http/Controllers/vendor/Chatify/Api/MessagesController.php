@@ -132,7 +132,7 @@ class MessagesController extends Controller
             $messageID = mt_rand(9, 999999999) + time();
             $message = Chatify::newMessage([
                 'chatify_id' => $messageID,
-                'type' => $request['type'],
+                'type' => "user",
                 'from_id' => Auth::user()->id,
                 'to_id' => $request['id'],
                 'body' => htmlentities(trim($request['message']), ENT_QUOTES, 'UTF-8'),
