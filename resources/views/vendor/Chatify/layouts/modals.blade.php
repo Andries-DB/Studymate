@@ -64,8 +64,8 @@
                       </div>
                   </div>
                   <div class="app-modal-footer">
-                      <a href="javascript:void(0)" class="app-btn cancel">Cancel</a>
-                      <input type="submit" class="app-btn a-btn-success update" value="Save Changes" />
+                      <a href="javascript:void(0)" class="app-btn cancel">Terug</a>
+                      <input type="submit" class="app-btn a-btn-success update" value="Sla op" />
                   </div>
               </form>
           </div>
