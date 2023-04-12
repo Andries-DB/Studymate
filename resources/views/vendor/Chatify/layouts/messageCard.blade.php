@@ -1,5 +1,4 @@
 {{-- -------------------- The default card (white) -------------------- --}}
-@if($viewType == 'default')
     @if($from_id != $to_id)
     <div class="message-card" data-id="{{ $id }}">
         <p>{!! ($message == null && $attachment != null && @$attachment[2] != 'file') ? $attachment[1] : nl2br($message) !!}
@@ -17,7 +16,6 @@
         @endif
     </div>
     @endif
-@endif
 
 {{-- -------------------- Sender card (owner) -------------------- --}}
 @if($viewType == 'sender')
