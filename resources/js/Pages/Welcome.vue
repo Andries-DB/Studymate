@@ -15,7 +15,7 @@
   <div class="px-6 pt-6 lg:px-8">
     <nav class="flex items-center justify-between" aria-label="Global">
       <div class="flex lg:flex-1">
-        <div class="sidenav flex justify-center items-center text-3xl mt-5 text-indigo-500">
+        <div class="sidenav flex justify-center items-center text-3xl  text-indigo-500">
         Studym
         <span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-8 h-8">
@@ -25,15 +25,7 @@
         te
       </div>
       </div>
-      <div class="flex lg:hidden">
-        <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-          <span class="sr-only">Open main menu</span>
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-        </button>
-      </div>
-      <div class="hidden lg:flex lg:gap-x-12">
+      <div class="flex lg:gap-x-6 gap-x-3">
         <PrimaryAnchor :href=" route('register')">
           Registreren
         </PrimaryAnchor>
@@ -42,44 +34,11 @@
         </PrimaryAnchor>
       </div>
     </nav>
-    <!-- Mobile menu, show/hide based on menu open state. -->
-    <div role="dialog" aria-modal="true">
-      <div class="fixed inset-0 z-10 overflow-y-auto bg-white px-6 py-6 lg:hidden">
-        <div class="flex items-center justify-between">
-          <div class="sidenav flex justify-center items-center text-3xl mt-5 text-indigo-500">
-            Studym
-            <span>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-8 h-8">
-                <path d="M10.75 16.82A7.462 7.462 0 0115 15.5c.71 0 1.396.098 2.046.282A.75.75 0 0018 15.06v-11a.75.75 0 00-.546-.721A9.006 9.006 0 0015 3a8.963 8.963 0 00-4.25 1.065V16.82zM9.25 4.065A8.963 8.963 0 005 3c-.85 0-1.673.118-2.454.339A.75.75 0 002 4.06v11a.75.75 0 00.954.721A7.506 7.506 0 015 15.5c1.579 0 3.042.487 4.25 1.32V4.065z" />
-              </svg>
-            </span>
-            te
-          </div>
-          <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
-            <span class="sr-only">Close menu</span>
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        <div class="mt-6 flow-root">
-          <div class="-my-6 divide-y divide-gray-500/10">
-            <div class="space-y-2 py-6">
-              <PrimaryAnchor :href=" route('register')">
-                Registreren
-              </PrimaryAnchor>
-              <PrimaryAnchor :href=" route('login')">
-                Login
-              </PrimaryAnchor>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </div>
   <main>
     <div class="relative px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+      <div class="mx-auto max-w-2xl py-32 lg:py-56">
         <div class="hidden sm:mb-8 sm:flex sm:justify-center">
           <div class="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
             Hoe samen leren de productiviteit bevordert. <a target="_blank" href="https://studybetter.nl/productief-samen-studeren-met-een-medestudent/" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true"></span>Lees meer <span aria-hidden="true">&rarr;</span></a>
@@ -236,5 +195,12 @@
       users: Array,
       studyrooms: Array,
     },
+    methods: {
+      closeMenu() {
+        //document.getElementById('mobileMenu').attributes('aria-modal' , 'false')
+        console.log('close menu')
+      },
+
+    }
   }
 </script>
