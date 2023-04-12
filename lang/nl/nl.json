@@ -1,0 +1,101 @@
+{
+  "Menu" : {
+    "Dashboard" : "dashboard",
+    "StudyRooms" : "studeerkamers",
+    "Messages" : "berichten",
+    "Settings" : "instellingen"
+  },
+  "Routes" : {
+    "Register" : {
+      "Register" : "Registreren",
+      "MakeAcc" : "Maak een account aan"
+    },
+    "Login" : {
+      "Login" : "Inloggen",
+      "AlreadyAcc" : "Heb je al een account?"
+    },
+    "Logout" : "Uitloggen",
+    "ForgotPassword" : "Wachtwoord vergeten"
+  },
+  "Welcome" : {
+    "FirstPart" : {
+      "Studying" : "Hoe samen leren de productiviteit bevordert",
+      "ReadMore" : "Lees meer",
+      "Title" : "Studymate bevordert de productiviteit",
+      "Description" : "Ontdek alle studeerkamers en begin te studeren! Maak nieuwe vrienden en studeer samen online!"
+    },
+    "SecondPart" : {
+      "TitlePart" : "Features",
+      "Title" : "Alles wat je nodig hebt om te studeren",
+      "Description" : "Studymate is niet zo maar een webapplicatie om samen te studeren. Het heeft veel meer dan alleen studeerkamers.",
+      "Features" : {
+        "Messages" : {
+          "Title" : "Berichten",
+          "Description" : "Stuur berichten naar alle leden! Start een groepchat om af te spreken wanneer je gaat studeren."
+        },
+        "StudyRooms" : {
+          "Title" : "Privé Studeerkamers",
+          "Description" : "Naast openbare hebben we ook private studeerkamers. Dit zodat je op je gemak met je vrienden kan studeren"
+        },
+        "People" : {
+          "Title" : "Leer nieuwe mensen kennen",
+          "Description" : "Leer nieuwe mensen kennen en studeer samen met hun. Wie weet zit je nieuwe bestie in je groep"
+        },
+        "ToDo" : {
+          "Title" : "To Do's",
+          "Description" : "Voeg projecten en taken toe en vink ze af tijdens het studeren!"
+        }
+      }
+    },
+    "ThirdPart" : {
+      "Users" : "Gebruikers",
+      "StudyRooms" : "Studeerkamers",
+      "Productivity" : "Productiviteit"
+    }
+  },
+  "Dashboard" : {
+    "HelloBar" : {
+      "Hello" : "Hallo",
+      "Today" : "Vandaag is het"
+    },
+    "Tasks" : {
+      "Title" : "Taken te voltooien",
+      "Description" : "Hieronder staan alle taken die je nog moet voltooien"
+    },
+    "LatestStudyRooms" : {
+      "Title" : "Nieuwste studeerkamers",
+      "Description" : "Overzicht van de nieuwste studeerkamers"
+    },
+    "CTA" : {
+      "AddProject" : "Voeg een project toe"
+    }
+  },
+  "Modals" : {
+    "ProjectModal" : {
+      "Title" : "Nieuw project toevoegen",
+      "Name" : "Naam van het project"
+    },
+    "StudyRoomModal" : {
+      "Title" : "Nieuwe studeerkamer toevoegen",
+      "Name" : "Naam van de studeerkamer",
+      "Description" : "Beschrijving van de studeerkamer",
+      "Errors" : {
+        "Name" : "Vul een naam in",
+        "Description" : "Vul een beschrijving in"
+      }
+    },
+    "TaskModal" : {
+      "Title" : "Nieuwe taak toevoegen",
+      "Name" : "Naam van de taak",
+      "Description" : "Beschrijving van de taak",
+      "SelectProject" : "Selecteer een project",
+      "Errors" : {
+        "Project" : "Selecteer een project",
+        "Name" : "Vul een naam in",
+        "Description" : "Vul een beschrijving in"
+      }
+    }
+  }
+}
+
+

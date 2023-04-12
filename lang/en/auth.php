@@ -16,5 +16,6 @@ return [
     'failed' => 'Deze referenties komen niet overeen met onze gegevens.',
     'password' => 'Het gegeven wachtwoord klopt niet.',
     'throttle' => 'Te veel inlogpogingen. Probeer opnieuw in :seconds seconden.',
+    'Test' => 'Engelse test',
 
 ];

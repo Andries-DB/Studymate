@@ -16,6 +16,7 @@ use App\Http\Controllers\StudyRooms\Detail\InviteStudyRoomController;
 use App\Http\Controllers\StudyRooms\Delete\DeleteStudyRoom;
 use App\Http\Controllers\StudyRooms\Update\UpdateStudyRoomController;
 use App\Http\Controllers\WelcomeController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 
@@ -79,6 +80,10 @@ Route::middleware('auth')->group(function () {
 // Agora Routes
 Route::group(['middleware' => ['auth']], function () {
   Route::post('/agora/token', 'App\Http\Controllers\AgoraVideoController@token');
+});
+
+Route::put('/laravel-language/{key}', function ($key) {
+  session()->put('locale', $key);
 });
 
 require __DIR__.'/auth.php';

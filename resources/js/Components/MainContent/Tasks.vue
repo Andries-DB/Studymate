@@ -2,8 +2,8 @@
   <div class="space-y-7 w-full">
     <div class="flex justify-between items-center">
       <div>
-        <h4>Taken te voltooien</h4>
-        <p class="text-gray-500">Hieronder staan alle taken die je nog moet voltooien</p>
+        <h4>{{  $t('Dashboard.Tasks.Title') }}</h4>
+        <p class="text-gray-500">{{ $t("Dashboard.Tasks.Description") }}</p>
       </div>
       <TertiaryButton id="addProject" @click="showModal()">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -38,10 +38,15 @@
   import TertiaryButton from '@/Components/Buttons/TertiaryButton.vue';
   import NoTasks from '@/Components/Widgets/NoTasks.vue';
   import TaskModal from '@/Components/Modals/TaskModal.vue';
+  import { useI18n } from 'vue-i18n';
 
   const AddTask = ref(false);
 
   export default {
+    setup() {
+      const { t} = useI18n({});
+      return { t };
+    },
     components: {
     Task,
     TextInput,

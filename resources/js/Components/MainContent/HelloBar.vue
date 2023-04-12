@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-col md:flex-row gap-10 justify-between items-center">
     <div class="space-y-2">
-      <h1>Hallo, {{ $page.props.auth.user.username }}</h1>
-      <p>Vandaag is het {{ currentDate() }} </p>
+      <h1>{{ $t("Dashboard.HelloBar.Hello") }}, {{ $page.props.auth.user.username }}</h1>
+      <p>{{ $t("Dashboard.HelloBar.Today")}} {{ currentDate() }} </p>
     </div>
     <div class="flex justify-between gap-2 items-center">
       <PrimaryButton id="addProject" @click="openModal()">
-          + Voeg een project toe!
+          + {{ $t('Dashboard.CTA.AddProject') }}
       </PrimaryButton>
     </div>
   </div>
@@ -21,6 +21,7 @@
   import {ref} from 'vue';
   import ProjectModal from '@/Components/Modals/ProjectModal.vue';
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
+  import { useI18n } from 'vue-i18n';
 
   const AddProject = ref(false);
 
@@ -28,7 +29,11 @@
     components: {
     ProjectModal,
     PrimaryButton,
-},
+    },
+    setup() {
+      const { t} = useI18n({});
+      return { t };
+    },
     methods: {
       // Get the current date
       currentDate() {

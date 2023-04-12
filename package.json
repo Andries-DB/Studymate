@@ -21,8 +21,10 @@
   },
   "dependencies": {
     "laravel-echo": "^1.15.0",
+    "laravel-vue-i18n": "^2.4.2",
     "moment": "^2.29.4",
     "pusher-js": "^8.0.1",
+    "vue-i18n": "^9.3.0-beta.17",
     "vue-media-recorder": "^0.1.25",
     "watch": "^1.0.2"
   }

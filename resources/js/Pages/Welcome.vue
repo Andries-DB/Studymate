@@ -27,10 +27,10 @@
       </div>
       <div class="flex lg:gap-x-6 gap-x-3">
         <PrimaryAnchor :href=" route('register')">
-          Registreren
+          {{ $t('Routes.Register.Register')}}
         </PrimaryAnchor>
         <PrimaryAnchor :href=" route('login')">
-          Login
+          {{ $t('Routes.Login.Login')}}
         </PrimaryAnchor>
       </div>
     </nav>
@@ -41,17 +41,17 @@
       <div class="mx-auto max-w-2xl py-32 lg:py-56">
         <div class="hidden sm:mb-8 sm:flex sm:justify-center">
           <div class="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-            Hoe samen leren de productiviteit bevordert. <a target="_blank" href="https://studybetter.nl/productief-samen-studeren-met-een-medestudent/" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true"></span>Lees meer <span aria-hidden="true">&rarr;</span></a>
+            {{ $t("Welcome.FirstPart.Studying")}} <a target="_blank" href="https://studybetter.nl/productief-samen-studeren-met-een-medestudent/" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true"></span> {{ $t("Welcome.FirstPart.ReadMore")}} <span aria-hidden="true">&rarr;</span></a>
           </div>
         </div>
         <div class="text-center">
-          <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Studymate bevordert de productiviteit</h1>
-          <p class="mt-6 text-lg leading-8 text-gray-600">Ontdek alle studeerkamers en begin te studeren! Maak nieuwe vrienden en studeer samen online!</p>
+          <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{{ $t("Welcome.FirstPart.Title")}}</h1>
+          <p class="mt-6 text-lg leading-8 text-gray-600">{{ $t("Welcome.FirstPart.Description")}}</p>
           <div class="mt-10 flex items-center justify-center gap-x-6">
             <PrimaryAnchor :href=" route('register')" class="w-1/3">
-              Maak een account aan
+              {{$t('Routes.Register.MakeAcc')}}
             </PrimaryAnchor>
-            <a :href="route('login')" class="text-sm font-semibold leading-6 text-gray-900">Heb je al een account? <span aria-hidden="true">→</span></a>
+            <a :href="route('login')" class="text-sm font-semibold leading-6 text-gray-900"> {{ $t('Routes.Login.AlreadyAcc') }} <span aria-hidden="true">→</span></a>
           </div>
         </div>
       </div>
@@ -73,9 +73,9 @@
 <div class="bg-white py-24 sm:py-32">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="mx-auto max-w-2xl lg:text-center">
-      <h2 class="text-base font-semibold leading-7 text-indigo-600">Features</h2>
-      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Alles wat je nodig hebt om te studeren</p>
-      <p class="mt-6 text-lg leading-8 text-gray-600">Studymate is niet zo maar een webapplicatie om samen te studeren. Het heeft veel meer dan alleen studeerkamers</p>
+      <h2 class="text-base font-semibold leading-7 text-indigo-600"> {{ $t('Welcome.SecondPart.TitlePart') }}</h2>
+      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"> {{ $t('Welcome.SecondPart.Title') }}</p>
+      <p class="mt-6 text-lg leading-8 text-gray-600"> {{ $t('Welcome.SecondPart.Description') }}</p>
     </div>
     <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
       <dl class="grid max-w-xl grid-cols-1 gap-y-10 gap-x-8 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
@@ -86,9 +86,9 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
               </svg>
             </div>
-            Berichten
+            {{ $t('Welcome.SecondPart.Features.Messages.Title') }}
           </dt>
-          <dd class="mt-2 text-base leading-7 text-gray-600">Stuur berichten naar alle leden! Start een groepchat om af te spreken wanneer je gaat studeren.</dd>
+          <dd class="mt-2 text-base leading-7 text-gray-600">{{ $t('Welcome.SecondPart.Features.Messages.Description') }}</dd>
         </div>
 
         <div class="relative pl-16">
@@ -99,9 +99,9 @@
               </svg>
 
             </div>
-            Leer nieuwe mensen kennen
+            {{ $t('Welcome.SecondPart.Features.People.Title') }}
           </dt>
-          <dd class="mt-2 text-base leading-7 text-gray-600">Leer nieuwe mensen kennen en studeer samen met hun. Wie weet zit je nieuwe bestie in je groep</dd>
+          <dd class="mt-2 text-base leading-7 text-gray-600">{{ $t('Welcome.SecondPart.Features.People.Description') }}</dd>
         </div>
 
         <div class="relative pl-16">
@@ -111,9 +111,9 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
               </svg>
             </div>
-            Privé studeerkamers
+            {{ $t('Welcome.SecondPart.Features.StudyRooms.Title') }}
           </dt>
-          <dd class="mt-2 text-base leading-7 text-gray-600">Naast openbare hebben we ook private studeerkamers. Dit zodat je op je gemak met je vrienden kan studeren</dd>
+          <dd class="mt-2 text-base leading-7 text-gray-600">{{ $t('Welcome.SecondPart.Features.StudyRooms.Description') }}</dd>
         </div>
 
         <div class="relative pl-16">
@@ -123,9 +123,9 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />
               </svg>
             </div>
-            To do's
+            {{ $t('Welcome.SecondPart.Features.ToDo.Title') }}
           </dt>
-          <dd class="mt-2 text-base leading-7 text-gray-600">Voeg projecten en taken toe en vink ze af tijdens het studeren!</dd>
+          <dd class="mt-2 text-base leading-7 text-gray-600">{{ $t('Welcome.SecondPart.Features.ToDo.Description') }}</dd>
         </div>
       </dl>
     </div>
@@ -136,17 +136,17 @@
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <dl class="grid grid-cols-1 gap-y-16 gap-x-8 text-center lg:grid-cols-3">
       <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-        <dt class="text-base leading-7 text-gray-600">Gebruikers</dt>
+        <dt class="text-base leading-7 text-gray-600">{{ $t('Welcome.ThirdPart.Users') }}</dt>
         <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{{ $page.props.users.length }}</dd>
       </div>
 
       <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-        <dt class="text-base leading-7 text-gray-600">Studeerkamers</dt>
+        <dt class="text-base leading-7 text-gray-600">{{ $t('Welcome.ThirdPart.StudyRooms') }}</dt>
         <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{{ $page.props.studyrooms.length }}</dd>
       </div>
 
       <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-        <dt class="text-base leading-7 text-gray-600">Productiviteit</dt>
+        <dt class="text-base leading-7 text-gray-600">{{ $t('Welcome.ThirdPart.Productivity') }}</dt>
         <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">∞</dd>
       </div>
     </dl>
@@ -185,8 +185,13 @@
 <script>
   import { Head } from '@inertiajs/vue3';
   import PrimaryAnchor from '@/Components/Anchors/PrimaryAnchor.vue';
+  import { useI18n } from 'vue-i18n';
 
   export default {
+    setup() {
+      const {t} = useI18n({});
+      return {t}
+    },
     components: {
       Head,
       PrimaryAnchor,
