@@ -322,7 +322,7 @@ body {
 }
 .message-card {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column-reverse;
   margin: 2px 15px;
   width: calc(100% - 30px);
 }
