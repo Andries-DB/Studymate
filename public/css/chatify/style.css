@@ -191,7 +191,7 @@ body {
 }
 .messenger-list-item td b {
   float: right;
-  color: #fff;
+  color: black;
   padding: 0px 4px;
   border-radius: 20px;
   font-size: 13px;
@@ -339,6 +339,14 @@ body {
   width: -webkit-fit-content;
   border-radius: 20px;
   word-break: break-word;
+}
+
+.message-card .message {
+  background: #fff;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  margin: 0px 15px;
 }
 .message-card p sub {
   display: inline-block;
