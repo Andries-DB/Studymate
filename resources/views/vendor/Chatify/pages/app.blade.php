@@ -1,8 +1,7 @@
 @include('Chatify::layouts.headLinks')
-
 <div class="messenger">
     {{-- ----------------------Users/Groups lists side---------------------- --}}
-    <div class="messenger-listView">
+    <div class="messenger-listView {{ !!$id ? 'conversation-active' : '' }}">
         {{-- Header and search bar --}}
         <div class="m-header">
             <nav>
@@ -14,37 +13,34 @@
                 </nav>
             </nav>
             {{-- Search input --}}
-            <input type="text" class="messenger-search" placeholder="Zoek" />
+            <input type="text" class="messenger-search" placeholder="Search" />
             {{-- Tabs --}}
             <div class="messenger-listView-tabs">
                 <a href="#" class="active-tab" data-view="users">
-                    <span class="far fa-user"></span> Personen</a>
+                    <span class="far fa-user"></span> Contacts</a>
             </div>
         </div>
         {{-- tabs and lists --}}
         <div class="m-body contacts-container">
            {{-- Lists [Users/Group] --}}
            {{-- ---------------- [ User Tab ] ---------------- --}}
-           <div class="@if($type == 'user') show @endif messenger-tab users-tab app-scroll" data-view="users">
-
+           <div class="show messenger-tab users-tab app-scroll" data-view="users">
                {{-- Favorites --}}
                <div class="favorites-section">
-                <p class="messenger-title">Favorieten</p>
-                <div class="messenger-favorites app-scroll-thin"></div>
+                <p class="messenger-title"><span>Favorieten</span></p>
+                <div class="messenger-favorites app-scroll-hidden"></div>
                </div>
-
                {{-- Saved Messages --}}
+               <p class="messenger-title"><span>Jouw gebied</span></p>
                {!! view('Chatify::layouts.listItem', ['get' => 'saved']) !!}
-
                {{-- Contact --}}
-               <div class="listOfContacts" style="width: 100%;height: calc(100% - 200px);position: relative;"></div>
-
+               <p class="messenger-title"><span>Alle berichten</span></p>
+               <div class="listOfContacts" style="width: 100%;height: calc(100% - 272px);position: relative;"></div>
            </div>
-
-           {{-- ---------------- [ Search Tab ] ---------------- --}}
+             {{-- ---------------- [ Search Tab ] ---------------- --}}
            <div class="messenger-tab search-tab app-scroll" data-view="search">
                 {{-- items --}}
-                <p class="messenger-title">Zoek</p>
+                <p class="messenger-title"><span>Zoeken</span></p>
                 <div class="search-records">
                     <p class="message-hint center-el"><span>Typ om te zoeken...</span></p>
                 </div>
@@ -60,43 +56,55 @@
                 {{-- header back button, avatar and user name --}}
                 <div class="chatify-d-flex chatify-justify-content-between chatify-align-items-center">
                     <a href="#" class="show-listView"><i class="fas fa-arrow-left"></i></a>
+                    <div class="avatar av-s header-avatar" style="margin: 0px 10px; margin-top: -5px; margin-bottom: -5px;">
+                    </div>
                     <a href="#" class="user-name">{{ config('chatify.name') }}</a>
                 </div>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="#" class="add-to-favorite"><i class="fas fa-star"></i></a>
-                    <a href="/dashboard"><i class="fas fa-home"></i></a>
+                    <a href="/"><i class="fas fa-home"></i></a>
+                    <a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
                 </nav>
             </nav>
+            {{-- Internet connection --}}
+            <div class="internet-connection">
+                <span class="ic-connected">Verbonden</span>
+                <span class="ic-connecting">Aan het verbinden...</span>
+                <span class="ic-noInternet">Geen internet verbinding</span>
+            </div>
         </div>
 
         {{-- Messaging area --}}
         <div class="m-body messages-container app-scroll">
-             {{-- Internet connection --}}
-            <div class="internet-connection">
-                <span class="ic-connected">Geconnecteerd</span>
-                <span class="ic-connecting">Aan het connecteren...</span>
-                <span class="ic-noInternet">Je hebt geen internet toegang</span>
-            </div>
             <div class="messages">
-                <p class="message-hint center-el"><span>Selecteer een chat om berichten te sturen</span></p>
+                <p class="message-hint center-el"><span>Selecteer een gebruiker om berichten te sturen</span></p>
             </div>
             {{-- Typing indicator --}}
             <div class="typing-indicator">
                 <div class="message-card typing">
-                    <p>
+                    <div class="message">
                         <span class="typing-dots">
                             <span class="dot dot-1"></span>
                             <span class="dot dot-2"></span>
                             <span class="dot dot-3"></span>
                         </span>
-                    </p>
+                    </div>
                 </div>
             </div>
 
         </div>
         {{-- Send Message Form --}}
         @include('Chatify::layouts.sendForm')
+    </div>
+    {{-- ---------------------- Info side ---------------------- --}}
+    <div class="messenger-infoView app-scroll">
+        {{-- nav actions --}}
+        <nav>
+            <p>Gebruiker details</p>
+            <a href="#"><i class="fas fa-times"></i></a>
+        </nav>
+        {!! view('Chatify::layouts.info')->render() !!}
     </div>
 </div>
 

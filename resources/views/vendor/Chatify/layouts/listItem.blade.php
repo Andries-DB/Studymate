@@ -10,7 +10,7 @@
             </td>
             {{-- center side --}}
             <td>
-                <p data-id="{{ Auth::user()->id }}" data-type="user">Opgeslagen berichten <span>You</span></p>
+                <p data-id="{{ Auth::user()->id }}" data-type="user">Opgeslagen berichten <span>Jij</span></p>
                 <span>Geheime opgeslagen berichten</span>
             </td>
         </tr>
