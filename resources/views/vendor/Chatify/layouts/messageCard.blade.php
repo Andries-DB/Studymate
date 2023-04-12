@@ -14,7 +14,7 @@ $timeAndSeen = "<span data-time='$created_at' class='message-time'>
   @endif
   {{-- Card --}}
   @if (@$attachment->type != 'image' || $message)
-  <div class="message">
+  <div class="message fatdick">
       {!! ($message == null && $attachment != null && @$attachment->type != 'file') ? $attachment->title : nl2br($message) !!}
       {!! $timeAndSeen !!}
       {{-- If attachment is a file --}}
