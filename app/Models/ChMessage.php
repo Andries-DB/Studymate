@@ -3,13 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Chatify\Traits\UUID;
 
 class ChMessage extends Model
 {
-    protected $fillable = ['id', 'from_id', 'to_id', 'message', 'type', 'is_seen', 'is_deleted', 'is_sent', 'is_delivered', 'is_read', 'created_at', 'updated_at'];
-
-
-
-
-
+    protected $fillable = ['from_id', 'to_id', 'message', 'type', 'is_seen', 'is_deleted', 'is_sent', 'is_delivered', 'is_read', 'created_at', 'updated_at'];
 }
