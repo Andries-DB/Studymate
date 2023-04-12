@@ -66,8 +66,10 @@ Route::middleware('auth')->group(function () {
 });
 
 // Settings Routes
-Route::get('/instellingen', [ProfileController::class, 'edit'])->middleware(['auth', 'verified'])->name('instellingen');
-Route::post('/instellingen/update', [ProfileController::class, 'updateMainInfo'])->middleware(['auth', 'verified'])->name('instellingen.update');
+Route::middleware('auth')->group(function () {
+  Route::get('/instellingen', [ProfileController::class, 'edit'])->name('instellingen');
+  Route::post('/instellingen/update', [ProfileController::class, 'updateMainInfo'])->name('instellingen.update');
+});
 
 // Profile Routes
 Route::middleware('auth')->group(function () {
