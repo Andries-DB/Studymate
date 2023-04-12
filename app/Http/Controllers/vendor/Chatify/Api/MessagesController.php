@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\vendor\Chatify\Api;
+namespace Chatify\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -129,10 +129,8 @@ class MessagesController extends Controller
 
         if (!$error->status) {
             // send to database
-            $messageID = mt_rand(9, 999999999) + time();
             $message = Chatify::newMessage([
-                'id' => $messageID,
-                'type' => "user",
+                'type' => $request['type'],
                 'from_id' => Auth::user()->id,
                 'to_id' => $request['id'],
                 'body' => htmlentities(trim($request['message']), ENT_QUOTES, 'UTF-8'),
