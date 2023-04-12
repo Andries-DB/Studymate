@@ -341,13 +341,6 @@ body {
   word-break: break-word;
 }
 
-.message-card .message div{
-  background: #fff;
-  color: #000;
-  display: flex;
-  flex-direction: column;
-  margin: 0px 15px;
-}
 .message-card p sub {
   display: inline-block;
   font-size: 11px;
