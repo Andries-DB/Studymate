@@ -419,6 +419,7 @@ function sendMessage() {
   let tempID = `temp_${temporaryMsgId}`;
   let hasFile = !!$(".upload-attachment").val();
   const inputValue = $.trim(messageInput.val());
+  console.log(inputValue);
   if (inputValue.length > 0 || hasFile) {
     const formData = new FormData($("#message-form")[0]);
     formData.append("id", getMessengerId());

@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build --watch"
+    "build": "vite build"
   },
   "devDependencies": {
     "@headlessui/vue": "^1.7.7",
