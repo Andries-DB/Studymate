@@ -341,7 +341,7 @@ body {
   word-break: break-word;
 }
 
-.message-card .message {
+.message-card .message div{
   background: #fff;
   color: #000;
   display: flex;
