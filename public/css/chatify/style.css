@@ -324,6 +324,7 @@ body {
   flex-direction: column;
   margin: 2px 15px;
   width: calc(100% - 30px);
+  background-color: #0085ef;
 }
 .message-card div {
   margin-top: 0px;
