@@ -146,7 +146,7 @@ class MessagesController extends Controller
             // send to database
             $messageID = mt_rand(9, 999999999) + time();
             Chatify::newMessage([
-                'chatify_id' => $messageID,
+                'id' => $messageID,
                 'type' => "user",
                 'from_id' => Auth::user()->id,
                 'to_id' => $request['id'],
