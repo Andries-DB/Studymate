@@ -1,6 +1,6 @@
 {{-- user info and avatar --}}
 <div class="avatar av-l chatify-d-flex">
-    <img src="{{ asset('../../storage/'.config('chatify.user_avatar.folder').'/'.$user->avatar) }}" alt="avatar">
+    <img src="{{ asset('../../storage/'.$user->avatar) }}" alt="avatar">
 </div>
 <p class="info-name">{{ config('chatify.name') }}</p>
 <div class="messenger-infoView-btns">
