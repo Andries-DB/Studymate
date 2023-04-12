@@ -2,11 +2,11 @@
   <!-- Make new task modal -->
   <Modal :show="show" @close="close">
     <div class="bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
-      <h3 class="mb-5">Maak een nieuwe taak aan!</h3>
+      <h3 class="mb-5">{{ $t('Modals.TaskModal.Title') }}</h3>
       <form method="POST" :action="route('addTask')" class="flex flex-col gap-1" >
         <input type="hidden" name="_token" :value="csrf">
         <select name="project" id="project" class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-          <option value="disabled" disabled selected>-- Selecteer een project --</option>
+          <option value="disabled" disabled selected>{{ $t('Modals.TaskModal.Select') }}</option>
           <option v-for="project in projects" :value="project.id">{{ project.name }}</option>
         </select>
         <!-- Error handling -->
@@ -16,7 +16,7 @@
         type="text"
         name="name"
         autocomplete="Name"
-        placeholder="Naam van de nieuwe taak"
+        :placeholder="$t('Modals.TaskModal.Name')"
         />
         <ErrorHandling id="nameError" />
         <TextInput
@@ -24,11 +24,11 @@
         type="text"
         name="description"
         autocomplete="Description"
-        placeholder="Beschrijving van de nieuwe taak"
+        :placeholder="$t('Modals.TaskModal.Description')"
         />
         <ErrorHandling id="descriptionError" />
         <PrimaryButton class="mt-3" @click="Taskerror()">
-          Maak een nieuwe taak aan
+          {{ $t('Modals.TaskModal.Title') }}
         </PrimaryButton>
       </form>
     </div>
@@ -40,7 +40,8 @@
   import Modal from '@/Components/Modal.vue';
   import TextInput from '@/Components/TextInput.vue';
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
-import ErrorHandling from '../Error/ErrorHandling.vue';
+  import ErrorHandling from '../Error/ErrorHandling.vue';
+  import { useI18n } from 'vue-i18n';
 
   export default {
     components: {
@@ -48,7 +49,11 @@ import ErrorHandling from '../Error/ErrorHandling.vue';
     TextInput,
     PrimaryButton,
     ErrorHandling
-},
+    },
+    setup() {
+      const { t } = useI18n({});
+      return { t };
+    },
     data() {
       return {
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
@@ -77,7 +82,7 @@ import ErrorHandling from '../Error/ErrorHandling.vue';
 
         // if the user doesn't select a project, show an alert and don't submit the form
         if (document.getElementById('project').value == "disabled") {
-          document.getElementById('projectError').innerHTML = "Selecteer een project";
+          document.getElementById('projectError').innerHTML = $t('Modals.TaskModal.Errors.Project');
           document.getElementById('projectError').classList.remove('hidden');
 
           // prevent the form from submitting
@@ -85,7 +90,7 @@ import ErrorHandling from '../Error/ErrorHandling.vue';
         }
         // if the user doesn't fill in a name, show an alert and don't submit the form
         if (document.getElementById('name').value == "") {
-          document.getElementById('nameError').innerHTML = "Vul een naam in";
+          document.getElementById('nameError').innerHTML =  $t('Modals.TaskModal.Errors.Name');
           document.getElementById('nameError').classList.remove('hidden');
 
           // prevent the form from submitting
@@ -93,7 +98,7 @@ import ErrorHandling from '../Error/ErrorHandling.vue';
         }
         // if the user doesn't fill in a description, show an alert and don't submit the form
         if (document.getElementById('description').value == "") {
-          document.getElementById('descriptionError').innerHTML = "Vul een beschrijving in";
+          document.getElementById('descriptionError').innerHTML = $t('Modals.TaskModal.Errors.Description');
           document.getElementById('descriptionError').classList.remove('hidden');
 
           // prevent the form from submitting

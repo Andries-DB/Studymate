@@ -1,7 +1,7 @@
 <template>
   <Modal :show="show" @close="close">
     <div class="bg-white rounded-lg flex flex-col items-center justify-center p-5 relative">
-      <h3 class="mb-5">Maak een nieuwe studeerkamer aan!</h3>
+      <h3 class="mb-5">{{ $t('Modals.StudyRoomModal.Title') }}</h3>
       <form method="POST" :action="route('addStudyRoom')" class="flex flex-col gap-2" enctype="multipart/form-data" >
         <input type="hidden" name="_token" :value="csrf">
         <TextInput
@@ -9,7 +9,7 @@
         type="text"
         name="name"
         autocomplete="Name"
-        placeholder="Naam van de nieuwe studeerkamer"
+        :placeholder="$t('Modals.StudyRoomModal.Name')"
         />
         <ErrorHandling id="nameError" />
         <TextInput
@@ -17,13 +17,13 @@
         type="text"
         name="description"
         autocomplete="Description"
-        placeholder="Beschrijving van de nieuwe studeerkamer"
+        :placeholder="$t('Modals.StudyRoomModal.Description')"
         />
         <ErrorHandling id="descriptionError" />
 
         <input type="file" name="image" id="image">
         <PrimaryButton class="mt-3" @click="StudyRoomerror()">
-          Maak een nieuwe studeerkamer aan
+          {{ $t('Modals.StudyRoomModal.Title') }}
         </PrimaryButton>
       </form>
     </div>
@@ -35,6 +35,7 @@
   import TextInput from '@/Components/TextInput.vue';
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
   import ErrorHandling from '../Error/ErrorHandling.vue';
+  import { useI18n } from 'vue-i18n';
 
   export default {
     components: {
@@ -54,6 +55,10 @@
       }
 
     },
+    setup() {
+      const { t } = useI18n({});
+      return { t };
+    },
     data: () => ({
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
@@ -65,7 +70,7 @@
 
          // if the user doesn't fill in a name, show an alert and don't submit the form
          if (document.getElementById('name').value == "") {
-          document.getElementById('nameError').innerHTML = "Vul een naam in";
+          document.getElementById('nameError').innerHTML = $t('Modals.StudyRoomModal.Errors.Name');
           document.getElementById('nameError').classList.remove('hidden');
 
           // prevent the form from submitting
@@ -73,7 +78,7 @@
         }
         // if the user doesn't fill in a description, show an alert and don't submit the form
         if (document.getElementById('description').value == "") {
-          document.getElementById('descriptionError').innerHTML = "Vul een beschrijving in";
+          document.getElementById('descriptionError').innerHTML = $t('Modals.StudyRoomModal.Errors.Description');
           document.getElementById('descriptionError').classList.remove('hidden');
 
           // prevent the form from submitting

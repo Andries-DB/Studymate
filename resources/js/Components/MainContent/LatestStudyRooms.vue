@@ -1,6 +1,6 @@
 <template>
-  <h4>Nieuwste studeerkamers</h4>
-  <p class="text-gray-500">Overzicht van de nieuwste studeerkamers</p>
+  <h4>{{ $t('Dashboard.LatestStudyRooms.Title') }}</h4>
+  <p class="text-gray-500">{{ $t('Dashboard.LatestStudyRooms.Description') }}</p>
   <div class="flex flex-col space-y-4 pt-5">
     <div class="flex justify-center" v-if="$page.props.studyrooms.length === 0 ">
       <NoStudyRoomOwner @click="showModal()" />
@@ -17,11 +17,16 @@
 <script>
   import StudyRoom from '@/Components/StudyRooms/Detail/StudyRoom.vue';
   import NoStudyRoomOwner from '../Widgets/NoStudyRoomOwner.vue';
+  import { useI18n } from 'vue-i18n';
 
   export default {
     components: {
       StudyRoom,
       NoStudyRoomOwner,
+    },
+    setup() {
+      const { t } = useI18n({});
+      return { t };
     },
     props: {
       studyrooms: {

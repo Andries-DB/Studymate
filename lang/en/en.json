@@ -1,0 +1,100 @@
+{
+  "Menu" : {
+    "Dashboard" : "dashboard",
+    "StudyRooms" : "studyrooms",
+    "Messages" : "messages",
+    "Settings" : "settings"
+  },
+  "Routes" : {
+    "Register" : {
+      "Register" : "Register",
+      "MakeAcc" : "Make an account"
+    },
+    "Login" : {
+      "Login" : "Log in",
+      "AlreadyAcc" : "Already have an account?"
+    },
+    "Logout" : "Log out",
+    "ForgotPassword" : "Forgot password"
+  },
+  "Welcome" : {
+    "FirstPart" : {
+      "Studying" : "How collaborative learning boosts productivity",
+      "ReadMore" : "Read more",
+      "Title" : "Studymate boosts your productivity",
+      "Description" : "Discover all the study rooms and start studying! Make new friends and study together online!"
+    },
+    "SecondPart" : {
+      "TitlePart" : "Features",
+      "Title" : "Everything you need to study",
+      "Description" : "Studymate is not just another web application for studying together. It has much more than just study rooms.",
+      "Features" : {
+        "Messages" : {
+          "Title" : "Messages",
+          "Description" : "Studymate is not just another web application for studying together. It has much more than just study room"
+        },
+        "StudyRooms" : {
+          "Title" : "Private Studyrooms",
+          "Description" : "Besides public ones, we also have private study rooms. This so you can study at your leisure with your friends"
+        },
+        "People" : {
+          "Title" : "Get to know new people",
+          "Description" : "Meet new people and study with them. Who knows, your new bestie might be in your group"
+        },
+        "ToDo" : {
+          "Title" : "To Do's",
+          "Description" : "Add projects and tasks and tick them off while studying!"
+        }
+      }
+    },
+    "ThirdPart" : {
+      "Users" : "Users",
+      "StudyRooms" : "Studyrooms",
+      "Productivity" : "Productivity"
+    }
+  },
+  "Dashboard" : {
+    "HelloBar" : {
+      "Hello" : "Hello",
+      "Today" : "Today is"
+    },
+    "Tasks" : {
+      "Title" : "Task overview",
+      "Description" : "Here you can see all your tasks"
+    },
+    "LatestStudyRooms" : {
+      "Title" : "Newest studyrooms",
+      "Description" : "Here you can see the newest studyrooms"
+    },
+    "CTA" : {
+      "AddProject" : "Add a project"
+    }
+  },
+  "Modals" : {
+    "ProjectModal" : {
+      "Title" : "Add new project",
+      "Name" : "Name of the project"
+    },
+    "StudyRoomModal" : {
+      "Title" : "Add new studyroom",
+      "Name" : "Name of the studyroom",
+      "Description" : "Description of the studyroom",
+      "Errors" : {
+        "Name" : "Please enter a name",
+        "Description" : "Please enter a description"
+      }
+    },
+    "TaskModal" : {
+      "Title" : "Add new task",
+      "Name" : "Name of the task",
+      "Description" : "Description of the task",
+      "SelectProject" : "Select a project",
+      "Errors" : {
+        "Project" : "Please select a project",
+        "Name" : "Please enter a name",
+        "Description" : "Please enter a description"
+      }
+    }
+  }
+}
+
