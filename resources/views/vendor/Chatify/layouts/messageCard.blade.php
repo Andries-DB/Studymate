@@ -6,16 +6,13 @@ $timeAndSeen = "<span data-time='$created_at' class='message-time'>
 ?>
 
 <div class=" message-card @if($isSender) mc-sender @endif" data-id="{{ $id }}">
-  {{-- Delete Message button --}}
-  @if ($isSender)
-    <div class="actions">
-        <i class="fas fa-trash delete-btn" data-id="{{ $id }}"></i>
-    </div>
-  @endif
   {{-- Card --}}
   @if (@$attachment->type != 'image' || $message)
   <div class="message">
-      {!! ($message == null && $attachment != null && @$attachment->type != 'file') ? $attachment->title : nl2br($message) !!}
+      <div class="">
+          {!! ($message == null && $attachment != null && @$attachment->type != 'file') ? $attachment->title : nl2br($message) !!}
+          {!! $timeAndSeen !!}
+      </div>
       {!! $timeAndSeen !!}
       {{-- If attachment is a file --}}
       @if(@$attachment->type == 'file')
@@ -34,5 +31,6 @@ $timeAndSeen = "<span data-time='$created_at' class='message-time'>
         </div>
     </div>
     @endif
+
   </div>
 </div>

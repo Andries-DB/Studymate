@@ -162,6 +162,7 @@ body {
   width: 100%;
   cursor: pointer;
   transition: background 0.1s;
+  color: black;
 }
 .m-list-active span,
 .m-list-active p {
@@ -184,13 +185,13 @@ body {
   float: right;
 }
 .messenger-list-item td span {
-  color: #cacaca;
+  color: black;
   font-weight: 400;
   font-size: 13px;
 }
 .messenger-list-item td b {
   float: right;
-  color: #fff;
+  color: black;
   padding: 0px 4px;
   border-radius: 20px;
   font-size: 13px;
@@ -338,6 +339,14 @@ body {
   width: -webkit-fit-content;
   border-radius: 20px;
   word-break: break-word;
+}
+
+.message-card .message {
+  background: #fff;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  margin: 0px 15px;
 }
 .message-card p sub {
   display: inline-block;
