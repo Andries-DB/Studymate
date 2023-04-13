@@ -4,7 +4,7 @@
   <div class="flex justify-center mt-2" v-if="$page.props.invites.length === 0">
     <NothingToShow class="text-base py-5 px-10">{{ $t('StudyRooms.Invites.NoInvites') }}</NothingToShow>
   </div>
-  <div v-for="invite in $page.props.invites" class="mt-2" >
+  <div v-for="invite in $page.props.invites" class="mt-2 lg:w-full w-10/12 " >
     <div class="w-full bg-indigo-500 flex justify-between p-4 rounded-xl text-gray-50 items-center mb-3">
       <div class="" name="INFO">
         <h3>{{ invite.studyroom.name }}</h3>

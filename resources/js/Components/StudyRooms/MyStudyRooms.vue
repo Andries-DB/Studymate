@@ -8,6 +8,7 @@
     <MyStudyRoom
       v-for="room in $page.props.myStudyrooms"
       :room="room"
+      class="lg:w-full w-10/12"
     />
   </div>
 

@@ -9,6 +9,7 @@
       v-for="room in $page.props.studyrooms"
       :studyroom="room"
       :canEdit="false"
+      class="lg:w-full w-10/12"
     />
 </div>
 
