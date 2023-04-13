@@ -29,8 +29,7 @@ const submit = () => {
 <template>
     <GuestLayout title="Log in op je account">
         <Head title="Log in" />
-
-        <form @submit.prevent="submit" class="mt-8 space-y-6">
+        <form @submit.prevent="submit" class="mt-8 lg:mx-0 mx-6 space-y-6">
             <div class="space-y-2 rounded-md shadow-sm">
                 <div>
                     <InputLabel for="email" value="Email" />
