@@ -3,12 +3,12 @@
   <UserLayout>
     <div class="flex flex-col gap-10 lg:p-7 lg:ml-8">
       <div class="flex justify-between">
-        <div class="">
+        <div class="lg:p-0 p-7">
           <h1 class="font-bold text-3xl">{{$page.props.studyroomInformation.name}}</h1>
           <h2>{{ $page.props.studyroomInformation.private ? `Een kamer van ${$page.props.owner.user.username}` : "Een openbare studeerkamer" }}</h2>
         </div>
       </div>
-      <div class="grid grid-cols-12 grid-rows-2 gap-10 h-full w-full">
+      <div class="grid grid-cols-12 grid-rows-2 h-full w-full">
         <div class="row-span-5 col-span-12 md:col-span-3">
           <div class="flex items-center justify-center lg:block">
             <JoinStudy @click="joinstream()"/>
