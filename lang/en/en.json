@@ -1,10 +1,4 @@
 {
-  "Menu" : {
-    "Dashboard" : "dashboard",
-    "StudyRooms" : "studyrooms",
-    "Messages" : "messages",
-    "Settings" : "settings"
-  },
   "Routes" : {
     "Register" : {
       "Register" : "Register",
@@ -95,6 +89,151 @@
         "Description" : "Please enter a description"
       }
     }
+  },
+  "ProjectDetail" : {
+    "AddTask" : {
+      "Title" : "Add a task to the project",
+      "Button" : "Add task",
+      "Name" : "Name of the task",
+      "Description" : "Description of the task",
+      "Errors" : {
+        "Name" : "Please enter a name",
+        "Description" : "Please enter a description"
+      }
+    },
+    "Task" : {
+      "Completed" : "Completed",
+      "MarkAsCompleted" : "Mark as completed"
+    },
+    "UpdateProject" : {
+      "Title" : "Update project",
+      "Button" : "Update",
+      "Name" : "Name of the project",
+      "Errors" : {
+        "Name" : "Please enter a name"
+      }
+    }
+  },
+  "StudyRoomDetail" : {
+    "UpdateStudyRoom" : {
+      "Title" : "Update studyroom",
+      "Button" : "Update",
+      "Name" : "Name of the studyroom",
+      "Description" : "Description of the studyroom",
+      "Errors" : {
+        "Name" : "Please enter a name",
+        "Description" : "Please enter a description"
+      }
+    },
+    "Users" : {
+      "NoUsers" : "There are no users to invite",
+      "CTA" : {
+        "Invite" : "Invite"
+      },
+      "Errors" : {
+        "Invite" : "You need to select at least 1 user to invite."
+      }
+    },
+    "Invite" : {
+      "SendBy" : "Sent on",
+      "JoinedOn" : "Joined on"
+    }
+  },
+  "StudyRooms" : {
+    "Invites" : {
+      "Title" : "Invites",
+      "Description" : "Here you can see all your invites",
+      "NoInvites" : "There are no invites to show"
+    },
+    "MyStudyRooms" : {
+      "Title" : "My studyrooms",
+      "Description" : "Here you can see all your studyrooms"
+    },
+    "PublicStudyRooms" : {
+      "Title" : "Public studyrooms",
+      "Description" : "Here you can see all the public studyrooms"
+    },
+    "SharedStudyRooms" : {
+      "Title" : "Shared studyrooms",
+      "Description" : "Here you can see all the studyrooms you are invited to"
+    },
+    "CTA" : {
+      "AddStudyRoom" : "Add a studyroom"
+    }
+  },
+  "EditProject" : {
+    "Title" : "All related tasks",
+    "Description" : "Here you can see all the tasks related to this project"
+  },
+  "EditStudyRoom" : {
+    "Invites" : {
+      "Title" : "Invites",
+      "Description" : "Here you can see all the invites for this studyroom",
+      "NoInvites" : "There are no invites to show"
+    },
+    "Users" : {
+      "Title" : "Users",
+      "Description" : "Here you can see all the users in this studyroom",
+      "NoUsers" : "There are no users to show"
+    },
+    "InviteUsers" : {
+      "Title" : "Invite users",
+      "Description" : "Select users and invite them"
+    }
+  },
+  "Settings" : {
+    "Languages" : {
+      "English" : "English",
+      "Dutch" : "Dutch"
+    },
+    "DeleteUser" : {
+      "Title" : "DANGEROUS ZONE",
+      "Description" : "Once your account is deleted, you will lose all your information. Please enter your password to delete your account.",
+      "Button" : "Delete my account",
+      "Modal" : {
+        "Title" : "Are you sure you want to delete your account",
+        "Description" : "Once your account is deleted, you will lose all your information.",
+        "Yes" : "Yes, delete my account",
+        "No" : "No, keep my account"
+      }
+    },
+    "UpdatePassword" : {
+      "Title" : "Security settings",
+      "Description" : "Make sure your account is secure by using a strong & long password.",
+      "CurrentPassword" : "Current password",
+      "NewPassword" : "New password",
+      "ConfirmNewPassword" : "Confirm new password",
+      "Button" : "Save",
+      "Saved" : "Password saved"
+    },
+    "UpdateProfile" : {
+      "Title" : "Setting",
+      "Description" : "Update your profile information.",
+      "FirstName" : {
+        "Label" : "First name",
+        "Error" : "First name is required"
+      },
+      "LastName" : {
+        "Label" : "Last name",
+        "Error" : "Last name is required"
+      },
+      "Username" : {
+        "Label" : "Username",
+        "Error" : "Username is required"
+      },
+      "Email" : {
+        "Label" : "Email",
+        "Error" : "Email is required"
+      },
+      "Avatar" : {
+        "Label" : "Avatar"
+      },
+      "Button" : "Sla op"
+    }
+  },
+  "Study" : {
+    "JoinStudyRoom" : "Join the studyroom",
+    "LeaveStudyRoom" : "Leave the studyroom"
   }
 }
 

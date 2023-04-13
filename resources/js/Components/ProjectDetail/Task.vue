@@ -6,8 +6,8 @@
       </div>
       <div class="mt-2">
         <strong>
-          <span v-if="task.completed === 1">Je hebt deze taak al voltooid</span>
-          <span v-else>Je moet deze taak nog voltooien</span>
+          <span v-if="task.completed === 1">{{ $t('ProjectDetail.Task.Completed') }}</span>
+          <span v-else>{{ $t('ProjectDetail.Task.MarkAsCompleted') }}</span>
         </strong>
       </div>
     </div>
@@ -36,6 +36,7 @@
 <script>
   import TertiaryButton from '../Buttons/TertiaryButton.vue';
   import { DocumentMinusIcon, TrashIcon } from '@heroicons/vue/20/solid';
+  import { useI18n } from 'vue-i18n';
 
   export default {
     components: {
@@ -48,6 +49,10 @@
         type: Object,
         required: true,
       },
+    },
+    setup() {
+      const { t } = useI18n({});
+      return { t };
     },
     data: () => ({
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),

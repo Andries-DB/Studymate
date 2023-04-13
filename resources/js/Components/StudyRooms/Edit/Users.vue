@@ -5,7 +5,7 @@
         <div class="w-16 h-16 rounded-full hidden md:block" :style="{'background-image':' url(../../storage/' + studyroomuserInfo.avatar + ')' }" id="avatar" />
         <div class="" name="INFO">
           <h4>{{ studyroomuserInfo.username }} - <strong>{{ studyroomuserInfo.name }}</strong></h4>
-          <p class="text-sm text-black">Toegetreden op {{ moment(studyroomuser.created_at).format("DD/MM/YYYY") }}</p>
+          <p class="text-sm text-black">{{ $t('StudyRoomDetail.Invite.JoinedOn') }} {{ moment(studyroomuser.created_at).format("DD/MM/YYYY") }}</p>
         </div>
       </div>
     </div>
@@ -27,6 +27,8 @@
   import moment from 'moment';
   import TertiaryButton from '@/Components/Buttons/TertiaryButton.vue';
   import { TrashIcon } from '@heroicons/vue/20/solid';
+  import { useI18n } from 'vue-i18n';
+
 
   export default {
     components: {
@@ -42,6 +44,10 @@
         type: Object,
         required: true,
       },
+    },
+    setup() {
+      const { t } = useI18n({});
+      return { t };
     },
     data: () => ({
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),

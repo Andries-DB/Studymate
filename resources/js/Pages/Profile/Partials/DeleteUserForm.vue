@@ -7,6 +7,7 @@ import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { nextTick, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 const confirmingUserDeletion = ref(false);
 const passwordInput = ref(null);
@@ -35,28 +36,30 @@ const closeModal = () => {
 
     form.reset();
 };
+
+const {t} = useI18n({});
 </script>
 
 <template>
     <section class="space-y-6">
         <header>
-            <h2 class="text-lg font-medium text-gray-900">GEVAARLIJKE ZONE</h2>
+            <h2 class="text-lg font-medium text-gray-900">{{ $t('Settings.DeleteUser.Title') }}</h2>
 
             <p class="mt-1 text-sm text-gray-600">
-                Eens je account is verwijderd, ben je al je informatie kwijt. Gelieve je wachtwoord in te geven om je account te verwijderen.
+              {{ $t('Settings.DeleteUser.Description') }}
             </p>
         </header>
 
-        <DangerButton @click="confirmUserDeletion">Delete Account</DangerButton>
+        <DangerButton @click="confirmUserDeletion">{{ $t('Settings.DeleteUser.Button') }}</DangerButton>
 
         <Modal :show="confirmingUserDeletion" @close="closeModal">
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-900">
-                    Ben je zeker dat je je account wilt verwijderen?
+                  {{ $t('Settings.DeleteUser.Modal.Title') }}
                 </h2>
 
                 <p class="mt-1 text-sm text-gray-600">
-                  Eens je account is verwijderd, ben je al je informatie kwijt. Gelieve je wachtwoord in te geven om je account te verwijderen.
+                  {{ $t('Settings.DeleteUser.Modal.Description') }}
                 </p>
 
                 <div class="mt-6">
@@ -68,7 +71,7 @@ const closeModal = () => {
                         v-model="form.password"
                         type="password"
                         class="mt-1 block w-3/4"
-                        placeholder="Wachtwoord"
+                        placeholder="Password"
                         @keyup.enter="deleteUser"
                     />
 
@@ -76,7 +79,7 @@ const closeModal = () => {
                 </div>
 
                 <div class="mt-6 flex justify-end">
-                    <SecondaryButton @click="closeModal"> Ga terug </SecondaryButton>
+                    <SecondaryButton @click="closeModal"> {{ $t('Settings.DeleteUser.Modal.No') }} </SecondaryButton>
 
                     <DangerButton
                         class="ml-3"
@@ -84,7 +87,7 @@ const closeModal = () => {
                         :disabled="form.processing"
                         @click="deleteUser"
                     >
-                        Verwijder account
+                    {{ $t('Settings.DeleteUser.Modal.Yes') }}
                     </DangerButton>
                 </div>
             </div>

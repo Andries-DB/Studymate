@@ -1,6 +1,6 @@
 <template>
-  <h4>Mijn studeerkamers</h4>
-  <p class="text-gray-500">Overzicht van alle studeerkamers die je hebt aangemaakt</p>
+  <h4>{{ $t('StudyRooms.MyStudyRooms.Title') }}</h4>
+  <p class="text-gray-500">{{ $t('StudyRooms.MyStudyRooms.Description') }}</p>
   <div class="flex flex-col space-y-4 pt-5">
     <div class="flex justify-center" v-if="$page.props.myStudyrooms.length === 0 ">
       <NoStudyRoomOwner @click="showModal()" />
@@ -23,6 +23,7 @@
   import NoStudyRoomOwner from '../Widgets/NoStudyRoomOwner.vue';
   import { ref } from 'vue';
   import StudyRoomModal from '@/Components/Modals/StudyRoomModal.vue';
+  import { useI18n } from 'vue-i18n';
 
   const addStudyRoom = ref(false);
 
@@ -37,6 +38,10 @@
       myStudyrooms: {
         type: Array,
       },
+    },
+    setup() {
+      const { t } = useI18n({});
+      return { t };
     },
     methods: {
       showModal() {

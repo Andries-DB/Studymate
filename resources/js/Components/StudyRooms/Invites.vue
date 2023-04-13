@@ -1,14 +1,14 @@
 <template>
-  <h4>Uitnodigingen</h4>
-  <p class="text-gray-500">Hieronder staan alle uitnodigingen die je hebt ontvangen.</p>
+  <h4>{{$t('StudyRooms.Invites.Title')}}</h4>
+  <p class="text-gray-500">{{ $t('StudyRooms.Invites/Description') }}</p>
   <div class="flex justify-center mt-2" v-if="$page.props.invites.length === 0">
-    <NothingToShow class="text-base py-5 px-10">Er zijn geen uitnodigingen om weer te geven</NothingToShow>
+    <NothingToShow class="text-base py-5 px-10">{{ $t('StudyRooms.Invites.NoInvites') }}</NothingToShow>
   </div>
   <div v-for="invite in $page.props.invites" class="mt-2" >
     <div class="w-full bg-indigo-500 flex justify-between p-4 rounded-xl text-gray-50 items-center mb-3">
       <div class="" name="INFO">
         <h3>{{ invite.studyroom.name }}</h3>
-        <p>Verzonden op {{ moment(invite.created_at).format("DD/MM/YYYY") }}</p>
+        <p> {{$t('StudyRoomDetail.Invite.SendBy') + ' ' + moment(invite.created_at).format("DD/MM/YYYY") }}</p>
       </div>
       <div class="flex gap-2" name="CTA">
         <div>
@@ -39,20 +39,25 @@
   import moment from 'moment';
   import TertiaryButton from '../Buttons/TertiaryButton.vue';
   import NothingToShow from '../NothingToShow.vue';
-import { NoSymbolIcon, CheckIcon } from '@heroicons/vue/20/solid';
+  import { NoSymbolIcon, CheckIcon } from '@heroicons/vue/20/solid';
+  import { useI18n } from 'vue-i18n';
 
   export default {
     components: {
-    TertiaryButton,
-    NothingToShow,
-    NoSymbolIcon,
-    CheckIcon
-},
+      TertiaryButton,
+      NothingToShow,
+      NoSymbolIcon,
+      CheckIcon
+    },
     props: {
       invites: {
         type: Array,
         required: true,
       },
+    },
+    setup() {
+      const { t } = useI18n({});
+      return { t };
     },
     data: () => ({
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),

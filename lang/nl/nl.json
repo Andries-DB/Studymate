@@ -1,10 +1,4 @@
 {
-  "Menu" : {
-    "Dashboard" : "dashboard",
-    "StudyRooms" : "studeerkamers",
-    "Messages" : "berichten",
-    "Settings" : "instellingen"
-  },
   "Routes" : {
     "Register" : {
       "Register" : "Registreren",
@@ -95,6 +89,151 @@
         "Description" : "Vul een beschrijving in"
       }
     }
+  },
+  "ProjectDetail" : {
+    "AddTask" : {
+      "Title" : "Nieuwe taak toevoegen",
+      "Button" : "Voeg taak toe",
+      "Name" : "Naam van de taak",
+      "Description" : "Beschrijving van de taak",
+      "Errors" : {
+        "Name" : "Vul een naam in",
+        "Description" : "Vul een beschrijving in"
+      }
+    },
+    "Task" : {
+      "Completed" : "Je hebt deze taak al voltooid",
+      "MarkAsCompleted" : "Je moet deze taak nog voltooien"
+    },
+    "UpdateProject" : {
+      "Title" : "Update de naam van het project",
+      "Button" : "Update",
+      "Name" : "Naam van het project",
+      "Errors" : {
+        "Name" : "Vul een naam in"
+      }
+    }
+  },
+  "StudyRoomDetail" : {
+    "UpdateStudyRoom" : {
+      "Title" : "Update de informatie van je studeerkamer",
+      "Button" : "Update",
+      "Name" : "Naam van de studeerkamer",
+      "Description" : "Beschrijving van de studeerkamer",
+      "Errors" : {
+        "Name" : "Vul een naam in",
+        "Description" : "Vul een beschrijving in"
+      }
+    },
+    "Users" : {
+      "NoUsers" : "Er zijn geen gebruikers om uit te nodigen",
+      "CTA" : {
+        "Invite" : "Nodig uit"
+      },
+      "Errors" : {
+        "Invite" : "Je moet minimaal 1 gebruiker selecteren om uit te nodigen"
+      }
+    },
+    "Invite" : {
+      "SendBy" : "Verzonden op",
+      "JoinedOn" : "Toegetreden op"
+    }
+  },
+  "StudyRooms" : {
+    "Invites" : {
+      "Title" : "Uitnodigingen",
+      "Description" : "Hieronder staan alle uitnodigingen die je hebt ontvangen",
+      "NoInvites" : "Er zijn geen uitnodigingen om weer te geven"
+    },
+    "MyStudyRooms" : {
+      "Title" : "Mijn studeerkamers",
+      "Description" : "Hieronder staan alle studeerkamers die je hebt aangemaakt"
+    },
+    "PublicStudyRooms" : {
+      "Title" : "Publieke studeerkamers",
+      "Description" : "Hieronder staan alle publieke studeerkamers"
+    },
+    "SharedStudyRooms" : {
+      "Title" : "Gedeelde studeerkamers",
+      "Description" : "Hieronder staan alle studeerkamers die je hebt gedeeld"
+    },
+    "CTA" : {
+      "AddStudyRoom" : "Maak een nieuwe studeerkamer"
+    }
+  },
+  "EditProject" : {
+    "Title" : "Alle gerelateerde taken",
+    "Description" : "Hieronder staan alle taken die je hebt toegevoegd aan dit project"
+  },
+  "EditStudyRoom" : {
+    "Invites" : {
+      "Title" : "Uitnodigingen",
+      "Description" : "Hieronder staan alle uitnodigingen die je hebt ontvangen",
+      "NoInvites" : "Er zijn geen uitnodigingen om weer te geven"
+    },
+    "Users" : {
+      "Title" : "Leden",
+      "Description" : "Hieronder staan alle leden die zijn toegetreden tot de studeerkamer",
+      "NoUsers" : "Er zijn geen leden om weer te geven"
+    },
+    "InviteUsers" : {
+      "Title" : "Nodig gebruikers uit",
+      "Description" : "Selecteer gebruikers en nodig ze uit"
+    }
+  },
+  "Settings" : {
+    "Languages" : {
+      "English" : "Engels",
+      "Dutch" : "Nederlands"
+    },
+    "DeleteUser" : {
+      "Title" : "GEVAARLIJKE ZONE",
+      "Description" : "Eens je account is verwijderd, ben je al je informatie kwijt. Gelieve je wachtwoord in te geven om je account te verwijderen.",
+      "Button" : "Verwijder mijn account",
+      "Modal" : {
+        "Title" : "Ben je zeker dat je je account wilt verwijderen?",
+        "Description" : "Eens je account is verwijderd, ben je al je informatie kwijt. Gelieve je wachtwoord in te geven om je account te verwijderen.",
+        "Yes" : "Ja, verwijder mijn account",
+        "No" : "Nee, ik wil mijn account behouden"
+      }
+    },
+    "UpdatePassword" : {
+      "Title" : "Veiligheidsinstellingen",
+      "Description" : "Zorg ervoor dat je account veilig is door een sterk & lang wachtwoord te gebruiken.",
+      "CurrentPassword" : "Huidig wachtwoord",
+      "NewPassword" : "Nieuw wachtwoord",
+      "ConfirmNewPassword" : "Bevestig nieuw wachtwoord",
+      "Button" : "Sla op",
+      "Saved" : "Wachtwoord is succesvol bijgewerkt"
+    },
+    "UpdateProfile" : {
+      "Title" : "Algmene instellingen",
+      "Description" : "Update je profiel informatie en email adres.",
+      "FirstName" : {
+        "Label" : "Voornaam",
+        "Error" : "Voornaam is verplicht"
+      },
+      "LastName" : {
+        "Label" : "Achternaam",
+        "Error" : "Achternaam is verplicht"
+      },
+      "Username" : {
+        "Label" : "Gebruikersnaam",
+        "Error" : "Gebruikersnaam is verplicht"
+      },
+      "Email" : {
+        "Label" : "Email",
+        "Error" : "Email is verplicht"
+      },
+      "Avatar" : {
+        "Label" : "Avatar"
+      },
+      "Button" : "Sla op"
+    }
+  },
+  "Study" : {
+    "JoinStudyRoom" : "Join de kamer",
+    "LeaveStudyRoom" : "Verlaat de kamer"
   }
 }
 

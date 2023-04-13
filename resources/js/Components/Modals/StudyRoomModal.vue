@@ -11,7 +11,9 @@
         autocomplete="Name"
         :placeholder="$t('Modals.StudyRoomModal.Name')"
         />
-        <ErrorHandling id="nameError" />
+        <ErrorHandling id="nameError" class="hidden">
+          {{ $t('Modals.StudyRoomModal.Errors.Name') }}
+        </ErrorHandling>
         <TextInput
         id="description"
         type="text"
@@ -19,7 +21,9 @@
         autocomplete="Description"
         :placeholder="$t('Modals.StudyRoomModal.Description')"
         />
-        <ErrorHandling id="descriptionError" />
+        <ErrorHandling id="descriptionError" class="hidden">
+          {{ $t('Modals.StudyRoomModal.Errors.Description') }}
+        </ErrorHandling>
 
         <input type="file" name="image" id="image">
         <PrimaryButton class="mt-3" @click="StudyRoomerror()">
@@ -70,18 +74,12 @@
 
          // if the user doesn't fill in a name, show an alert and don't submit the form
          if (document.getElementById('name').value == "") {
-          document.getElementById('nameError').innerHTML = $t('Modals.StudyRoomModal.Errors.Name');
           document.getElementById('nameError').classList.remove('hidden');
-
-          // prevent the form from submitting
           event.preventDefault();
         }
         // if the user doesn't fill in a description, show an alert and don't submit the form
         if (document.getElementById('description').value == "") {
-          document.getElementById('descriptionError').innerHTML = $t('Modals.StudyRoomModal.Errors.Description');
           document.getElementById('descriptionError').classList.remove('hidden');
-
-          // prevent the form from submitting
           event.preventDefault();
         }
       },

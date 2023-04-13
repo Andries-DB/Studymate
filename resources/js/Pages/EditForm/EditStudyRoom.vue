@@ -5,10 +5,10 @@
       <div class="row-span-2 col-span-12 md:col-span-6 spaxe-y-7">
         <UpdateStudyRoom :studyroom="$page.props.studyroom" />
         <div class="mt-8">
-          <h4 >Uitnodigingen</h4>
-          <p class="text-gray-500 mb-4">Hier zie je alle uitnodigingen die je hebt verstuurd</p>
+          <h4 >{{ $t('EditStudyRoom.Invites.Title') }}</h4>
+          <p class="text-gray-500 mb-4">{{ $t('EditStudyRoom.Invites.Description') }}</p>
           <div class="flex justify-center placeholder:text-center w-11/12" v-if="$page.props.studyroomInvitations.length === 0">
-            <NothingToShow class="text-base px-10 py-5" >Er zijn op dit moment geen uitnodigingen</NothingToShow>
+            <NothingToShow class="text-base px-10 py-5" >{{ $t('EditStudyRoom.Invites.NoInvites') }}</NothingToShow>
           </div>
           <Invite
             v-for="invite in $page.props.studyroomInvitations"
@@ -16,10 +16,10 @@
             :invitedUser = "invite.user"
             class="flex flex-row mb-3"
           />
-          <h4 class="mt-2">Leden</h4>
-          <p class="text-gray-500 mb-4">Hier zie je alle leden van de studiezaal</p>
+          <h4 class="mt-2">{{ $t('EditStudyRoom.Users.Title') }}</h4>
+          <p class="text-gray-500 mb-4">{{ $t('EditStudyRoom.Users.Description') }}</p>
           <div class="flex justify-center text-center w-11/12" v-if="$page.props.studyroomUsers.length === 0">
-            <NothingToShow class="text-base px-10 py-5" >Er zijn op dit moment geen leden</NothingToShow>
+            <NothingToShow class="text-base px-10 py-5" >{{ $t('EditStudyRoom.Users.NoUsers') }}</NothingToShow>
           </div>
           <Users
             v-for="user in $page.props.studyroomUsers"
@@ -32,8 +32,8 @@
       <div class="row-span-1 col-span-12 md:col-span-6 ">
         <div class="flex flex-col gap-5">
           <div class="">
-            <h4>Nodig mensen uit</h4>
-            <p class="text-gray-500">Selecteer gebruikers en nodig ze uit</p>
+            <h4>{{ $t('EditStudyRoom.InviteUsers.Title') }}</h4>
+            <p class="text-gray-500">{{ $t('EditStudyRoom.InviteUsers.Description') }}</p>
           </div>
           <div class="flex flex-col gap-5">
             <UserOverview
@@ -56,18 +56,19 @@
   import UserLayout from '@/Layouts/UserLayout.vue';
   import UpdateStudyRoom from '@/Components/StudyRooms/Edit/UpdateStudyRoom.vue';
   import UserOverview from '@/Components/StudyRooms/Edit/UserOverview.vue';
+  import { useI18n } from 'vue-i18n';
 
   export default {
     components: {
-    Head,
-    Invite,
-    Users,
-    TertiaryButton,
-    NothingToShow,
-    UserLayout,
-    UpdateStudyRoom,
-    UserOverview
-},
+      Head,
+      Invite,
+      Users,
+      TertiaryButton,
+      NothingToShow,
+      UserLayout,
+      UpdateStudyRoom,
+      UserOverview
+    },
     props: {
       studyroom: {
         type: Object
@@ -80,6 +81,12 @@
       },
       studyroomUsers: {
         type: Array
+      }
+    },
+    setup() {
+      const {t} = useI18n({});
+      return {
+        t
       }
     },
     data: () => ({

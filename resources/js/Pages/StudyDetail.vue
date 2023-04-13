@@ -28,12 +28,12 @@
   <div class="w-full h-20 fixed bg-stone-100 bottom-0 flex justify-center gap-5 items-center">
     <div>
       <PrimaryButton id="join-btn" @click="joinstream()">
-        Join de kamer
+        {{ $t('Study.JoinStudyRoom') }}
       </PrimaryButton>
     </div>
     <div>
       <PrimaryButton id="leave-btn" class="hidden" @click="leaveStream()">
-        Verlaat de kamer
+        {{ $t('Study.LeaveStudyRoom') }}
       </PrimaryButton>
     </div>
     <div id="screen-btn-div">
@@ -52,6 +52,7 @@ import { Head } from '@inertiajs/vue3';
 import PrimaryButton from '../Components/Buttons/PrimaryButton.vue';
 import UserLayout from '@/Layouts/UserLayout.vue';
 import JoinStudy from '@/Components/Widgets/JoinStudy.vue';
+import {useI18n} from "vue-i18n";
 
 // These are the Agora RTC variables
 const APP_ID = import.meta.env.VITE_AGORA_APP_ID;
@@ -168,12 +169,16 @@ export default {
             }
         }
     },
+    setup() {
+      const {t} = useI18n({});
+      return {t};
+    },
     components: {
     UserLayout,
     Head,
     PrimaryButton,
     JoinStudy
-}
+  }
 };
 </script>
 

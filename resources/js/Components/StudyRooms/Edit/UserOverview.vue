@@ -14,7 +14,7 @@
 
   <div class="" v-if="$page.props.users.length == 0">
     <NothingToShow class="w-11/12">
-      Er zijn geen gebruikers om uit te nodigen.
+      {{ $t('StudyRoomDetail.Users.NoUsers') }}
     </NothingToShow>
   </div>
 
@@ -24,7 +24,7 @@
     <input type="hidden" name="users" :value="users">
 
     <PrimaryButton type="submit" class="mt-3 w-11/12" @click="UsersError()">
-      Nodig uit
+      {{ $t('StudyRoomDetail.Users.CTA.Invite') }}
     </PrimaryButton>
     <ErrorHandling id="usersError">
     </ErrorHandling>
@@ -34,8 +34,10 @@
 <script>
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
   import ErrorHandling from '@/Components/Error/ErrorHandling.vue';
-import NothingToShow from '@/Components/NothingToShow.vue';
+  import NothingToShow from '@/Components/NothingToShow.vue';
   import { ref } from 'vue';
+  import { useI18n } from 'vue-i18n';
+
 
   // ref array
   let users = ref([]);
@@ -51,6 +53,10 @@ import NothingToShow from '@/Components/NothingToShow.vue';
         studyroom: {
             type: Object
         },
+    },
+    setup() {
+      const { t } = useI18n({});
+      return { t };
     },
     methods: {
       checkifUserisAdded(user) {
@@ -88,7 +94,7 @@ import NothingToShow from '@/Components/NothingToShow.vue';
 
         if (users.value.length == 0) {
           document.getElementById('usersError').classList.remove('hidden');
-          document.getElementById('usersError').innerHTML = 'Je moet minimaal 1 gebruiker selecteren om uit te nodigen.';
+          document.getElementById('usersError').innerHTML = $t('StudyRoomDetail.Users.Error.Invite');
           event.preventDefault();
         }
       }

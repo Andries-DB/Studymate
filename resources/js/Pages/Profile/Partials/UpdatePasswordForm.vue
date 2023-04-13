@@ -5,6 +5,7 @@ import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 const passwordInput = ref(null);
 const currentPasswordInput = ref(null);
@@ -31,21 +32,23 @@ const updatePassword = () => {
         },
     });
 };
+
+const t = useI18n();
 </script>
 
 <template>
     <section>
         <header>
-            <h2 class="text-lg font-medium text-gray-900">Veiligheids instellingen</h2>
+            <h2 class="text-lg font-medium text-gray-900">{{ $t('Settings.UpdatePassword.Title') }}</h2>
 
             <p class="mt-1 text-sm text-gray-600">
-               Zorg ervoor dat je account veilig is door een sterk & lang wachtwoord te gebruiken.
+              {{ $t('Settings.UpdatePassword.Description') }}
             </p>
         </header>
 
         <form @submit.prevent="updatePassword" class="mt-6 space-y-2">
             <div>
-                <label for="current_password">Huidig wachtwoord</label>
+                <label for="current_password">{{ $t('Settings.UpdatePassword.CurrentPassword') }}</label>
                 <TextInput
                     id="current_password"
                     ref="currentPasswordInput"
@@ -59,7 +62,7 @@ const updatePassword = () => {
             </div>
 
             <div>
-                <label for="password">Nieuw wachtwoord</label>
+                <label for="password">{{ $t('Settings.UpdatePassword.NewPassword') }}</label>
                 <TextInput
                     id="password"
                     ref="passwordInput"
@@ -74,7 +77,7 @@ const updatePassword = () => {
 
             <div>
                 <InputLabel for="password_confirmation" value="Confirm Password" />
-                <label for="password_confirmation">Herhaal wachtwoord</label>
+                <label for="password_confirmation">{{ $t('Settings.UpdatePassword.ConfirmNewPassword') }}</label>
 
                 <TextInput
                     id="password_confirmation"
@@ -88,10 +91,9 @@ const updatePassword = () => {
             </div>
 
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">Sla op</PrimaryButton>
-
+                <PrimaryButton :disabled="form.processing">{{ $t('Settings.UpdatePassword.Button') }}</PrimaryButton>
                 <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">
-                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Opgeslagen!</p>
+                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">{{ $t('Settings.UpdatePassword.Saved') }}</p>
                 </Transition>
             </div>
         </form>

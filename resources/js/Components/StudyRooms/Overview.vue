@@ -1,13 +1,13 @@
 <template>
   <div class="flex justify-between items-center py-3">
     <div class="">
-      <h4>Gedeelde studeerkamers</h4>
-      <p class="text-gray-500">Overzicht van alle studeerkamers die gedeeld zijn met jou</p>
+      <h4>{{ $t('StudyRooms.SharedStudyRooms.Title') }}</h4>
+      <p class="text-gray-500">{{ $t('StudyRooms.SharedStudyRooms.Description') }}</p>
     </div>
 
     <div>
       <PrimaryButton v-on:click="showModal()" id="addProject">
-        + Maak een nieuwe studeerkamer
+        + {{ $t('StudyRooms.CTA.AddStudyRoom') }}
       </PrimaryButton>
     </div>
   </div>
@@ -35,23 +35,28 @@
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
   import StudyRoomModal from '@/Components/Modals/StudyRoomModal.vue';
   import NoStudyRooms from '@/Components/Widgets/NoStudyRooms.vue';
+  import { useI18n } from 'vue-i18n';
 
   const addStudyRoom = ref(false);
 
   export default {
     components: {
-    StudyRoom,
-    InputLabel,
-    TextInput,
-    PrimaryButton,
-    Modal,
-    StudyRoomModal,
-    NoStudyRooms
-},
+      StudyRoom,
+      InputLabel,
+      TextInput,
+      PrimaryButton,
+      Modal,
+      StudyRoomModal,
+      NoStudyRooms
+    },
     props: {
       sharedStudyRoom: {
         type: Array,
       },
+    },
+    setup() {
+      const { t } = useI18n({});
+      return { t };
     },
     methods: {
       showModal() {

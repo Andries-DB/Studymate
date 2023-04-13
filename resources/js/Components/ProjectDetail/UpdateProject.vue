@@ -1,6 +1,6 @@
 <template>
   <div class="space-y-5">
-    <h4>Update de naam van je project</h4>
+    <h4>{{$t('ProjectDetail.UpdateProject.Title')}}</h4>
     <div class="w-full lg:w-1/2">
       <form :action="route('editProject')" method="post" class="flex flex-col">
         <input type="hidden" name="_token" :value="csrf">
@@ -11,12 +11,14 @@
           name="name"
           required
           autocomplete="Name"
-          placeholder="Naam van het project"
+          :placeholder="$t('ProjectDetail.UpdateProject.Name')"
           :value="project.name"
         />
-        <ErrorHandling id="nameError"/>
+        <ErrorHandling id="nameError" class="hidden">
+          {{ $t('ProjectDetail.UpdateProject.Errors.Name') }}
+        </ErrorHandling>
         <PrimaryButton class="mt-3" @click="UpdateError()">
-          Update
+          {{$t('ProjectDetail.UpdateProject.Button')}}
         </PrimaryButton>
       </form>
     </div>
@@ -27,6 +29,7 @@
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
   import TextInput from '../TextInput.vue';
   import ErrorHandling from '../Error/ErrorHandling.vue';
+  import { useI18n } from 'vue-i18n';
 
   export default {
     components: {
@@ -39,18 +42,20 @@
         type: Object
       },
     },
+    setup() {
+      const { t} = useI18n({});
+      return { t };
+    },
     methods: {
       UpdateError() {
         // Reset all errors
         document.querySelectorAll('.error').forEach((error) => {
-          error.innerHTML = '';
+          error.classList.add('hidden');
         });
 
         // Check if the name is empty
         if (document.getElementById('name').value == '') {
           document.getElementById('nameError').classList.remove('hidden');
-          document.getElementById('nameError').innerHTML = 'De naam van het project mag niet leeg zijn.';
-
           event.preventDefault();
         }
       },
