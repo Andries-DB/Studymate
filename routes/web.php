@@ -84,6 +84,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::put('/laravel-language/{key}', function ($key) {
   session()->put('locale', $key);
+  return redirect()->back();
 });
 
 require __DIR__.'/auth.php';
