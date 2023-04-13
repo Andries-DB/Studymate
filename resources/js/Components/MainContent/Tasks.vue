@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-7 w-full">
+  <div class="space-y-7">
     <div class="flex justify-between items-center">
       <div>
         <h4>{{  $t('Dashboard.Tasks.Title') }}</h4>
@@ -19,6 +19,7 @@
         v-for="(task, index) in getTasks()"
         :key="index"
         :task="task"
+        class="lg:w-full w-2/3"
       />
     </div>
   </div>
