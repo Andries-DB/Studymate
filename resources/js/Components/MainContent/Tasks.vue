@@ -19,7 +19,7 @@
         v-for="(task, index) in getTasks()"
         :key="index"
         :task="task"
-        class="lg:w-full w-2/3"
+        class="lg:w-full w-10/12"
       />
     </div>
   </div>
