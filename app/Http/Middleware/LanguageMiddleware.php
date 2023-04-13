@@ -21,6 +21,7 @@ class LanguageMiddleware
         } else {
             app()->setLocale(config('app.locale'));
         }
+
         return $next($request);
     }
 }

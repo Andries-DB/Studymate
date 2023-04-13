@@ -39,7 +39,7 @@
       currentDate() {
         const currentDate = new Date();
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        return currentDate.toLocaleDateString('nl', options);
+        return currentDate.toLocaleDateString(localStorage.getItem('locale'), options);
       },
       closeModal() {
         AddProject.value = false;

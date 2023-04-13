@@ -16,15 +16,15 @@ createInertiaApp({
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
     setup({ el, App, props, plugin }) {
         const i18n = createI18n({
-          locale: "nl", // user locale by props
-          fallbackLocale: "en", // set fallback locale
+          locale: localStorage.getItem('locale') == 'nl' ? 'nl' : 'en', // set locale
+          fallbackLocale: localStorage.getItem('locale') == 'nl' ? 'en' : 'nl', // set fallback locale
           legacy: false, // use vue-i18n 8.x
           messages: {
+            nl: nl,
             en: en,
-            nl: nl
           }
         });
-
+        console.log(i18n.global.fallbackLocale.value)
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(i18n)
