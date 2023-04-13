@@ -1,7 +1,7 @@
 <template>
   <Head :title="$page.props.studyroomInformation.name" />
   <UserLayout>
-    <div class="flex flex-col gap-10 p-7 lg:ml-8">
+    <div class="flex flex-col gap-10 lg:p-7 lg:ml-8">
       <div class="flex justify-between">
         <div class="">
           <h1 class="font-bold text-3xl">{{$page.props.studyroomInformation.name}}</h1>
