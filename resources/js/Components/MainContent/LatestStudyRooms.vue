@@ -3,7 +3,7 @@
   <p class="text-gray-500">{{ $t('Dashboard.LatestStudyRooms.Description') }}</p>
   <div class="flex flex-col space-y-4 pt-5">
     <div class="flex justify-center" v-if="$page.props.studyrooms.length === 0 ">
-      <NoStudyRoomOwner @click="showModal()" />
+      <NoStudyRoomOwner />
     </div>
     <StudyRoom
       v-for="room in $page.props.studyrooms"

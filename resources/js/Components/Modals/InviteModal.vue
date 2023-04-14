@@ -59,7 +59,7 @@
         // Get the user from the users array
         const user = this.$page.props.users.find(user => user.id == id);
         const divInfo = document.getElementById('info');
-        divInfo.classList.remove('hidden');
+        divInfo.classList.toggle('hidden');
         const SelectedUserUsername = user.username;
         const SelectedUserName = user.first_name + ' ' + user.last_name;
         const SelectedUserEmail = user.email;
@@ -70,7 +70,7 @@
             <p class="text-sm mt-2">${SelectedUserEmail}</p>
           </div>
         `;
-        document.getElementById('info_text').classList.add('hidden');
+        document.getElementById('info_text').classList.toggle('hidden');
       }
     }
   }

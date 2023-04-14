@@ -34,7 +34,7 @@
       currentDate() {
         const currentDate = new Date();
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        return currentDate.toLocaleDateString(localStorage.getItem('locale') ? localStorage.getItem('locale') : 'en' , options);
+        return currentDate.toLocaleDateString(localStorage.getItem('locale') ? localStorage.getItem('locale') : 'nl' , options);
       },
       closeModal() {
         AddProject.value = false;
@@ -45,7 +45,6 @@
     },
     // Get the CSRF token
     data: () => ({
-      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       AddProject,
     }),
   }

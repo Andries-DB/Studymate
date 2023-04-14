@@ -1,5 +1,4 @@
 <template>
-
   <div v-for="user in $page.props.users">
     <div :id="'user-' + user.id" class=" flex items-center hover:bg-indigo-500 gap-5 w-11/12 h-auto bg-gray-200 px-5 py-3 rounded-lg cursor-pointer" @click="this.checkifUserisAdded(user)" added="false">
     <div class="w-16 h-16 rounded-full" :style="{'background-image':' url(../../storage/' + user.avatar + ')' }" id="avatar" />
@@ -26,7 +25,8 @@
     <PrimaryButton type="submit" class="mt-3 w-11/12" @click="UsersError()">
       {{ $t('StudyRoomDetail.Users.CTA.Invite') }}
     </PrimaryButton>
-    <ErrorHandling id="usersError">
+    <ErrorHandling id="usersError" class="hidden mt-3">
+      {{$t('StudyRoomDetail.Users.Errors.Invite')}}
     </ErrorHandling>
   </form>
 </template>
@@ -65,8 +65,6 @@
       addUserToArray(user) {
         // Add user to array
         users.value.push(JSON.stringify(user));
-        console.log(users);
-
         //set active state
         document.getElementById('user-' + user.id).setAttribute('added', 'true');
         document.getElementById('user-' + user.id).classList.remove('bg-gray-200');
@@ -75,7 +73,6 @@
       removeUserFromArray(user) {
         // Remove name from array
         users.value = users.value.filter(item => item !== JSON.stringify(user));
-        console.log(users);
 
         //reset active state
         document.getElementById('user-' + user.id).setAttribute('added', 'false');
@@ -88,7 +85,6 @@
 
         if (users.value.length == 0) {
           document.getElementById('usersError').classList.remove('hidden');
-          document.getElementById('usersError').innerHTML = $t('StudyRoomDetail.Users.Error.Invite');
           event.preventDefault();
         }
       }
