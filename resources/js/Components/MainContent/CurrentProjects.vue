@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col flex-wrap md:flex-row items-center md:items-stretch gap-6">
-    <div class="w-full" v-if="$page.props.projects.length === 0">
+    <div class="lg:w-full w-11/12" v-if="$page.props.projects.length === 0">
       <NoProjects @click="openModal()"/>
     </div>
     <project
