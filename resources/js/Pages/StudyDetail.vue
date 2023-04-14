@@ -99,7 +99,13 @@ export default {
         },
         // You joining the room
         async joinStream(uid, user) {
-            localTracks = await AgoraRTC.createMicrophoneAndCameraTracks();
+            localTracks = await AgoraRTC.createMicrophoneAndCameraTracks({}, { encoderConfig : {
+              width: {min:640, ideal:1920, max:1920},
+              height: {min:480, ideal:1080, max:1080},
+              frameRate: {min:15, ideal:30, max:30},
+              bitrate: {min:500, ideal:1000, max:1000},
+            }
+            });
             let player = `
               <div id="user-container-${uid}" class="video__container your-container">
                 <div id="user-${uid}" class="video-player bg-black"></div>
