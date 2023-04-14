@@ -12,7 +12,7 @@
       </TertiaryButton>
     </div>
     <div class="flex flex-col space-y-4">
-      <div class="flex justify-center" v-if="getTasks().length === 0">
+      <div class="flex justify-center lg:w-full w-10/12" v-if="getTasks().length === 0">
         <NoTasks @click="showModal()"/>
       </div>
       <Task
