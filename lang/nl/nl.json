@@ -234,6 +234,52 @@
   "Study" : {
     "JoinStudyRoom" : "Join de kamer",
     "LeaveStudyRoom" : "Verlaat de kamer"
+  },
+  "Auth" : {
+    "Login" : {
+      "Title" : "Log in op je account",
+      "Email" : "Email adres",
+      "Password" : "Wachtwoord",
+      "Remember" : "Onthoud mij",
+      "Button" : "Log in",
+      "ForgotPW" : "Wachtwoord vergeten?",
+      "Register" : "Nog geen account? Registreer hier"
+    },
+    "ConfirmPW" : {
+      "Title" : "Bevestig je wachtwoord",
+      "Description" : "Dit is een veilig deel van de website, geef je wachtwoord in om verder te gaan.",
+      "Button" : "Bevestig wachtwoord"
+    },
+    "Register" : {
+      "Title" : "Maak een nieuw account aan",
+      "FirstName" : "Voornaam",
+      "LastName" : "Achternaam",
+      "UserName" : "Gebruikersnaam",
+      "Email" : "Email adres",
+      "Password" : "Wachtwoord",
+      "RPPassword" : "Herhaal wachtwoord",
+      "Login" : "Heb je al een account?",
+      "Button" : "Maak account aan"
+    },
+    "ForgotPassword" : {
+      "Title" : "Wachtwoord vergeten?",
+      "Description" : "Ben je je wachtwoord vergeten? Geen probleem! Laat ons gewoon weten wat je email adres is en we sturen je een link om je wachtwoord te resetten.",
+      "Button" : "Stuur reset link",
+      "Email" : "Email adres"
+    },
+    "ResetPassword" : {
+      "Title" : "Reset wachtwoord",
+      "Email" : "Email adres",
+      "Password" : "Wachtwoord",
+      "ConfirmPassword" : "Bevestig wachtwoord",
+      "Button" : "Reset wachtwoord"
+    },
+    "VerifyEmail" : {
+      "Title" : "Dankjewel voor het registreren! Voor dat we beginnnen, zou je je email adres willen verifiëren? Als je geen verificatie email hebt ontvangen, klik dan op de knop hieronder om er een opnieuw te ontvangen.",
+      "Button" : "Verstuur verificatie email",
+      "Description" : "Een nieuwe verificatie link is naar je email adres gestuurd.",
+      "LogOut" : "Uitloggen"
+    }
   }
 }
 

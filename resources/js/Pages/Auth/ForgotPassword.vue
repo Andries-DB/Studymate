@@ -20,11 +20,11 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout title="Wachtwoord vergeten?">
+    <GuestLayout :title="$t('Auth.ForgotPassword.Title')">
         <Head title="Wachtwoord vergeten" />
 
         <div class="mb-4 text-sm text-black">
-            Ben je je wachtwoord vergeten? Geen probleem! Laat ons gewoon weten wat je email adres is en we sturen je een link om je wachtwoord te resetten.
+            {{$t('Auth.ForgotPassword.Description')}}
         </div>
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
@@ -33,8 +33,6 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
-
                 <TextInput
                     id="email"
                     type="email"
@@ -42,7 +40,8 @@ const submit = () => {
                     v-model="form.email"
                     required
                     autofocus
-                    autocomplete="username"
+                    autocomplete="email"
+                    :placeholder="$t('Auth.ForgotPassword.Email')"
                 />
 
                 <InputError class="mt-2" :message="form.errors.email" />
@@ -50,7 +49,7 @@ const submit = () => {
 
             <div class="flex items-center justify-end mt-4">
                 <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Reset wachtwoord
+                    {{$t('Auth.ForgotPassword.Button')}}
                 </PrimaryButton>
             </div>
         </form>

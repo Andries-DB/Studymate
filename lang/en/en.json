@@ -234,6 +234,52 @@
   "Study" : {
     "JoinStudyRoom" : "Join the studyroom",
     "LeaveStudyRoom" : "Leave the studyroom"
+  },
+  "Auth" : {
+    "Login" : {
+      "Title" : "Login to your account",
+      "Email" : "Email address",
+      "Password" : "Password",
+      "Remember" : "Remember me",
+      "Button" : "Login",
+      "ForgotPW" : "Forgot your password?",
+      "Register" : "Don't have an account? Register here"
+    },
+    "ConfirmPW" : {
+      "Title" : "Confirm your password",
+      "Description" : " This is a secure area of the application. Please confirm your password before continuing.",
+      "Button" : "Confirm"
+    },
+    "Register" : {
+      "Title" : "Register a new account",
+      "FirstName" : "First name",
+      "LastName" : "Last name",
+      "UserName" : "Username",
+      "Email" : "Email address",
+      "Password" : "Password",
+      "RPPassword" : "Repeat password",
+      "Login" : "Already have an account?",
+      "Button" : "Register"
+    },
+    "ForgotPassword" : {
+      "Title" : "Forgot your password?",
+      "Description" : " Enter your email address and we will send you a link to reset your password.",
+      "Button" : "Send password reset link",
+      "Email" : "Email address"
+    },
+    "ResetPassword" : {
+      "Title" : "Reset your password",
+      "Email" : "Email address",
+      "Password" : "Password",
+      "ConfirmPassword" : "Confirm password",
+      "Button" : "Reset password"
+    },
+    "VerifyEmail" : {
+      "Title" : "Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.",
+      "Button" : "Resend verification email",
+      "Description" : "A new verification link has been sent to the email address you provided during registration.",
+      "LogOut" : "Log out"
+    }
   }
 }
 

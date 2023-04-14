@@ -24,7 +24,7 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout title="Maak je nieuw account aan">
+    <GuestLayout :title="$t('Auth.Register.Title')">
         <Head title="Register" />
 
         <form @submit.prevent="submit" class="space-y-2">
@@ -35,7 +35,7 @@ const submit = () => {
                     v-model="form.first_name"
                     required
                     autocomplete="first_name"
-                    placeholder="Voornaam"
+                    :placeholder="$t('Auth.Register.FirstName')"
                 />
                 <InputError class="mt-2" :message="form.errors.first_name" />
             </div>
@@ -46,7 +46,7 @@ const submit = () => {
                     v-model="form.last_name"
                     required
                     autocomplete="last_name"
-                    placeholder="Achternaam"
+                    :placeholder="$t('Auth.Register.LastName')"
                 />
                 <InputError class="mt-2" :message="form.errors.last_name" />
             </div>
@@ -57,7 +57,7 @@ const submit = () => {
                     v-model="form.username"
                     required
                     autocomplete="username"
-                    placeholder="Username"
+                    :placeholder="$t('Auth.Register.UserName')"
                 />
                 <InputError class="mt-2" :message="form.errors.username" />
             </div>
@@ -68,7 +68,7 @@ const submit = () => {
                     v-model="form.email"
                     required
                     autocomplete="email"
-                    placeholder="Email"
+                    :placeholder="$t('Auth.Register.Email')"
                 />
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
@@ -80,7 +80,7 @@ const submit = () => {
                     v-model="form.password"
                     required
                     autocomplete="new-password"
-                    placeholder="Wachtwoord"
+                    :placeholder="$t('Auth.Register.Password')"
                 />
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
@@ -91,7 +91,7 @@ const submit = () => {
                     v-model="form.password_confirmation"
                     required
                     autocomplete="new-password"
-                    placeholder="Herhaal wachtwoord"
+                    :placeholder="$t('Auth.Register.RPPassword')"
                 />
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
@@ -100,11 +100,11 @@ const submit = () => {
                     :href="route('login')"
                     class="text-sm text-black hover:text-indigo-500"
                 >
-                    Heb je al een account?
+                    {{ $t('Auth.Register.Login') }}
                 </Link>
 
                 <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Maak account aan
+                    {{ $t('Auth.Register.Button') }}
                 </PrimaryButton>
             </div>
         </form>
