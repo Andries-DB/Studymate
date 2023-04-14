@@ -280,6 +280,13 @@
       "Description" : "A new verification link has been sent to the email address you provided during registration.",
       "LogOut" : "Log out"
     }
+  },
+  "Widgets" : {
+    "JoinStudy" : "Join the studyroom to start studying",
+    "NoProjects" : "Add a project",
+    "NoStudyRoomInvites" : "Invite users to your studyroom",
+    "NoTasks" : "Add a task",
+    "NoStudyRooms" : "Create a studyroom"
   }
 }
 

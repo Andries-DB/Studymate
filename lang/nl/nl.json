@@ -280,6 +280,13 @@
       "Description" : "Een nieuwe verificatie link is naar je email adres gestuurd.",
       "LogOut" : "Uitloggen"
     }
+  },
+  "Widgets" : {
+    "JoinStudy" : "Join de studeerkamer om samen te studeren!",
+    "NoProjects" : "Voeg een project toe",
+    "NoStudyRoomInvites" : "Geen uitnodigingen om weer te geven",
+    "NoTasks" : "Voeg een taak toe",
+    "NoStudyRooms" : "Voeg een studeerkamer toe"
   }
 }
 

@@ -1,18 +1,25 @@
 <template>
   <div class="w-full h-16 bg-white text-black hover:bg-white transform transition hover:-translate-y-1 border-2 border-dashed rounded-xl p-4 flex justify-center text-center items-start gap-3 hover:cursor-pointer">
     <PlusIcon class="h-5 w-5"/>
-    <p>Nodig mensen uit</p>
+    <p>{{ $t('Widgets.NoStudyRoomInvites') }}</p>
   </div>
 
 </template>
 
 <script>
 import { PlusIcon } from '@heroicons/vue/20/solid';
+import { useI18n } from 'vue-i18n';
 
 export default {
   components: {
     PlusIcon
   },
+  setup() {
+      const {t} = useI18n({});
+      return {
+        t
+      }
+    }
 };
 
 </script>
