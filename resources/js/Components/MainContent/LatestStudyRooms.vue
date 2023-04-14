@@ -18,16 +18,11 @@
 <script>
   import StudyRoom from '@/Components/StudyRooms/Detail/StudyRoom.vue';
   import NoStudyRoomOwner from '../Widgets/NoStudyRoomOwner.vue';
-  import { useI18n } from 'vue-i18n';
 
   export default {
     components: {
       StudyRoom,
       NoStudyRoomOwner,
-    },
-    setup() {
-      const { t } = useI18n({});
-      return { t };
     },
     props: {
       studyrooms: {

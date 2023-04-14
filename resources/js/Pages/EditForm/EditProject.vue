@@ -47,10 +47,6 @@
         type: Array,
       },
     },
-    setup() {
-      const {t} = useI18n({});
-      return { t }
-    },
     methods: {
       setFocus() {
         document.getElementById('input_name').focus();

@@ -5,7 +5,7 @@ import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
+
 
 const passwordInput = ref(null);
 const currentPasswordInput = ref(null);
@@ -33,7 +33,6 @@ const updatePassword = () => {
     });
 };
 
-const t = useI18n();
 </script>
 
 <template>

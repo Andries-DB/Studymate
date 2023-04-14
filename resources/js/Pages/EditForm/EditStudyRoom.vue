@@ -56,7 +56,6 @@
   import UserLayout from '@/Layouts/UserLayout.vue';
   import UpdateStudyRoom from '@/Components/StudyRooms/Edit/UpdateStudyRoom.vue';
   import UserOverview from '@/Components/StudyRooms/Edit/UserOverview.vue';
-  import { useI18n } from 'vue-i18n';
 
   export default {
     components: {
@@ -81,12 +80,6 @@
       },
       studyroomUsers: {
         type: Array
-      }
-    },
-    setup() {
-      const {t} = useI18n({});
-      return {
-        t
       }
     },
     data: () => ({

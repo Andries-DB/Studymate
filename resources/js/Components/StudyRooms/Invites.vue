@@ -40,7 +40,6 @@
   import TertiaryButton from '../Buttons/TertiaryButton.vue';
   import NothingToShow from '../NothingToShow.vue';
   import { NoSymbolIcon, CheckIcon } from '@heroicons/vue/20/solid';
-  import { useI18n } from 'vue-i18n';
 
   export default {
     components: {
@@ -54,10 +53,6 @@
         type: Array,
         required: true,
       },
-    },
-    setup() {
-      const { t } = useI18n({});
-      return { t };
     },
     data: () => ({
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),

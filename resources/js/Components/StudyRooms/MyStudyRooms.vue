@@ -24,7 +24,6 @@
   import NoStudyRoomOwner from '../Widgets/NoStudyRoomOwner.vue';
   import { ref } from 'vue';
   import StudyRoomModal from '@/Components/Modals/StudyRoomModal.vue';
-  import { useI18n } from 'vue-i18n';
 
   const addStudyRoom = ref(false);
 
@@ -39,10 +38,6 @@
       myStudyrooms: {
         type: Array,
       },
-    },
-    setup() {
-      const { t } = useI18n({});
-      return { t };
     },
     methods: {
       showModal() {

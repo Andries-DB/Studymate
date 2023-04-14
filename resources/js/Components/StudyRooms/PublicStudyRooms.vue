@@ -12,15 +12,10 @@
 
 <script>
   import PublicStudyRoom from './Detail/PublicStudyRoom.vue';
-  import { useI18n } from 'vue-i18n';
 
   export default {
     components: {
       PublicStudyRoom,
-    },
-    setup() {
-      const { t } = useI18n({});
-      return { t };
     },
     props: {
       publicStudyrooms: {

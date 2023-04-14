@@ -39,7 +39,6 @@
   import TextInput from '@/Components/TextInput.vue';
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
   import ErrorHandling from '../Error/ErrorHandling.vue';
-  import { useI18n } from 'vue-i18n';
 
   export default {
     components: {
@@ -58,10 +57,6 @@
         required: true
       }
 
-    },
-    setup() {
-      const { t } = useI18n({});
-      return { t };
     },
     data: () => ({
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),

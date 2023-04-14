@@ -14,12 +14,11 @@
 
 import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue';
 import { useI18n } from 'vue-i18n';
-import {ref} from 'vue';
 
 export default {
   setup() {
-    const { locale, t} = useI18n({});
-    return { locale, t };
+    const { locale} = useI18n({});
+    return { locale};
   },
   components: {
     SecondaryButton

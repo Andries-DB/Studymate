@@ -42,7 +42,6 @@
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
   import ErrorHandling from '@/Components/Error/ErrorHandling.vue';
   import TextInput from '@/Components/TextInput.vue';
-  import { useI18n } from 'vue-i18n';
 
   export default {
     components: {
@@ -54,10 +53,6 @@
       studyroom: {
         type: Object
       },
-    },
-    setup() {
-      const { t } = useI18n({});
-      return { t };
     },
     methods: {
       UpdateError() {

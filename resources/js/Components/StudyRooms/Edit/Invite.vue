@@ -24,7 +24,6 @@
   import moment from 'moment';
   import TertiaryButton from '@/Components/Buttons/TertiaryButton.vue';
   import { TrashIcon } from '@heroicons/vue/20/solid';
-  import { useI18n } from 'vue-i18n';
 
   export default {
     components: {
@@ -40,10 +39,6 @@
         type: Object,
         required: true,
       },
-    },
-    setup() {
-      const { t } = useI18n({});
-      return { t };
     },
     data() {
       return {

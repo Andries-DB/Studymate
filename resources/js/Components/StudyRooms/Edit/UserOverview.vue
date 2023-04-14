@@ -36,8 +36,6 @@
   import ErrorHandling from '@/Components/Error/ErrorHandling.vue';
   import NothingToShow from '@/Components/NothingToShow.vue';
   import { ref } from 'vue';
-  import { useI18n } from 'vue-i18n';
-
 
   // ref array
   let users = ref([]);
@@ -53,10 +51,6 @@
         studyroom: {
             type: Object
         },
-    },
-    setup() {
-      const { t } = useI18n({});
-      return { t };
     },
     methods: {
       checkifUserisAdded(user) {
@@ -83,7 +77,7 @@
         users.value = users.value.filter(item => item !== JSON.stringify(user));
         console.log(users);
 
-        //set active state
+        //reset active state
         document.getElementById('user-' + user.id).setAttribute('added', 'false');
         document.getElementById('user-' + user.id).classList.remove('bg-indigo-500');
         document.getElementById('user-' + user.id).classList.add('bg-gray-200');

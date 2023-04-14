@@ -7,7 +7,6 @@ import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { nextTick, ref } from 'vue';
-import { useI18n } from 'vue-i18n';
 
 const confirmingUserDeletion = ref(false);
 const passwordInput = ref(null);
@@ -36,8 +35,6 @@ const closeModal = () => {
 
     form.reset();
 };
-
-const {t} = useI18n({});
 </script>
 
 <template>

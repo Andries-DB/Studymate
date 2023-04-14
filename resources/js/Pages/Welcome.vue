@@ -179,19 +179,13 @@
 
   </div>
 </footer>
-
 </template>
 
 <script>
   import { Head } from '@inertiajs/vue3';
   import PrimaryAnchor from '@/Components/Anchors/PrimaryAnchor.vue';
-  import { useI18n } from 'vue-i18n';
 
   export default {
-    setup() {
-      const {t} = useI18n({});
-      return {t}
-    },
     components: {
       Head,
       PrimaryAnchor,
@@ -200,12 +194,5 @@
       users: Array,
       studyrooms: Array,
     },
-    methods: {
-      closeMenu() {
-        //document.getElementById('mobileMenu').attributes('aria-modal' , 'false')
-        console.log('close menu')
-      },
-
-    }
   }
 </script>

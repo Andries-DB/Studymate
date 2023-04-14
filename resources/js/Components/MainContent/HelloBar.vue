@@ -21,7 +21,6 @@
   import {ref} from 'vue';
   import ProjectModal from '@/Components/Modals/ProjectModal.vue';
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
-  import { useI18n } from 'vue-i18n';
 
   const AddProject = ref(false);
 
@@ -29,10 +28,6 @@
     components: {
     ProjectModal,
     PrimaryButton,
-    },
-    setup() {
-      const { t} = useI18n({});
-      return { t };
     },
     methods: {
       // Get the current date

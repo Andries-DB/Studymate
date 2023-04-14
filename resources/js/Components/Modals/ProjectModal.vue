@@ -24,17 +24,12 @@
   import Modal from '@/Components/Modal.vue';
   import TextInput from '@/Components/TextInput.vue';
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
-  import { useI18n } from 'vue-i18n';
 
   export default {
     components: {
       Modal,
       TextInput,
       PrimaryButton,
-    },
-    setup() {
-      const { t } = useI18n({});
-      return { t };
     },
     data() {
       return {

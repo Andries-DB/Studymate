@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Friends;
 use App\Models\User;
 use App\Models\Projects;
-use App\Models\Study_stats;
 use App\Models\StudyRooms;
 use App\Models\StudyRooms_Owner;
 use App\Models\StudyRoomsUser;

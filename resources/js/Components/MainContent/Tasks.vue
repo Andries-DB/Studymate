@@ -39,15 +39,10 @@
   import TertiaryButton from '@/Components/Buttons/TertiaryButton.vue';
   import NoTasks from '@/Components/Widgets/NoTasks.vue';
   import TaskModal from '@/Components/Modals/TaskModal.vue';
-  import { useI18n } from 'vue-i18n';
 
   const AddTask = ref(false);
 
   export default {
-    setup() {
-      const { t} = useI18n({});
-      return { t };
-    },
     components: {
     Task,
     TextInput,

@@ -52,7 +52,6 @@ import { Head } from '@inertiajs/vue3';
 import PrimaryButton from '../Components/Buttons/PrimaryButton.vue';
 import UserLayout from '@/Layouts/UserLayout.vue';
 import JoinStudy from '@/Components/Widgets/JoinStudy.vue';
-import {useI18n} from "vue-i18n";
 
 // These are the Agora RTC variables
 const APP_ID = import.meta.env.VITE_AGORA_APP_ID;
@@ -175,10 +174,6 @@ export default {
             }
         }
     },
-    setup() {
-      const {t} = useI18n({});
-      return {t};
-    },
     components: {
     UserLayout,
     Head,
@@ -189,9 +184,8 @@ export default {
 </script>
 
 <style>
-.video-player {
-  width: 300px;
-  height: 300px;
-}
-
+  .video-player {
+    width: 300px;
+    height: 300px;
+  }
 </style>

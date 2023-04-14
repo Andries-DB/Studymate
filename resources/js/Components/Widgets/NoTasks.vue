@@ -8,18 +8,11 @@
 
 <script>
 import { PlusIcon } from '@heroicons/vue/20/solid';
-import { useI18n } from 'vue-i18n';
 
 export default {
   components: {
     PlusIcon
   },
-  setup() {
-      const {t} = useI18n({});
-      return {
-        t
-      }
-    }
 };
 
 </script>

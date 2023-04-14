@@ -3,7 +3,6 @@ import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
 import ErrorHandling from '@/Components/Error/ErrorHandling.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { usePage } from '@inertiajs/vue3';
-import { useI18n } from 'vue-i18n';
 
 </script>
 
@@ -117,10 +116,6 @@ import { useI18n } from 'vue-i18n';
         }
 
       }
-    },
-    setup() {
-      const {t} = useI18n({})
-      return {t};
     },
     data: () => ({
         csrf: document.querySelector("meta[name=\"csrf-token\"]").getAttribute("content"),

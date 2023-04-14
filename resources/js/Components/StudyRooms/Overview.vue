@@ -35,7 +35,6 @@
   import PrimaryButton from '@/Components/Buttons/PrimaryButton.vue';
   import StudyRoomModal from '@/Components/Modals/StudyRoomModal.vue';
   import NoStudyRooms from '@/Components/Widgets/NoStudyRooms.vue';
-  import { useI18n } from 'vue-i18n';
 
   const addStudyRoom = ref(false);
 
@@ -53,10 +52,6 @@
       sharedStudyRoom: {
         type: Array,
       },
-    },
-    setup() {
-      const { t } = useI18n({});
-      return { t };
     },
     methods: {
       showModal() {
