@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ChMessage;
 use App\Models\Projects;
 use App\Models\StudyRooms;
+use App\Models\StudyRooms_invitations;
 use App\Models\StudyRooms_Owner;
 use App\Models\StudyRoomsUser;
 use App\Models\Tasks;
@@ -64,11 +66,12 @@ class ProfileController extends Controller
         Auth::logout();
 
         // Delete all of the user's studyrooms
-        StudyRooms::where('user_id', $user->id)->delete();
         StudyRoomsUser::where('user_id', $user->id)->delete();
         StudyRooms_Owner::where('user_id', $user->id)->delete();
+        StudyRooms_invitations::where('user_id', $user->id)->delete();
         Projects::where('user_id', $user->id)->delete();
         Tasks::where('user_id', $user->id)->delete();
+        ChMessage::where('from_id', $user->id)->orWhere('to_id', $user->id)->delete();
         $user->delete();
 
         $request->session()->invalidate();
