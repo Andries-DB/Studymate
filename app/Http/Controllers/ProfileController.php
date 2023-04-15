@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Projects;
+use App\Models\StudyRooms;
+use App\Models\StudyRooms_Owner;
+use App\Models\StudyRoomsUser;
+use App\Models\Tasks;
 use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
@@ -58,6 +63,12 @@ class ProfileController extends Controller
 
         Auth::logout();
 
+        // Delete all of the user's studyrooms
+        StudyRooms::where('user_id', $user->id)->delete();
+        StudyRoomsUser::where('user_id', $user->id)->delete();
+        StudyRooms_Owner::where('user_id', $user->id)->delete();
+        Projects::where('user_id', $user->id)->delete();
+        Tasks::where('user_id', $user->id)->delete();
         $user->delete();
 
         $request->session()->invalidate();
