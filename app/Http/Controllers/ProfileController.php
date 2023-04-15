@@ -69,8 +69,11 @@ class ProfileController extends Controller
         StudyRoomsUser::where('user_id', $user->id)->delete();
         StudyRooms_Owner::where('user_id', $user->id)->delete();
         StudyRooms_invitations::where('user_id', $user->id)->delete();
+        $projects = Projects::where('user_id', $user->id)->get();
+        foreach ($projects as $project) {
+          Tasks::where('project_id', $project->id)->delete();
+        }
         Projects::where('user_id', $user->id)->delete();
-        Tasks::where('user_id', $user->id)->delete();
         ChMessage::where('from_id', $user->id)->orWhere('to_id', $user->id)->delete();
         $user->delete();
 
