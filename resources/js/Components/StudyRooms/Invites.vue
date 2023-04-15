@@ -1,6 +1,6 @@
 <template>
   <h4>{{$t('StudyRooms.Invites.Title')}}</h4>
-  <p class="text-gray-500">{{ $t('StudyRooms.Invites/Description') }}</p>
+  <p class="text-gray-500">{{ $t('StudyRooms.Invites.Description') }}</p>
   <div class="flex justify-center mt-2" v-if="$page.props.invites.length === 0">
     <NothingToShow class="text-base py-5 px-10">{{ $t('StudyRooms.Invites.NoInvites') }}</NothingToShow>
   </div>
