@@ -70,9 +70,9 @@ class ProfileController extends Controller
         // Get all studyrooms where the user is the owner
         $studyrooms = StudyRooms_Owner::where('user_id', $user->id)->get();
         foreach ($studyrooms as $studyroom) {
-          StudyRooms::where('id', $studyroom->studyroom_id)->delete();
-          StudyRooms_invitations::where('study_room_id', $studyroom->studyroom_id)->delete();
-          StudyRoomsUser::where('study_room_id', $studyroom->studyroom_id)->delete();
+          StudyRooms::where('id', $studyroom->study_room_id)->delete();
+          StudyRooms_invitations::where('study_room_id', $studyroom->study_room_id)->delete();
+          StudyRoomsUser::where('study_room_id', $studyroom->study_room_id)->delete();
         }
         StudyRooms_Owner::where('user_id', $user->id)->delete();
         StudyRooms_invitations::where('user_id', $user->id)->delete();
